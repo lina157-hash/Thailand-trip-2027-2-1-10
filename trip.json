@@ -1,5 +1,5 @@
 {
-  "revision": 6,
+  "revision": 7,
   "data": {
     "events": [
       {
@@ -352,6 +352,15 @@
         "city": "桃園",
         "place": "Taiwan Taoyuan International Airport Terminal 2",
         "note": "台灣當地時間。旅程結束。"
+      },
+      {
+        "id": "6b7da986-358c-4413-9af8-43ecea89b233",
+        "day": 1,
+        "time": "",
+        "city": "",
+        "title": "新活動",
+        "place": "",
+        "note": ""
       }
     ],
     "titles": {
@@ -456,5 +465,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-11T10:16:12.177Z"
+  "updatedAt": "2026-10-11T11:22:41.313Z"
 }
