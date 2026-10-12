@@ -1,5 +1,5 @@
 {
-  "revision": 8,
+  "revision": 9,
   "data": {
     "events": [
       {
@@ -36,7 +36,7 @@
         "title": "睡到自然醒 · 飯店泳池與休息",
         "city": "芭達雅",
         "place": "Mercure Pattaya Ocean Resort",
-        "note": "白天放慢步調。"
+        "note": "上午睡到自然醒，養好精神。"
       },
       {
         "id": "d2e1",
@@ -456,5 +456,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-11T11:23:00.203Z"
+  "updatedAt": "2026-10-12T00:03:15.658Z"
 }
