@@ -1,5 +1,5 @@
 {
-  "revision": 10,
+  "revision": 11,
   "data": {
     "events": [
       {
@@ -109,15 +109,6 @@
         "city": "移動中",
         "place": "Ang Sila Seafood Market",
         "note": "簡單吃東西、逛市場。"
-      },
-      {
-        "id": "d4e3",
-        "day": 4,
-        "time": "",
-        "title": "包車前往曼谷 · 入住 ibis Styles",
-        "city": "曼谷",
-        "place": "ibis Styles Bangkok Ratchada",
-        "note": "晚上自由安排：附近吃飯／按摩／休息。"
       },
       {
         "id": "d5e0",
@@ -352,6 +343,15 @@
         "city": "桃園",
         "place": "Taiwan Taoyuan International Airport Terminal 2",
         "note": "台灣當地時間。旅程結束。"
+      },
+      {
+        "id": "d4e3",
+        "day": 4,
+        "time": "",
+        "title": "包車前往曼谷 · 入住 ibis Styles",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "休息"
       }
     ],
     "titles": {
@@ -456,5 +456,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-12T00:04:03.754Z"
+  "updatedAt": "2026-10-12T00:16:05.695Z"
 }
