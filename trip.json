@@ -1,5 +1,5 @@
 {
-  "revision": 13,
+  "revision": 14,
   "data": {
     "events": [
       {
@@ -285,10 +285,10 @@
         "id": "d8e5",
         "day": 8,
         "time": "",
-        "title": "大城中央市場 Ayutthaya Central Agricultural Market",
+        "title": "大城中央市場 Ayutthaya Central Agricultural Market・大頭蝦自由用餐 🦐",
         "city": "大城",
         "place": "Kung Phuean Praew",
-        "note": "用餐。餐廳定位與訂位請出發前再次確認。\n可當大城特色體驗餐，可以吃大約7分飽，把胃留給夜市的小吃、甜點、飲料。"
+        "note": "用餐。餐廳定位與訂位請出發前再次確認。\n大城著名的大頭蝦美食聚集地，市場內有多家大頭蝦與海鮮餐廳，可以現場挑選不同大小的活蝦，再請店家現烤料理。\n抵達後各自自由活動，大家可以先逛逛、比較看看，選自己喜歡的店家用餐。\n這一站以「品嚐大城特色大頭蝦」為主，建議不要吃太飽，晚上還會到 Save One Go 夜市繼續吃小吃 😆"
       },
       {
         "id": "d8e6",
@@ -456,5 +456,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-12T00:28:23.376Z"
+  "updatedAt": "2026-10-12T03:29:10.030Z"
 }
