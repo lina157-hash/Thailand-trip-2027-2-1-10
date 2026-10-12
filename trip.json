@@ -1,5 +1,5 @@
 {
-  "revision": 12,
+  "revision": 13,
   "data": {
     "events": [
       {
@@ -285,19 +285,19 @@
         "id": "d8e5",
         "day": 8,
         "time": "",
-        "title": "Ayutthaya Central Agricultural Market（大城蝦市場）",
+        "title": "大城中央市場 Ayutthaya Central Agricultural Market",
         "city": "大城",
         "place": "Kung Phuean Praew",
-        "note": "用餐。餐廳定位與訂位請出發前再次確認。"
+        "note": "用餐。餐廳定位與訂位請出發前再次確認。\n可當大城特色體驗餐，可以吃大約7分飽，把胃留給夜市的小吃、甜點、飲料。"
       },
       {
         "id": "d8e6",
         "day": 8,
         "time": "",
-        "title": "Save One GO Market",
+        "title": "Save One Go @ Yaek Kor Por Aor",
         "city": "移動中",
-        "place": "Save One Go Market",
-        "note": "建議停留約 1～1.5 小時，再返回曼谷飯店。"
+        "place": "Save One Go @ Yaek Kor Por Aor",
+        "note": "逛街＋甜點＋小吃補充站\n建議停留約 1～1.5 小時，再返回曼谷飯店。"
       },
       {
         "id": "d9e0",
@@ -456,5 +456,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-12T00:21:55.440Z"
+  "updatedAt": "2026-10-12T00:28:23.376Z"
 }
