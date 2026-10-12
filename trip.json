@@ -1,5 +1,5 @@
 {
-  "revision": 11,
+  "revision": 12,
   "data": {
     "events": [
       {
@@ -285,7 +285,7 @@
         "id": "d8e5",
         "day": 8,
         "time": "",
-        "title": "Kung Phuean Praew 大頭蝦",
+        "title": "Ayutthaya Central Agricultural Market（大城蝦市場）",
         "city": "大城",
         "place": "Kung Phuean Praew",
         "note": "用餐。餐廳定位與訂位請出發前再次確認。"
@@ -456,5 +456,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-12T00:16:05.695Z"
+  "updatedAt": "2026-10-12T00:21:55.440Z"
 }
