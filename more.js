@@ -152,7 +152,7 @@ function renderPrint() {
   const now = new Date().toLocaleDateString('zh-TW', { timeZone: 'Asia/Taipei' });
   const days = Array.from({ length: 10 }, (_, i) => {
     const d = i + 1, ev = visibleEvents(d), meet = meetOf(d), br = bringOf(d), hotel = String(D.hotels[d] || '').trim();
-    return `<section class="ps-day" data-dow="${dowOf(d)}"><h3><b>2/${d}（${weekdays[d - 1]}）</b>${esc(D.titles[d] || '')}</h3>${meet ? `<p class="ps-meet">集合　${esc(meet)}</p>` : ''}<ul>${ev.map(e => `<li><time>${esc(e.time || '')}</time><span>${esc(e.title)}${!g && e.group && gs.includes(e.group) ? `<i>${esc(e.group)}</i>` : ''}${e.optional ? '<i>自選</i>' : ''}</span></li>`).join('')}</ul>${hotel && d < 10 ? `<p class="ps-small"><b>住</b>${esc(hotel)}</p>` : ''}${br ? `<p class="ps-small"><b>帶</b>${esc(br)}</p>` : ''}</section>`;
+    return `<section class="ps-day" data-dow="${dowOf(d)}"><h3><b>2/${d}（${weekdays[d - 1]}）</b>${esc(D.titles[d] || '')}</h3>${meet ? `<p class="ps-meet">集合　${esc(meet)}</p>` : ''}<ul>${ev.map(e => `<li><time>${esc(e.time || '')}</time><span>${esc(e.title)}${!g && e.group && gs.includes(e.group) ? `<i>${esc(e.group)}</i>` : ''}${e.optional ? '<i>自選</i>' : ''}${e.dine === 'booked' ? '<i>已訂位</i>' : ''}</span></li>`).join('')}</ul>${hotel && d < 10 ? `<p class="ps-small"><b>住</b>${esc(hotel)}</p>` : ''}${br ? `<p class="ps-small"><b>帶</b>${esc(br)}</p>` : ''}</section>`;
   }).join('');
   sheet.innerHTML = `<header><h1>泰好時光｜2027 芭達雅・曼谷 行程表</h1><p>2027/2/1–2/10・${g ? esc(g) + '的行程' : '全團行程'}・共同行程第 ${cloudRevision ?? '—'} 版・${esc(now)} 列印</p></header><div class="ps-days">${days}</div><footer><p><b>緊急</b>觀光警察 1155・報警 191・救護車 1669・駐泰辦事處急難救助 +66 81 666 4006・外交部急難救助 +886 800 085 095</p><p><b>飯店</b>Mercure Pattaya Ocean Resort +66 38 769 688・ibis Styles Bangkok Ratchada +66 2 820 8888</p><p>時間為各地當地時間；最新行程請看網站 ${esc(location.origin + location.pathname)}</p></footer>`;
 }
@@ -202,6 +202,7 @@ function tripDiff(a, b) {
   if (x.checklist !== y.checklist) out.push('出發清單');
   if (JSON.stringify(a.split || null) !== JSON.stringify(b.split || null)) out.push('團體分帳');
   if (JSON.stringify(a.todos || []) !== JSON.stringify(b.todos || [])) out.push('待辦');
+  if (JSON.stringify(a.roster || []) !== JSON.stringify(b.roster || [])) out.push('旅伴名單');
   return out;
 }
 async function renderHistory() {

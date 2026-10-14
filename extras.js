@@ -10,7 +10,7 @@ function tripDigest(data) {
   const days = {};
   for (let d = 1; d <= 10; d++) {
     const parts = [data.titles?.[d], data.hotels?.[d], data.transport?.[d], data.notes?.[d], data.meet?.[d],
-      JSON.stringify((data.events || []).filter(e => e.day === d).map(e => [e.time, e.title, e.city, e.place, e.note, e.group || '', ...(e.optional ? [1, e.joined || ''] : [])]))];
+      JSON.stringify((data.events || []).filter(e => e.day === d).map(e => [e.time, e.title, e.city, e.place, e.note, e.group || '', ...(e.optional ? [1, e.joined || ''] : []), ...(e.dine ? ['dine', e.dine, e.dinePax || '', e.dineNote || ''] : [])]))];
     if (data.bring && data.bring[d] !== undefined) parts.push('bring:' + data.bring[d]); // 「記得帶」改過才算進去，舊的摘要不受影響
     days[d] = h(parts.map(p => p || '').join('\u0001'));
   }
@@ -129,7 +129,7 @@ function todoCandidates(src) {
   for (let d = 1; d <= 10; d++) { add(d, src.notes?.[d]); add(d, src.transport?.[d]); for (const e of src.events.filter(e => e.day === d)) add(d, e.note); }
   return [...new Set(found)];
 }
-function editorExtras() { renderTodoEditor(); }
+function editorExtras() { renderTodoEditor(); if (typeof editorExtras4 === 'function') editorExtras4(); }
 function renderTodoEditor() {
   const box = $('#todo-editor'); if (!box || !draft) return;
   const todos = Array.isArray(draft.todos) ? draft.todos : [], open = todos.filter(t => !t.done).length;
@@ -142,6 +142,7 @@ function renderTodoEditor() {
     + (fresh.length ? `<div class="todo-suggest"><p>行程裡還有 <b>${fresh.length}</b> 處寫著「待確認」之類的字：</p><ul>${fresh.slice(0, 8).map(t => `<li>${esc(t)}</li>`).join('')}${fresh.length > 8 ? `<li>…還有 ${fresh.length - 8} 處</li>` : ''}</ul><button class="primary" type="button" data-todo-import>全部加入待辦</button></div>` : '')
     + (todos.length ? `<ul class="todo-list">${todos.map(t => `<li class="${t.done ? 'done' : ''}"><input type="checkbox" data-todo-done="${esc(t.id)}" ${t.done ? 'checked' : ''} aria-label="完成"><input type="text" value="${esc(t.text)}" data-todo-text="${esc(t.id)}" maxlength="300" placeholder="要確認的事"><button class="text-btn danger" type="button" data-todo-del="${esc(t.id)}">刪除</button></li>`).join('')}</ul>` : '<p class="muted ed-empty">還沒有待辦。</p>')
     + (typeof joinSummary === 'function' ? joinSummary(draft) : '')
+    + (typeof dineSummary === 'function' ? dineSummary(draft) : '')
     + `<h3>待補資料（${miss.length} 個活動）</h3>`
     + (miss.length ? `<p class="muted">沒有時間，「今天」卡片就算不出下一站；沒有地圖地點，旅伴就點不開地圖。</p><ul class="todo-miss">${miss.map(e => `<li><span class="pill">2/${e.day}</span><span>${esc(e.title || '未命名活動')}</span><em>${[!e.time ? '缺時間' : '', !e.place ? '缺地圖地點' : ''].filter(Boolean).join('・')}</em><button class="text-btn" type="button" data-todo-fix="${esc(e.id)}">去填</button></li>`).join('')}</ul>` : '<p class="muted">每個活動都有時間和地圖地點了。</p>');
 }
