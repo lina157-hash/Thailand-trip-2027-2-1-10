@@ -180,6 +180,47 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 .side-block h4{margin-bottom:6px}
 
 /* 旅遊靈感 */
+.filters{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:40px;padding:0 18px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font-size:14px;font-weight:700}
+.chip.active{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.place-card.panel{padding:0;overflow:hidden;border-top:0}
+.place-art{aspect-ratio:5/3;background:var(--aqua-soft)}
+.place-card.eat .place-art{background:var(--mango-soft)}
+.place-card:nth-child(3n+2).see .place-art{background:var(--pink-soft)}
+.place-art svg{display:block;width:100%;height:100%}
+.place-card p{flex:none}.place-body>p:not(.place-en):not(.place-tip){flex:1}
+.place-body .map-link{margin-top:14px}
+.place-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
+.place-tags{display:flex;gap:6px;flex-wrap:wrap}
+.place-tags .city{background:var(--surface-2)}
+.place-card.eat .place-tags .pill:first-child{background:var(--mango-soft)}
+.place-en{font-size:13px;color:var(--faint);margin:0 0 8px}
+.place-tip{margin-top:10px;padding:10px 12px;border-radius:var(--r-sm);background:var(--surface-2);font-size:13px;color:var(--ink)}
+.place-tip b{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+/* 注意事項 */
+.notes-meter{max-width:760px;height:12px;margin:0 0 6px}
+.notes-meter span{background:linear-gradient(90deg,var(--aqua),var(--leaf))}
+#notes-progress{margin-bottom:18px}
+.notes-list{display:grid;gap:14px;max-width:760px}
+.note-section{background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow);overflow:hidden}
+.note-section summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer}
+.note-section summary::-webkit-details-marker{display:none}
+.note-num{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink-soft);font:600 14px var(--body)}
+.note-section:nth-child(3n+2) .note-num{background:var(--aqua-soft)}
+.note-section:nth-child(3n) .note-num{background:var(--mango-soft)}
+.note-title{flex:1;font:400 19px/1.4 var(--display)}
+.note-count{font-size:13px;font-weight:700;color:var(--muted)}
+.note-section.complete .note-count{color:var(--leaf)}
+.note-section.complete .note-count::before{content:"✓ "}
+.note-lead{margin:0 20px 6px;padding:10px 14px;border-radius:var(--r-sm);background:var(--mango-soft);font-size:14px}
+.note-items{list-style:none;margin:0;padding:0 20px 8px}
+.note-item{border-top:1px dashed var(--line)}
+.note-item label{display:flex;align-items:flex-start;gap:12px;margin:0;padding:13px 0;color:var(--ink);font-size:15px;line-height:1.6;cursor:pointer}
+.note-item input{flex:none;width:22px;height:22px;min-height:0;margin:1px 0 0;padding:0;accent-color:var(--leaf)}
+.note-item input:checked~span{color:var(--faint);text-decoration:line-through}
+.step{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--sage);color:var(--ink);font:700 12px var(--body)}
+.note-link{margin:4px 20px 20px;white-space:normal;text-align:center}
 .places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .place-card{display:flex;flex-direction:column;border-top:8px solid var(--aqua)}
 .place-card:nth-child(3n+2){border-top-color:var(--hibiscus)}
@@ -304,6 +345,11 @@ dialog .muted{margin-bottom:16px}
   .event{grid-template-columns:44px minmax(0,1fr);gap:10px}
   .event-body{padding-left:20px}
   .places{grid-template-columns:minmax(0,1fr)}
+  .tabs button{font-size:11px}
+  .note-section summary{padding:14px 16px}
+  .note-items{padding:0 16px 6px}
+  .note-lead{margin:0 16px 6px}
+  .note-link{margin:4px 16px 18px}
   .panel{padding:20px 16px}
   .summary #total{font-size:40px}
   .inline>.narrow{flex-basis:136px}
