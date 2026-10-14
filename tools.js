@@ -18,6 +18,11 @@
       addrTh: '212 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310 (ใกล้ MRT ห้วยขวาง)',
       addrEn: '212 Ratchadaphisek Rd, Huai Khwang, Bangkok 10310 (near MRT Huai Khwang)',
       phone: '+66 2 820 8888' },
+    { id: 'jodd', when: '曼谷 · 夜市', zh: '喬德夜市（Jodd Fairs 拉差達）',
+      th: 'ตลาดนัดจ๊อดแฟร์ รัชดา', en: 'Jodd Fairs Ratchada',
+      addrTh: 'ถนนรัชดาภิเษก ข้างบิ๊กซี เพลส รัชดาภิเษก (MRT ศูนย์วัฒนธรรมแห่งประเทศไทย ทางออก 4) — ไม่ใช่ที่เซ็นทรัลพระราม 9 เดิม',
+      addrEn: 'Ratchadaphisek Rd, next to Big C Place Ratchadaphisek (MRT Thailand Cultural Centre, Exit 4). Not the old Central Rama 9 site.',
+      phone: '', map: 'Jodd Fairs Ratchada' },
     { id: 'bkk', when: '2/10 · 回程', zh: '曼谷蘇凡納布機場',
       th: 'สนามบินสุวรรณภูมิ', en: 'Suvarnabhumi Airport (BKK)',
       addrTh: 'ผู้โดยสารขาออก ชั้น 4', addrEn: 'Departures, 4th floor', phone: '' },
@@ -109,7 +114,7 @@
   const dlg = document.querySelector('#driver-dialog');
   function openDriver(id) {
     const p = PLACES.find(x => x.id === id); if (!p) return;
-    dlg.querySelector('.driver-body').innerHTML = `<p class="driver-ask" lang="th">กรุณาไปส่งที่</p><p class="driver-ask-zh">請載我到：</p><h2 lang="th">${esc(p.th)}</h2><p class="driver-en">${esc(p.en)}</p><p class="driver-addr" lang="th">${esc(p.addrTh)}</p><p class="driver-addr-en">${esc(p.addrEn)}</p><div class="driver-actions">${p.phone ? `<a class="quiet" href="${tel(p.phone)}">打給飯店 ${esc(p.phone)}</a>` : ''}<a class="quiet" href="${map(p.en)}" target="_blank" rel="noopener noreferrer">開地圖</a></div>`;
+    dlg.querySelector('.driver-body').innerHTML = `<p class="driver-ask" lang="th">กรุณาไปส่งที่</p><p class="driver-ask-zh">請載我到：</p><h2 lang="th">${esc(p.th)}</h2><p class="driver-en">${esc(p.en)}</p><p class="driver-addr" lang="th">${esc(p.addrTh)}</p><p class="driver-addr-en">${esc(p.addrEn)}</p><div class="driver-actions">${p.phone ? `<a class="quiet" href="${tel(p.phone)}">打給飯店 ${esc(p.phone)}</a>` : ''}<a class="quiet" href="${map(p.map || p.en)}" target="_blank" rel="noopener noreferrer">開地圖</a></div>`;
     dlg.showModal();
   }
   window.openDriverCard = openDriver;
