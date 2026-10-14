@@ -1,6 +1,6 @@
 /* 旅途工具：給司機看的泰文卡、緊急聯絡、泰語常用句、加到手機主畫面。
    內容固定寫在這裡，不經過共同行程；只有「我的保險電話」存在各自的裝置（localStorage）。
-   飯店地址與電話整理自公開資料，出發前請再和訂房確認信對照一次。 */
+   飯店地址與電話整理自公開資料；Mercure 的地址與 GPS 已和飯店官網核對，其他出發前請再和訂房確認信對照一次。 */
 (() => {
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const map = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
@@ -12,7 +12,7 @@
       th: 'โรงแรมเมอร์เคียว พัทยา โอเชี่ยน รีสอร์ท', en: 'Mercure Pattaya Ocean Resort',
       addrTh: '463/100 หมู่ 9 ถนนพัทยาสาย 2 ตำบลหนองปรือ อำเภอบางละมุง ชลบุรี 20150',
       addrEn: '463/100 Moo 9, Pattaya Second Road, Nong Prue, Bang Lamung, Chonburi 20150',
-      phone: '+66 38 769 688' },
+      phone: '+66 38 769 688', map: '12.94721,100.887436' }, // 地址與 GPS 已和飯店官網核對（2026/10/14）
     { id: 'ibis', when: '2/4–2/10 · 曼谷', zh: 'ibis Styles 曼谷拉差達',
       th: 'โรงแรมไอบิส สไตล์ กรุงเทพ รัชดา', en: 'ibis Styles Bangkok Ratchada',
       addrTh: '212 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310 (ใกล้ MRT ห้วยขวาง)',
@@ -114,12 +114,30 @@
   const dlg = document.querySelector('#driver-dialog');
   function openDriver(id) {
     const p = PLACES.find(x => x.id === id); if (!p) return;
-    dlg.querySelector('.driver-body').innerHTML = `<p class="driver-ask" lang="th">กรุณาไปส่งที่</p><p class="driver-ask-zh">請載我到：</p><h2 lang="th">${esc(p.th)}</h2><p class="driver-en">${esc(p.en)}</p><p class="driver-addr" lang="th">${esc(p.addrTh)}</p><p class="driver-addr-en">${esc(p.addrEn)}</p><div class="driver-actions">${p.phone ? `<a class="quiet" href="${tel(p.phone)}">打給飯店 ${esc(p.phone)}</a>` : ''}<a class="quiet" href="${map(p.map || p.en)}" target="_blank" rel="noopener noreferrer">開地圖</a></div>`;
+    dlg.querySelector('.driver-body').innerHTML = `<p class="driver-ask" lang="th">กรุณาไปส่งที่</p><p class="driver-ask-zh">請載我到：</p><h2 lang="th">${esc(p.th)}</h2><p class="driver-en">${esc(p.en)}</p><p class="driver-addr" lang="th">${esc(p.addrTh)}</p><p class="driver-addr-en">${esc(p.addrEn)}</p><div class="driver-actions">${p.phone ? `<a class="quiet" href="${tel(p.phone)}">打給飯店 ${esc(p.phone)}</a>` : ''}<a class="quiet" href="${map(p.map || p.en)}" target="_blank" rel="noopener noreferrer">開地圖</a></div><p class="driver-ride">自己叫車：先複製英文名稱，打開 App 後貼到「要去哪裡」。</p><div class="driver-actions ride-actions"><button type="button" class="quiet" data-ride="copy" data-name="${esc(p.en)}">複製英文名稱</button><button type="button" class="quiet ride-grab" data-ride="grab" data-name="${esc(p.en)}">叫 Grab</button><button type="button" class="quiet ride-bolt" data-ride="bolt" data-name="${esc(p.en)}">叫 Bolt</button></div>`;
     dlg.showModal();
   }
   window.openDriverCard = openDriver;
   dlg.querySelector('.driver-close').onclick = () => dlg.close();
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  /* 叫車：Grab、Bolt 沒有公開的「帶入目的地」網址，所以先把英文名稱複製起來，再打開 App（沒裝的話會打開下載頁） */
+  const RIDE = {
+    grab: () => 'https://grab.onelink.me/2695613898?pid=organic_web&c=organic_web&is_retargeting=true&af_dp=grab%3A%2F%2Fopen%3FscreenType%3DMAIN&af_force_deeplink=true',
+    bolt: () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+      ? 'https://apps.apple.com/app/id675033630' : 'https://play.google.com/store/apps/details?id=ee.mtakso.client',
+  };
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch {}
+    try { const t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0'; dlg.appendChild(t); t.select(); const ok = document.execCommand('copy'); t.remove(); return ok; } catch { return false; }
+  }
+  dlg.addEventListener('click', async e => {
+    const b = e.target.closest('[data-ride]'); if (!b) return;
+    const name = b.dataset.name, ok = await copyText(name), app = b.dataset.ride;
+    if (app === 'copy') return toast(ok ? `已複製「${name}」` : `請手動輸入：${name}`);
+    toast(ok ? `已複製「${name}」，在 ${app === 'grab' ? 'Grab' : 'Bolt'} 的目的地貼上` : `在 App 的目的地輸入：${name}`);
+    setTimeout(() => { location.href = RIDE[app](); }, 600);
+  });
 
   box.addEventListener('click', e => {
     const d = e.target.closest('[data-driver]'); if (d) return openDriver(d.dataset.driver);
