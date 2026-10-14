@@ -128,6 +128,7 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 .info-grid>div{padding:16px 18px;border-radius:var(--r-sm);background:var(--aqua-soft)}
 .info-grid>div:nth-child(2){background:var(--pink-soft)}
 .info-grid>div:nth-child(3){background:var(--mango-soft)}
+.info-grid>.bookings{grid-column:1/-1;background:var(--coral-soft)}
 .info-grid h3{font-size:17px;margin:12px 0 4px}
 .info-grid p,.info-grid a,.info-grid small{font-size:14px;line-height:1.8}
 .info-grid small{display:block;color:var(--muted);margin-top:10px}
