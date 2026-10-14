@@ -487,3 +487,53 @@ dialog .muted{margin-bottom:16px}
 #cloud-editor>form>.section-top{flex-wrap:nowrap;gap:12px}
 #cloud-editor>form>.section-top h2{font-size:24px}
 #cloud-editor>form>.section-top .quiet{flex:none}
+
+/* 第二輪：照片淡入、更新通知、集合、分組、天氣、分類、待辦 */
+.place-art img{opacity:0;transition:opacity .4s}
+.place-art img.loaded{opacity:1}
+.update-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;padding:14px 18px;border-radius:var(--r-md);background:var(--mango-soft);box-shadow:var(--shadow);font-size:14px}
+.update-banner[hidden]{display:none}
+.update-banner p{margin-top:2px}
+.update-banner .text-btn{padding:2px 2px;font-size:14px}
+.update-banner .quiet{flex:none;min-height:38px}
+.day-meet{display:flex;gap:10px;align-items:baseline;margin:12px 0 4px;padding:10px 14px;border-radius:var(--r-sm);background:color-mix(in srgb,var(--day,var(--mango)) 28%,var(--surface));font-size:15px;font-weight:700}
+.day-meet b{flex:none;font-size:12px;color:var(--muted)}
+.day-meet[hidden],.day-weather[hidden]{display:none}
+.day-weather{margin:6px 0 8px;font-size:14px;color:var(--muted)}
+.plan-actions{display:flex;gap:8px;align-items:center}
+.plan-actions .quiet{min-height:38px;padding:0 14px;font-size:13px}
+.group-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-6px 0 16px}
+.group-pick[hidden]{display:none}
+.group-pick>span{font-size:13px;font-weight:700;color:var(--muted)}
+.group-pill{margin-left:8px;vertical-align:middle;background:var(--pink-soft)}
+.weather-box{margin-bottom:14px}
+.by-cat-row{display:grid;grid-template-columns:108px 1fr auto;align-items:center;gap:10px;padding:6px 0;font-size:14px}
+.by-cat-row .bar{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.by-cat-row .bar span{display:block;height:100%;border-radius:999px;background:var(--coral)}
+.by-cat-row .v{text-align:right;font-weight:700}
+.by-cat-row small{display:block;font-size:11px;color:var(--muted);font-weight:400}
+.exp-cat{margin-right:6px}
+.check-who{margin-left:8px;font-size:13px;color:var(--muted)}
+.ed-days em{font-style:normal;font-size:9px;font-weight:700;color:var(--danger)}
+.ed-miss{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--coral-soft);color:var(--danger);font-size:11px;font-weight:700;white-space:nowrap}
+.activity-edit .section-top>strong+.ed-miss{margin-right:auto}
+.ed-warn{background:var(--coral-soft)!important;color:var(--danger)}
+.todo-suggest{margin:0 0 16px;padding:14px 16px;border:1.5px dashed var(--mango);border-radius:var(--r-sm);font-size:14px}
+.todo-suggest ul{margin:8px 0 12px;padding-left:20px;line-height:1.7}
+.todo-list,.todo-miss{list-style:none;margin:0 0 10px;padding:0}
+.todo-list li{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px dashed var(--line)}
+.todo-list input[type=checkbox]{flex:none;width:22px;height:22px;min-height:0;margin:0;accent-color:var(--leaf)}
+.todo-list input[type=text]{margin:0;min-height:42px}
+.todo-list li.done input[type=text]{color:var(--faint);text-decoration:line-through}
+.todo-miss li{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px dashed var(--line);font-size:14px}
+.todo-miss li>span:nth-child(2){flex:1;min-width:0}
+.todo-miss em{font-style:normal;font-size:12px;color:var(--danger);white-space:nowrap}
+.check-edit .inline{align-items:start}
+.check-edit .inline>label:last-child{flex:0 0 38%}
+@media (max-width:640px){
+  .ed-nav button{font-size:11.5px;padding:0 2px}
+  .by-cat-row{grid-template-columns:92px 1fr auto}
+  .update-banner{flex-direction:column;align-items:flex-start}
+  .check-edit .inline{flex-direction:column;gap:0}
+  .check-edit .inline>label:last-child{flex-basis:auto}
+}
