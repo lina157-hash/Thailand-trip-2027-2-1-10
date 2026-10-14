@@ -1,5 +1,5 @@
 {
-  "revision": 23,
+  "revision": 24,
   "data": {
     "events": [
       {
@@ -9,7 +9,8 @@
         "title": "桃園 T2 出發 · BR205",
         "city": "桃園",
         "place": "Taiwan Taoyuan International Airport Terminal 2",
-        "note": "長榮航空；此時間為台灣當地時間。"
+        "note": "長榮航空；此時間為台灣當地時間。",
+        "group": "長榮組"
       },
       {
         "id": "d1e1",
@@ -18,7 +19,8 @@
         "title": "抵達曼谷 BKK",
         "city": "移動中",
         "place": "Suvarnabhumi Airport",
-        "note": "泰國當地時間。入境、領行李、18 人集合。"
+        "note": "泰國當地時間。入境、領行李、18 人集合。",
+        "group": "長榮組"
       },
       {
         "id": "d1e2",
@@ -27,7 +29,8 @@
         "title": "包車直達芭達雅 → 入住休息",
         "city": "芭達雅",
         "place": "Mercure Pattaya Ocean Resort",
-        "note": "抵達飯店為 2/2 凌晨，當晚不另排行程。"
+        "note": "抵達飯店為 2/2 凌晨，當晚不另排行程。",
+        "group": "長榮組"
       },
       {
         "id": "d2e0",
@@ -36,7 +39,8 @@
         "title": "睡到自然醒 · 飯店泳池與休息",
         "city": "芭達雅",
         "place": "Mercure Pattaya Ocean Resort",
-        "note": "上午睡到自然醒，養好精神。"
+        "note": "上午睡到自然醒，養好精神。",
+        "group": "長榮組"
       },
       {
         "id": "d2e1",
@@ -45,7 +49,8 @@
         "title": "飯店附近散步、吃飯、按摩、飯店內玩水",
         "city": "芭達雅",
         "place": "",
-        "note": "自由活動。"
+        "note": "自由活動。",
+        "group": "長榮組"
       },
       {
         "id": "d2e2",
@@ -54,7 +59,8 @@
         "title": "晚餐 → Tiffany’s Show Pattaya",
         "city": "芭達雅",
         "place": "Tiffany's Show Pattaya",
-        "note": "晚上看秀，結束後回飯店。演出時間待確認。"
+        "note": "晚上看秀，結束後回飯店。演出時間待確認。",
+        "group": "長榮組"
       },
       {
         "id": "d3e0",
@@ -63,7 +69,8 @@
         "title": "前往格蘭島 Koh Larn",
         "city": "芭達雅",
         "place": "Koh Larn",
-        "note": "海邊放鬆、玩水；水上活動自由參加。"
+        "note": "海邊放鬆、玩水；水上活動自由參加。",
+        "group": "長榮組"
       },
       {
         "id": "d3e1",
@@ -72,7 +79,8 @@
         "title": "島上午餐",
         "city": "芭達雅",
         "place": "Koh Larn",
-        "note": "餐廳待安排。"
+        "note": "餐廳待安排。",
+        "group": "長榮組"
       },
       {
         "id": "d3e2",
@@ -81,7 +89,8 @@
         "title": "下午返回芭達雅",
         "city": "芭達雅",
         "place": "Mercure Pattaya Ocean Resort",
-        "note": "回飯店洗澡、休息；晚上自由活動。"
+        "note": "回飯店洗澡、休息；晚上自由活動。",
+        "group": "長榮組"
       },
       {
         "id": "d4e0",
@@ -90,7 +99,8 @@
         "title": "Mercure 退房 · 行李上車",
         "city": "芭達雅",
         "place": "Mercure Pattaya Ocean Resort",
-        "note": "確認 18 人及行李到齊。"
+        "note": "確認 18 人及行李到齊。",
+        "group": "長榮組"
       },
       {
         "id": "d4e1",
@@ -99,7 +109,8 @@
         "title": "真理寺 The Sanctuary of Truth",
         "city": "芭達雅",
         "place": "The Sanctuary of Truth Pattaya",
-        "note": "參觀場次與票券待確認。"
+        "note": "參觀場次與票券待確認。",
+        "group": "長榮組"
       },
       {
         "id": "d4e2",
@@ -108,7 +119,8 @@
         "title": "Ang Sila 海鮮市場",
         "city": "移動中",
         "place": "Ang Sila Seafood Market",
-        "note": "簡單吃東西、逛市場。"
+        "note": "簡單吃東西、逛市場。",
+        "group": "長榮組"
       },
       {
         "id": "cx-d5-1",
@@ -378,7 +390,8 @@
         "title": "包車前往曼谷 · 入住 ibis Styles",
         "city": "曼谷",
         "place": "ibis Styles Bangkok Ratchada",
-        "note": "休息"
+        "note": "休息",
+        "group": "長榮組"
       },
       {
         "id": "cx-d4-1",
@@ -387,7 +400,8 @@
         "title": "國泰旅伴出發 · CX473 桃園 T1 → 香港",
         "city": "桃園",
         "place": "Taiwan Taoyuan International Airport Terminal 1",
-        "note": "國泰航空，經濟艙。20:45 抵達香港 T1。台灣當地時間。"
+        "note": "國泰航空，經濟艙。20:45 抵達香港 T1。台灣當地時間。",
+        "group": "國泰組"
       },
       {
         "id": "cx-d4-2",
@@ -396,7 +410,8 @@
         "title": "國泰旅伴轉機 · CX617 香港 → 曼谷",
         "city": "移動中",
         "place": "Hong Kong International Airport Terminal 1",
-        "note": "香港 T1 轉機，2/5 凌晨 00:15 抵達曼谷 BKK。香港當地時間。"
+        "note": "香港 T1 轉機，2/5 凌晨 00:15 抵達曼谷 BKK。香港當地時間。",
+        "group": "國泰組"
       }
     ],
     "titles": {
@@ -536,5 +551,5 @@
       "國泰組"
     ]
   },
-  "updatedAt": "2026-10-14T08:58:54.790Z"
+  "updatedAt": "2026-10-14T09:00:26.287Z"
 }
