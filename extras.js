@@ -10,7 +10,8 @@ function tripDigest(data) {
   const days = {};
   for (let d = 1; d <= 10; d++) {
     const parts = [data.titles?.[d], data.hotels?.[d], data.transport?.[d], data.notes?.[d], data.meet?.[d],
-      JSON.stringify((data.events || []).filter(e => e.day === d).map(e => [e.time, e.title, e.city, e.place, e.note, e.group || '']))];
+      JSON.stringify((data.events || []).filter(e => e.day === d).map(e => [e.time, e.title, e.city, e.place, e.note, e.group || '', ...(e.optional ? [1, e.joined || ''] : [])]))];
+    if (data.bring && data.bring[d] !== undefined) parts.push('bring:' + data.bring[d]); // 「記得帶」改過才算進去，舊的摘要不受影響
     days[d] = h(parts.map(p => p || '').join('\u0001'));
   }
   return { days, intro: h(JSON.stringify(data.intro || {})), checklist: h(JSON.stringify(data.checklist || [])) };
@@ -53,7 +54,8 @@ function buildIcs() {
   lines.push('BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//thai-days//2027//ZH', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:泰好時光 2027');
   for (let d = 1; d <= 10; d++) {
     const ev = visibleEvents(d), meet = meetOf(d);
-    const desc = [meet ? '集合：' + meet : '', ...ev.map(e => (e.time ? e.time + ' ' : '') + e.title), D.hotels?.[d] && d < 10 ? '住宿：' + D.hotels[d] : ''].filter(Boolean).join('\n');
+    const bring = typeof bringOf === 'function' ? bringOf(d) : '';
+    const desc = [meet ? '集合：' + meet : '', bring ? '記得帶：' + bring : '', ...ev.map(e => (e.time ? e.time + ' ' : '') + e.title), D.hotels?.[d] && d < 10 ? '住宿：' + D.hotels[d] : ''].filter(Boolean).join('\n');
     const ymd = '202702' + String(d).padStart(2, '0'), next = d < 10 ? '202702' + String(d + 1).padStart(2, '0') : '20270211';
     lines.push('BEGIN:VEVENT', 'UID:thai-days-day' + d + '@thai-days', 'DTSTAMP:' + stamp, 'DTSTART;VALUE=DATE:' + ymd, 'DTEND;VALUE=DATE:' + next,
       'SUMMARY:' + icsText(`泰國第 ${d} 天：${D.titles?.[d] || ''}`), 'DESCRIPTION:' + icsText(desc), 'TRANSP:TRANSPARENT', 'END:VEVENT');
@@ -139,6 +141,7 @@ function renderTodoEditor() {
     + `<div class="ed-sub"><h3>待辦清單（還有 ${open} 項）</h3><button class="quiet" type="button" data-todo-add>＋ 新增待辦</button></div>`
     + (fresh.length ? `<div class="todo-suggest"><p>行程裡還有 <b>${fresh.length}</b> 處寫著「待確認」之類的字：</p><ul>${fresh.slice(0, 8).map(t => `<li>${esc(t)}</li>`).join('')}${fresh.length > 8 ? `<li>…還有 ${fresh.length - 8} 處</li>` : ''}</ul><button class="primary" type="button" data-todo-import>全部加入待辦</button></div>` : '')
     + (todos.length ? `<ul class="todo-list">${todos.map(t => `<li class="${t.done ? 'done' : ''}"><input type="checkbox" data-todo-done="${esc(t.id)}" ${t.done ? 'checked' : ''} aria-label="完成"><input type="text" value="${esc(t.text)}" data-todo-text="${esc(t.id)}" maxlength="300" placeholder="要確認的事"><button class="text-btn danger" type="button" data-todo-del="${esc(t.id)}">刪除</button></li>`).join('')}</ul>` : '<p class="muted ed-empty">還沒有待辦。</p>')
+    + (typeof joinSummary === 'function' ? joinSummary(draft) : '')
     + `<h3>待補資料（${miss.length} 個活動）</h3>`
     + (miss.length ? `<p class="muted">沒有時間，「今天」卡片就算不出下一站；沒有地圖地點，旅伴就點不開地圖。</p><ul class="todo-miss">${miss.map(e => `<li><span class="pill">2/${e.day}</span><span>${esc(e.title || '未命名活動')}</span><em>${[!e.time ? '缺時間' : '', !e.place ? '缺地圖地點' : ''].filter(Boolean).join('・')}</em><button class="text-btn" type="button" data-todo-fix="${esc(e.id)}">去填</button></li>`).join('')}</ul>` : '<p class="muted">每個活動都有時間和地圖地點了。</p>');
 }
