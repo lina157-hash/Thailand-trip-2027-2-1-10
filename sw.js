@@ -1,8 +1,15 @@
 /* 離線備援：每次都先向網路要最新的檔案，成功就順手存一份；沒有網路時才拿存著的版本。
    只處理本站的檔案與 Google 字型；GitHub API、匯率資料等其他網站的請求完全不經過這裡。 */
-const CACHE = 'thai-days-v11';
+const CACHE = 'thai-days-v12';
 
-self.addEventListener('install', () => self.skipWaiting());
+/* 安裝時先把整個網站存好，第一次沒打開過的分頁離線也能看 */
+const ASSETS = ['./', 'index.html', 'style.css', 'trip-data.js', 'fx.js', 'inspire.js', 'app.js', 'cloud.js', 'notes.js', 'tools.js', 'split.js', 'extras.js', 'trip.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+self.addEventListener('install', e => e.waitUntil(
+  caches.open(CACHE).then(c => Promise.all(ASSETS.map(a => {
+    const u = new URL(a, self.registration.scope);
+    return fetch(u, { cache: 'no-store' }).then(res => { if (res.ok) return c.put(u.origin + u.pathname, res); }).catch(() => {});
+  }))).then(() => self.skipWaiting())
+));
 self.addEventListener('activate', e => e.waitUntil(
   caches.keys()
     .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
