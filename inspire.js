@@ -32,10 +32,56 @@ window.INSPIRE = (() => {
     mooPing: `<g stroke="${C.brown}" stroke-width="3" stroke-linecap="round"><path d="M30 96l100-50"/><path d="M40 108l100-50"/></g><g fill="${C.terra}"><rect x="56" y="70" width="16" height="12" rx="4" transform="rotate(-27 64 76)"/><rect x="76" y="60" width="16" height="12" rx="4" transform="rotate(-27 84 66)"/><rect x="96" y="50" width="16" height="12" rx="4" transform="rotate(-27 104 56)"/><rect x="66" y="82" width="16" height="12" rx="4" transform="rotate(-27 74 88)"/><rect x="86" y="72" width="16" height="12" rx="4" transform="rotate(-27 94 78)"/><rect x="106" y="62" width="16" height="12" rx="4" transform="rotate(-27 114 68)"/></g><path d="M150 100q-4-30 14-34 18 4 14 34z" fill="${C.rice}" stroke="${C.sand}" stroke-width="2"/>`,
     thaiTea: `<path d="M74 30h52l-8 76H82z" fill="${C.cream}" opacity=".7" stroke="${C.sand}" stroke-width="2"/><path d="M77 52h46l-6 54H83z" fill="#E2A983"/><path d="M77 52h46l-1 10H78z" fill="${C.rice}"/><g fill="${C.cream}" opacity=".7"><rect x="88" y="66" width="10" height="10" rx="2"/><rect x="102" y="76" width="10" height="10" rx="2"/></g><path d="M108 10l-8 80" stroke="${C.rose}" stroke-width="5" stroke-linecap="round"/>`,
     massaman: `${bowl('#D9B27A')}<g fill="${C.butter}"><rect x="72" y="56" width="14" height="10" rx="4"/><rect x="108" y="58" width="14" height="10" rx="4"/></g><g fill="${C.brown}"><rect x="90" y="60" width="14" height="10" rx="4"/></g><g fill="${C.terra}"><circle cx="128" cy="60" r="3"/><circle cx="68" cy="64" r="3"/><circle cx="98" cy="54" r="3"/></g>`,
+    /* 第五輪新增的插畫：購物、公園、按摩、河船、幾道菜與甜點 */
+    shop: `<path d="M0 100h200v20H0z" fill="${C.sand}"/><path d="M46 52h44l6 54H40z" fill="${C.rose}"/><path d="M56 52q0-18 12-18t12 18" fill="none" stroke="${C.brown}" stroke-width="3"/><path d="M98 44h52l8 62H90z" fill="${C.mist}"/><path d="M110 44q0-20 14-20t14 20" fill="none" stroke="${C.brown}" stroke-width="3"/><path d="M134 66h-20v18h20" fill="none" stroke="${C.cream}" stroke-width="3"/><circle cx="160" cy="30" r="10" fill="${C.butter}"/>`,
+    park: `<path d="M0 86h200v34H0z" fill="${C.sage}"/><ellipse cx="128" cy="100" rx="44" ry="10" fill="${C.mist}"/><g fill="${C.deep}"><circle cx="46" cy="52" r="22"/><circle cx="74" cy="60" r="16"/><circle cx="160" cy="54" r="18"/></g><path d="M46 70v22M74 74v16M160 70v20" stroke="${C.brown}" stroke-width="4"/><path d="M112 98q8-6 16 0" fill="none" stroke="${C.brown}" stroke-width="3" stroke-linecap="round"/>`,
+    spa: `<path d="M0 92h200v28H0z" fill="${C.sand}"/><rect x="40" y="70" width="90" height="22" rx="8" fill="${C.cream}"/><rect x="40" y="70" width="90" height="8" rx="4" fill="${C.rose}"/><g fill="${C.brown}" opacity=".8"><ellipse cx="150" cy="86" rx="18" ry="7"/><ellipse cx="152" cy="76" rx="13" ry="6"/><ellipse cx="150" cy="67" rx="9" ry="5"/></g><g fill="${C.cream}"><circle cx="70" cy="44" r="7"/><circle cx="82" cy="40" r="7"/><circle cx="86" cy="52" r="7"/><circle cx="74" cy="56" r="7"/><circle cx="66" cy="50" r="7"/></g><circle cx="76" cy="48" r="5" fill="${C.butter}"/>`,
+    boat: `<path d="M0 70h200v50H0z" fill="${C.mist}"/><path d="M14 84h40M120 100h60M70 108h30" stroke="${C.cream}" stroke-width="3" stroke-linecap="round"/><path d="M40 74h120l-14 18H52z" fill="${C.terra}"/><rect x="60" y="54" width="80" height="20" rx="4" fill="${C.cream}"/><g fill="${C.mist}"><rect x="68" y="59" width="12" height="9" rx="2"/><rect x="86" y="59" width="12" height="9" rx="2"/><rect x="104" y="59" width="12" height="9" rx="2"/><rect x="122" y="59" width="12" height="9" rx="2"/></g><path d="M100 54V36" stroke="${C.brown}" stroke-width="3"/><path d="M100 36h18l-4 6 4 6h-18z" fill="${C.gold}"/>`,
+    greenCurry: `${bowl(C.lime)}<g fill="${C.cream}"><ellipse cx="80" cy="60" rx="8" ry="5"/><ellipse cx="116" cy="64" rx="8" ry="5"/></g><g fill="${C.deep}"><circle cx="98" cy="58" r="4"/><circle cx="130" cy="58" r="3"/><circle cx="70" cy="64" r="3"/></g><path d="M90 66q6-6 12 0" stroke="${C.chili}" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    khaoSoi: `${bowl(C.gold)}<path d="M64 60q10-6 20 0t20 0 20 0" fill="none" stroke="${C.butter}" stroke-width="4" stroke-linecap="round"/><g fill="${C.terra}"><path d="M112 46l20-10 6 8-20 10z"/><path d="M118 40l18-12 6 6-18 12z"/></g><circle cx="80" cy="54" r="5" fill="${C.lime}"/>`,
+    khaoKhaMoo: `${plate()}<ellipse cx="82" cy="78" rx="30" ry="12" fill="${C.rice}"/><path d="M104 66q20-10 34 0t-6 18q-22 4-28-18z" fill="${C.brown}"/><ellipse cx="62" cy="70" rx="10" ry="7" fill="${C.butter}"/><path d="M128 60q8 4 6 12" stroke="${C.lime}" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+    plaPao: `${plate()}<path d="M50 82q40-30 90 0-50 26-90 0z" fill="${C.cream}" stroke="${C.sand}" stroke-width="2"/><path d="M140 82l18-12v24z" fill="${C.cream}" stroke="${C.sand}" stroke-width="2"/><circle cx="66" cy="78" r="3" fill="${C.brown}"/><path d="M80 74l6 8M94 70l6 8M108 70l6 8M122 74l6 8" stroke="${C.sand}" stroke-width="2"/><path d="M44 96h20" stroke="${C.lime}" stroke-width="5" stroke-linecap="round"/>`,
+    curryCrab: `${plate('#F1DDA6')}<ellipse cx="100" cy="80" rx="30" ry="16" fill="${C.chili}"/><g stroke="${C.chili}" stroke-width="5" stroke-linecap="round" fill="none"><path d="M72 76q-14-10-10-22M128 76q14-10 10-22M76 90l-14 8M124 90l14 8"/></g><g fill="${C.butter}" opacity=".9"><circle cx="76" cy="66" r="5"/><circle cx="124" cy="68" r="5"/><circle cx="100" cy="96" r="4"/></g>`,
+    roti: `${plate()}<rect x="62" y="64" width="34" height="24" rx="3" fill="#E8C47E" transform="rotate(-6 79 76)"/><rect x="100" y="64" width="34" height="24" rx="3" fill="#E8C47E" transform="rotate(5 117 76)"/><path d="M60 70q20 10 40 0t40 4" stroke="${C.rice}" stroke-width="4" fill="none" stroke-linecap="round"/><g fill="${C.butter}"><circle cx="78" cy="80" r="4"/><circle cx="118" cy="76" r="4"/></g>`,
+    coconutIce: `<path d="M0 100h200v20H0z" fill="${C.sand}"/><path d="M58 64h84q-4 40-42 40t-42-40z" fill="${C.brown}"/><path d="M62 64h76q-4 30-38 30t-38-30z" fill="${C.rice}"/><g fill="${C.cream}"><circle cx="84" cy="56" r="16"/><circle cx="112" cy="54" r="16"/></g><g fill="${C.lime}"><circle cx="96" cy="40" r="4"/><circle cx="104" cy="44" r="3"/></g><path d="M126 52l10-26" stroke="${C.rose}" stroke-width="4" stroke-linecap="round"/>`,
+    khanomKrok: `<path d="M0 96h200v24H0z" fill="${C.sand}"/><rect x="36" y="56" width="128" height="44" rx="10" fill="${C.brown}"/><g fill="${C.rice}">${[0,1,2,3].map(i=>`<circle cx="${56+i*30}" cy="68" r="10"/><circle cx="${56+i*30}" cy="88" r="10"/>`).join('')}</g><g fill="${C.lime}">${[0,1,2,3].map(i=>`<circle cx="${58+i*30}" cy="66" r="2.5"/>`).join('')}</g>`,
+    fruit: `<path d="M0 96h200v24H0z" fill="${C.sand}"/><g><circle cx="58" cy="76" r="18" fill="${C.butter}"/><circle cx="96" cy="72" r="20" fill="${C.chili}"/><circle cx="136" cy="76" r="17" fill="${C.lime}"/><path d="M96 52q4-8 10-8" stroke="${C.deep}" stroke-width="4" fill="none"/></g><g fill="${C.cream}" opacity=".7"><circle cx="52" cy="70" r="4"/><circle cx="90" cy="64" r="4"/><circle cx="130" cy="70" r="4"/></g><rect x="150" y="54" width="22" height="42" rx="6" fill="${C.rose}" opacity=".8"/><path d="M164 54l6-18" stroke="${C.brown}" stroke-width="3"/>`,
   };
   /* 實景照片：Unsplash（Unsplash License，可免費使用）。照片載入失敗或離線時，改顯示上面的插畫。 */
   const PHOTO = {"watArun":{"id":"photo-1736128023093-9a2d76b20cf2","page":"https://unsplash.com/photos/two-boats-floating-on-the-water-in-front-of-a-tall-building-M5EYTUbmMgc","by":"Vasant Jain"},"talatNoi":{"id":"photo-1555794699-cce62ad871dc","page":"https://unsplash.com/photos/man-sitting-on-auto-rickshaw-parked-beside-house-dvWPL08zdD4","by":"Debi Prasad Gantayat"},"chatuchak":{"id":"photo-1696437492959-b9a8c37df4ad","page":"https://unsplash.com/photos/a-street-sign-in-a-foreign-language-in-front-of-a-building-U-3htalA93w","by":"Pikacent"},"yaowarat":{"id":"photo-1656299435456-41f88298b11c","page":"https://unsplash.com/photos/a-street-with-neon-signs-and-scooters-XjbqwZsLtX0","by":"Mentozs Sys"},"goldenMount":{"id":"photo-1790171947920-54362a2d2082","page":"https://unsplash.com/photos/golden-mount-temple-in-bangkok-Cg4QUn34Ol0","by":"Chris DUNN"},"jimThompson":{"id":"photo-1762616076842-6e51c486b3f2","page":"https://unsplash.com/photos/traditional-wooden-building-surrounded-by-lush-greenery-LEIT1YA4FaA","by":"Rowan Heuvel"},"joddFairs":{"id":"photo-1587574293340-e0011c4e8ecf","page":"https://unsplash.com/photos/people-sitting-on-chair-in-restaurant-kgjQ1AGDwE0","by":"Syed Ahmad"},"asiatique":{"id":"photo-1583052295267-cf0b360aa088","page":"https://unsplash.com/photos/white-ferris-wheel-during-night-time-svs2Chb-76Y","by":"jinesh darji"},"kohLarn":{"id":"photo-1615259844850-10eacfec0ec8","page":"https://unsplash.com/photos/green-trees-near-body-of-water-during-daytime-RBDgTJt3i-c","by":"Mike Anderson"},"sanctuary":{"id":"photo-1644902617098-45abe72a7445","page":"https://unsplash.com/photos/a-very-tall-building-with-a-sky-in-the-background-1SbXBEpGRpU","by":"Norbert Braun"},"jomtien":{"id":"photo-1657998442092-1baf351bc923","page":"https://unsplash.com/photos/a-city-with-many-buildings-c3uCJw_2Pfw","by":"Andreas Maier"},"nongNooch":{"id":"photo-1625470676933-4535cf46730c","page":"https://unsplash.com/photos/green-mountain-under-white-clouds-during-daytime-nHPf0FjjDeM","by":"L jf"},"floatingMarket":{"id":"photo-1743178207913-9afc6b15f3d0","page":"https://unsplash.com/photos/people-ride-a-boat-through-a-water-market-4QXqNJD8FQs","by":"Nopparuj Lamaikul"},"bigBuddha":{"id":"photo-1758213452314-a8084a7ccb21","page":"https://unsplash.com/photos/golden-buddha-statue-at-top-of-ornate-staircase-7Yp3Gg2Sn2U","by":"Nandhu Kumar"},"thepprasit":{"id":"photo-1733150632156-797e26fc6c7b","page":"https://unsplash.com/photos/a-person-standing-in-front-of-a-store-at-night-bPek8ODD6y4","by":"Jayesh Patel"},"tomYum":{"id":"photo-1777828827870-92e3069424bd","page":"https://unsplash.com/photos/spicy-shrimp-soup-with-herbs-and-vegetables-_lgT5W2QBG4","by":"Jamie Trinh"},"padThai":{"id":"photo-1707546944460-dda9069b9c1e","page":"https://unsplash.com/photos/a-white-plate-topped-with-noodles-and-meat-1pOGkj1Ri1M","by":"Hidden"},"somTam":{"id":"photo-1648421331147-9fcfab29536e","page":"https://unsplash.com/photos/a-white-and-blue-bowl-filled-with-pasta-and-vegetables-Wcsks8nkUbc","by":"sirasit gullasu"},"mangoRice":{"id":"photo-1705234384751-84081009588e","page":"https://unsplash.com/photos/a-plate-of-food-with-rice-mango-and-sauce-bKrXKkPkhas","by":"Markus Winkler"},"chickenRice":{"id":"photo-1710256198508-41630f431e35","page":"https://unsplash.com/photos/a-plate-of-rice-and-cucumbers-on-a-table--LEVuJnp_NE","by":"Uncle Lim"},"boatNoodles":{"id":"photo-1555126634-323283e090fa","page":"https://unsplash.com/photos/noddle-dish-on-white-ceramic-bowl-H5Hj8QV2Tx4","by":"Mae Mu"},"kraPao":{"id":"photo-1629606600908-a51ec6c44fdd","page":"https://unsplash.com/photos/egg-omelet-on-white-ceramic-plate-tRCewsXZdWo","by":"set.sj"},"mooPing":{"id":"photo-1665111915476-b91b328a3c37","page":"https://unsplash.com/photos/a-plate-of-food-l2RuDTo3igs","by":"tommao wang"},"thaiTea":{"id":"photo-1644204010193-a35de7b0d702","page":"https://unsplash.com/photos/a-glass-of-liquid-sitting-on-top-of-a-wooden-table-p5R0TioQfaY","by":"Markus Winkler"},"massaman":{"id":"photo-1672933036331-e27ffae157bd","page":"https://unsplash.com/photos/a-bowl-of-soup-with-a-spoon-in-it-i7IcViKHK90","by":"Yoav Aziz"}};
-  const P = (type, city, name, en, art, desc, tip, map) => ({ type, city, name, en, art: ART[art], photo: PHOTO[art], desc, tip, map });
+  /* 細分類：cat 決定卡片在哪個分類按鈕底下 */
+  const CAT = {
+    watArun: 'temple', goldenMount: 'temple', sanctuary: 'temple', bigBuddha: 'temple', erawan: 'temple', watBenja: 'temple', watSuthat: 'temple',
+    talatNoi: 'old', yaowarat: 'old', jimThompson: 'old',
+    chatuchak: 'market', joddFairs: 'market', asiatique: 'market', floatingMarket: 'market', thepprasit: 'market', srinakarin: 'market', pratunam: 'market', maeklong: 'market', damnoen: 'market',
+    siamParagon: 'shop', terminal21: 'shop', mbk: 'shop', centralPattaya: 'shop',
+    kohLarn: 'nature', jomtien: 'nature', nongNooch: 'nature', lumphini: 'nature', viewpoint: 'nature', bangKrachao: 'nature',
+    massage: 'play', rooftop: 'play', muayThai: 'play', cooking: 'play', riverBoat: 'play', artParadise: 'play', pattayaWalking: 'play',
+    tomYum: 'dish', padThai: 'dish', somTam: 'dish', chickenRice: 'dish', boatNoodles: 'dish', kraPao: 'dish', massaman: 'dish', greenCurry: 'dish', khaoSoi: 'dish', khaoKhaMoo: 'dish', plaPao: 'dish', curryCrab: 'dish',
+    mangoRice: 'snack', mooPing: 'snack', thaiTea: 'snack', roti: 'snack', coconutIce: 'snack', khanomKrok: 'snack', fruitShake: 'snack',
+    jayFai: 'restaurant', somboon: 'restaurant', kruaApsorn: 'restaurant', afterYou: 'restaurant', glassHouse: 'restaurant', mumAroi: 'restaurant',
+  };
+  /* 新增的地點沒有專屬插畫時，借用相近的插畫 */
+  const ALIAS = { erawan: 'bigBuddha', watBenja: 'watArun', watSuthat: 'goldenMount', srinakarin: 'joddFairs', pratunam: 'chatuchak', maeklong: 'thepprasit', damnoen: 'floatingMarket', pattayaWalking: 'joddFairs',
+    siamParagon: 'shop', terminal21: 'shop', mbk: 'shop', centralPattaya: 'shop', lumphini: 'park', viewpoint: 'jomtien', bangKrachao: 'park', massage: 'spa', rooftop: 'asiatique', muayThai: 'spa', cooking: 'somTam', riverBoat: 'boat', artParadise: 'jimThompson',
+    fruitShake: 'fruit', jayFai: 'padThai', somboon: 'curryCrab', kruaApsorn: 'curryCrab', afterYou: 'thaiTea', glassHouse: 'jomtien', mumAroi: 'plaPao' };
+  const PHOTO_MORE = {
+    watBenja: { id: 'photo-1582468546235-9bf31e5bc4a1', page: 'https://unsplash.com/photos/wat-benchamabophit-temple-in-bangkok-S4ZkQykkeRs', by: "Joshua Rawson-Harris" },
+    watSuthat: { id: 'photo-1657641701183-e93f9a1ac0e7', page: 'https://unsplash.com/photos/a-large-red-tower-ZAW9OUSaBmE', by: "Phatsanphon Nakaranurak" },
+    maeklong: { id: 'photo-1761465063946-0862de650a3a', page: 'https://unsplash.com/photos/train-approaching-a-bustling-market-on-railway-tracks-Ci4RFGSv5QA', by: "Jean Carlo Emer" },
+    damnoen: { id: 'photo-1642391326189-46e163cad59f', page: 'https://unsplash.com/photos/a-group-of-people-sitting-on-boats-in-a-body-of-water-Wf6K4YvZYcc', by: "Norbert Braun" },
+    pattayaWalking: { id: 'photo-1538114618364-ae7f63d1ee7d', page: 'https://unsplash.com/photos/people-standing-between-store-buildings-at-nighttime--WjUABj8iP8', by: "Lin Kiu" },
+    lumphini: { id: 'photo-1655844824395-808c5a171810', page: 'https://unsplash.com/photos/a-body-of-water-with-trees-and-buildings-in-the-background-with-lumphini-park-in-the-background-JPopb3cKuVI', by: "Oleksandr Voloshchenko" },
+    viewpoint: { id: 'photo-1702546330003-5d4dec1563c3', page: 'https://unsplash.com/photos/a-view-of-a-city-at-night-from-a-hill-Pgt3iNj0HIg', by: "Benjamin" },
+    rooftop: { id: 'photo-1770021601385-af0bf0136762', page: 'https://unsplash.com/photos/cityscape-at-sunset-viewed-from-a-rooftop-bar-SMS90Kz2vrw', by: "Florian Peeters" },
+    muayThai: { id: 'photo-1525680996651-0222228be6f0', page: 'https://unsplash.com/photos/muay-thai-boxer-kick-opponent-h8sl-oNcat0', by: "Pablo Rebolledo" },
+    riverBoat: { id: 'photo-1698305322603-77f2ea62d1f2', page: 'https://unsplash.com/photos/a-boat-traveling-through-the-water-in-front-of-tall-buildings-JaEkeZIwruQ', by: "Kylle Pangan" },
+    greenCurry: { id: 'photo-1668665772043-bdd32e348998', page: 'https://unsplash.com/photos/a-bowl-of-food-qEzLiabQe8M', by: "Andrew Relf" },
+    khaoSoi: { id: 'photo-1646850148817-c3a5e8a35fd9', page: 'https://unsplash.com/photos/a-bowl-of-food-with-a-spoon-in-it-vxJZOosHvcU', by: "Kittitep Khotchalee" },
+    coconutIce: { id: 'photo-1620197544618-af5f5366abb3', page: 'https://unsplash.com/photos/ice-cream-on-stainless-steel-spoon-1VXJRjyUIjA', by: "Tamas Pap" },
+    fruitShake: { id: 'photo-1758184875542-2a30993210b4', page: 'https://unsplash.com/photos/fresh-fruit-smoothies-stand-with-colorful-drinks-menu-BRbXI2EYetY', by: "Aleksandr Galichkin" },
+  };
+  const P = (type, city, name, en, art, desc, tip, map) => ({ type, cat: CAT[art] || (type === 'eat' ? 'dish' : 'temple'), city, name, en, art: ART[art] || ART[ALIAS[art]], photo: PHOTO[art] || PHOTO_MORE[art], desc, tip, map });
   return [
     // 景點 · 曼谷
     P('see', '曼谷', '鄭王廟', 'Wat Arun', 'watArun', '沿著昭披耶河，收藏寺廟的細緻紋理與河岸風景。傍晚從對岸看最漂亮。', '寺廟請穿著遮肩、過膝的衣物。從臥佛寺附近的碼頭搭渡船過河只要幾分鐘。', 'Wat Arun'),
@@ -65,5 +111,57 @@ window.INSPIRE = (() => {
     P('eat', '曼谷・芭達雅', '烤豬肉串配糯米', 'Moo Ping', 'mooPing', '甜甜的烤豬肉串配一包糯米，泰國人最常見的早餐。', '早上在路邊攤最容易遇到。', 'Moo Ping'),
     P('eat', '曼谷・芭達雅', '泰式奶茶', 'Cha Yen', 'thaiTea', '橘色的濃郁奶茶，加冰最消暑。也有綠茶口味。', '甜度可以說「wan noi」（少糖）。', 'Thai Tea'),
     P('eat', '曼谷・芭達雅', '瑪莎曼咖哩', 'Massaman Curry', 'massaman', '溫和不太辣的咖哩，有馬鈴薯、花生和燉得軟嫩的肉，怕辣的人也能吃。', '配白飯或烤餅都好吃。', 'Massaman Curry'),
+    // ── 第五輪新增 ──
+    // 寺廟
+    P('see', '曼谷', '四面佛', 'Erawan Shrine', 'erawan', '路口旁香火鼎盛的四面梵天神壇，很多人來許願，常有傳統舞蹈還願。就在 CentralWorld 旁邊。', '2/6 去 CentralWorld 時可以順路。參拜的人多，拍照不要擋到別人。', 'Erawan Shrine Bangkok'),
+    P('see', '曼谷', '大理石寺', 'Wat Benchamabophit', 'watBenja', '用義大利白色大理石蓋的寺廟，線條優雅，人比大皇宮少很多，適合慢慢拍。', '寺廟請穿著遮肩、過膝的衣物；需購票入場。', 'Wat Benchamabophit'),
+    P('see', '曼谷', '蘇泰寺與大鞦韆', 'Wat Suthat & Giant Swing', 'watSuthat', '路中央高聳的紅色大鞦韆是曼谷老城地標，旁邊的蘇泰寺有很美的壁畫。', '離金山寺不遠，可以排在同一個下午。', 'Wat Suthat Bangkok'),
+    // 市集
+    P('see', '曼谷', '席娜卡琳火車夜市', 'Train Night Market Srinakarin', 'srinakarin', '老車、古董雜貨和一整排小吃攤，比市區夜市更有在地感。', '主要在週末前後的晚上營業，營業日請出發前確認；離市區較遠，搭 Grab 較方便。', 'Train Night Market Srinakarin'),
+    P('see', '曼谷', '水門市場', 'Pratunam Market', 'pratunam', '衣服、包包、飾品的批發區，價格便宜，買多件還能再便宜。旁邊就是 Platinum 服飾商場。', '很早就開、傍晚就收，想挖寶早點去；人多注意隨身物品。', 'Pratunam Market Bangkok'),
+    P('see', '曼谷近郊', '美功鐵道市場', 'Maeklong Railway Market', 'maeklong', '火車從市場正中間開過去，攤販把遮雨棚一收、火車過後又擺回來，非常特別。', '離曼谷約 1.5 小時車程，適合 2/9 自由日包車半天；火車時刻請先查好。', 'Maeklong Railway Market'),
+    P('see', '曼谷近郊', '丹嫩莎朵水上市場', 'Damnoen Saduak Floating Market', 'damnoen', '最有名的水上市場，小船載著水果、船麵在河道上叫賣。', '越早去越好；可以和美功鐵道市場排成同一趟。搭船前先談好價格。', 'Damnoen Saduak Floating Market'),
+    // 購物
+    P('see', '曼谷', 'Siam Paragon', 'Siam Paragon', 'siamParagon', '曼谷代表性的百貨，地下樓的超市與美食街很好逛，伴手禮一次買齊。', 'BTS Siam 站直通；旁邊還有 Siam Center、Siam Discovery 可以一起逛。', 'Siam Paragon'),
+    P('see', '曼谷', 'Terminal 21（Asok）', 'Terminal 21 Asok', 'terminal21', '每一層樓都布置成不同城市的主題商場，頂樓美食街 Pier 21 便宜又好吃。', 'BTS Asok／MRT Sukhumvit 站直通。美食街要先買儲值卡，用不完可以退。', 'Terminal 21 Asok'),
+    P('see', '曼谷', 'MBK Center', 'MBK Center', 'mbk', '手機配件、紀念品、平價衣服都很多的老牌商場，可以殺價。', 'BTS National Stadium 站直通；旁邊就是金湯普森之家。', 'MBK Center Bangkok'),
+    P('see', '芭達雅', 'Central Pattaya', 'Central Pattaya', 'centralPattaya', '芭達雅海灘路上的大型商場，逛街、吃飯、吹冷氣，下雨天也有地方去。', '面海的餐廳傍晚可以看夕陽。', 'Central Pattaya'),
+    // 自然
+    P('see', '曼谷', '倫披尼公園', 'Lumphini Park', 'lumphini', '市中心的大公園，湖邊常看到大蜥蜴悠閒散步，早上有人打太極、跑步。', '早上或傍晚來比較涼；不要餵或靠近蜥蜴。MRT Lumphini／Silom 站。', 'Lumphini Park'),
+    P('see', '芭達雅', '芭達雅觀景台', 'Pattaya View Point', 'viewpoint', '在 Pratumnak 山上，可以一次看到整個芭達雅灣和「PATTAYA CITY」大字。', '傍晚看夕陽最漂亮；搭 Grab 或雙條車上去。', 'Pattaya View Point Khao Phra Tamnak'),
+    P('see', '曼谷', '曼谷綠肺 Bang Krachao', 'Bang Krachao', 'bangKrachao', '昭披耶河彎道裡的一大片綠地，租腳踏車在高架小路穿過椰林，很難想像就在曼谷。', '從 Khlong Toei 一帶的碼頭搭小船過河；週末有小型水上市場。', 'Bang Krachao'),
+    // 體驗
+    P('see', '曼谷・芭達雅', '泰式按摩', 'Thai Massage', 'massage', '逛完一天腳很痠，來一個小時的泰式按摩或腳底按摩最舒服。臥佛寺裡就有傳統按摩學校。', '力道太大可以說「bao bao」（輕一點）。小費參考在「旅途工具 → 退稅與小費」。', 'Thai massage'),
+    P('see', '曼谷', '高空酒吧看夜景', 'Rooftop Bar', 'rooftop', '在高樓頂端喝一杯，看曼谷夜景和昭披耶河。最有名的是電影《醉後大丈夫 2》的 Sky Bar。', '多數有服裝規定（不能穿短褲、拖鞋）；飲料偏貴，可以只點一杯慢慢坐。', 'Sky Bar lebua Bangkok'),
+    P('see', '曼谷', '看一場泰拳', 'Muay Thai', 'muayThai', '現場看泰拳比賽，音樂、吶喊和選手賽前的拜師舞都很有氣氛。', '拉差達慕恩拳擊場（Rajadamnern）歷史最久，比賽日與票價請出發前在官網確認。', 'Rajadamnern Stadium'),
+    P('see', '曼谷', '泰菜烹飪課', 'Thai Cooking Class', 'cooking', '跟著老師逛市場、認識香料，再自己做冬蔭功、綠咖哩，吃自己煮的午餐。', '多半是半天課程，要先預約；適合 2/9 自由日分組參加。', 'Thai cooking class Bangkok'),
+    P('see', '曼谷', '搭橘旗船遊昭披耶河', 'Chao Phraya Express Boat', 'riverBoat', '當地人通勤的交通船，便宜又能沿河看鄭王廟、大皇宮和老城。', '橘色旗子的船每站都停，上船再買票；臥佛寺附近是 Tha Tien 碼頭。', 'Sathorn Pier Bangkok'),
+    P('see', '芭達雅', 'Art in Paradise 3D 美術館', 'Art in Paradise Pattaya', 'artParadise', '可以「走進畫裡」拍照的 3D 錯視美術館，大人小孩都玩得開心，也適合下雨天。', '手機電量要夠，一拍就停不下來。', 'Art in Paradise Pattaya'),
+    P('see', '芭達雅', '芭達雅不夜城 Walking Street', 'Walking Street Pattaya', 'pattayaWalking', '晚上封街變成霓虹燈步行街，酒吧、海鮮餐廳、街頭表演一路熱鬧到深夜。', '比較成人取向，帶長輩或小孩可以只走前段看看；人多注意隨身物品。', 'Walking Street Pattaya'),
+    // 經典泰菜
+    P('eat', '曼谷・芭達雅', '綠咖哩', 'Gaeng Keow Wan', 'greenCurry', '椰奶加青辣椒的綠咖哩，香甜中帶辣，配雞肉或魚丸，淋在白飯上很下飯。', '比瑪莎曼咖哩辣，怕辣的人先嚐一口。', 'Green curry'),
+    P('eat', '曼谷', '泰北咖哩麵', 'Khao Soi', 'khaoSoi', '濃郁的椰奶咖哩湯，裡面是軟麵、上面撒炸得酥脆的麵條，再擠點檸檬、加醃菜。', '這是泰北料理，曼谷要找專門的店。', 'Khao Soi Bangkok'),
+    P('eat', '曼谷・芭達雅', '泰式豬腳飯', 'Khao Kha Moo', 'khaoKhaMoo', '滷到入口即化的豬腳配白飯和滷蛋，再加一點酸辣醬，台灣人很容易愛上。', '路邊攤、美食街都有，便宜又大碗。', 'Khao Kha Moo'),
+    P('eat', '曼谷・芭達雅', '鹽烤魚', 'Pla Pao', 'plaPao', '整條魚塞香茅、外面裹一層鹽去烤，魚肉很嫩，配生菜、米線和酸辣醬一起包著吃。', '夜市常見，一條很多人可以分。', 'Pla Pao'),
+    P('eat', '曼谷・芭達雅', '咖哩炒蟹', 'Poo Pad Pong Karee', 'curryCrab', '蟹肉和蛋、咖哩粉炒成滑嫩的醬汁，配白飯是很多人來泰國必點的一道。', '海鮮依重量計價，點之前先問價錢。', 'Poo Pad Pong Karee'),
+    // 小吃甜點
+    P('eat', '曼谷・芭達雅', '泰式香蕉煎餅', 'Roti', 'roti', '餅皮煎得酥脆，包香蕉、淋煉乳和糖，是夜市最香的甜點。', '可以選加蛋或巧克力。', 'Thai roti'),
+    P('eat', '曼谷・芭達雅', '椰子冰淇淋', 'Coconut Ice Cream', 'coconutIce', '裝在椰子殼裡的椰奶冰淇淋，加糯米、花生、玉米，清爽不膩。', '恰圖恰市集的攤位很有名。', 'Coconut ice cream Chatuchak'),
+    P('eat', '曼谷・芭達雅', '椰奶小煎餅', 'Khanom Krok', 'khanomKrok', '一格一格煎出來的半圓小餅，外脆內是軟軟的椰奶，常加蔥或玉米。', '要趁熱吃；早市、夜市最容易遇到。', 'Khanom Krok'),
+    P('eat', '曼谷・芭達雅', '水果與冰沙', 'Fresh Fruit & Smoothies', 'fruitShake', '路邊切好的鳳梨、木瓜、芭樂，或現打的水果冰沙，天氣熱時最需要。', '冰塊多半是製冰廠做的，腸胃敏感可以說「mai sai nam khaeng」（不要加冰）。', 'Fruit smoothie Bangkok'),
+    // 名店餐廳
+    P('eat', '曼谷', '痣姐 Jay Fai', 'Raan Jay Fai', 'jayFai', '米其林一星的路邊熱炒，招牌是大塊蟹肉蛋捲，戴著護目鏡掌鍋的阿嬤很有名。', '排隊很久、價格偏高，不一定能 18 人一起吃；出發前確認營業日與訂位方式。', 'Raan Jay Fai'),
+    P('eat', '曼谷', '建興酒家', 'Somboon Seafood', 'somboon', '咖哩炒蟹的名店，海鮮新鮮、份量大，很適合一大群人一起點菜分著吃。', '有好幾家分店，大團體建議先訂位。', 'Somboon Seafood'),
+    P('eat', '曼谷', 'Krua Apsorn', 'Krua Apsorn', 'kruaApsorn', '家常的老字號泰菜館，蟹肉蛋捲和黃咖哩炒蟹很受歡迎，口味道地不浮誇。', '店不大，用餐時間人多；離民主紀念碑不遠。', 'Krua Apsorn Dinso'),
+    P('eat', '曼谷', 'After You 甜點', 'After You Dessert Café', 'afterYou', '泰國人氣甜點店，泰奶剉冰和蜂蜜吐司是招牌，逛街逛累了來坐一下。', 'Siam Paragon 等大商場都有分店。', 'After You Dessert Cafe Siam Paragon'),
+    P('eat', '芭達雅', 'The Glass House', 'The Glass House Pattaya', 'glassHouse', '在 Na Jomtien 海邊的白色玻璃屋餐廳，腳踩沙灘吃泰菜，傍晚看夕陽很浪漫。', '離市區有段距離，大團體建議先訂位並安排接送。', 'The Glass House Pattaya'),
+    P('eat', '芭達雅', 'Mum Aroi 海鮮', 'Mum Aroi Naklua', 'mumAroi', '芭達雅北邊 Naklua 的海邊海鮮餐廳，在地人常去，看著海吃烤魚、炒蟹。', '海鮮依重量計價，點之前先問價錢。', 'Mum Aroi Naklua'),
   ];
 })();
+
+// 旅遊靈感的分類（順序就是篩選按鈕的順序）
+window.INSPIRE_CATS = [
+  ['temple', '寺廟佛像', 'see'], ['old', '老城文化', 'see'], ['market', '市集夜市', 'see'], ['shop', '逛街購物', 'see'],
+  ['nature', '海島自然', 'see'], ['play', '體驗玩樂', 'see'],
+  ['dish', '經典泰菜', 'eat'], ['snack', '小吃甜點', 'eat'], ['restaurant', '名店餐廳', 'eat'],
+].map(([k, label, type]) => ({ k, label, type }));

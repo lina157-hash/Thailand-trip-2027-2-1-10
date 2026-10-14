@@ -694,3 +694,44 @@ html[data-size=large] body{zoom:1.15}
   .print-sheet footer{display:block;margin:4pt 0 0;padding:5pt 0 0;border-top:.8pt solid #ccc;background:none;font-size:7.6pt;color:#444}
   .print-sheet footer b{margin-right:5pt}
 }
+
+/* 旅遊靈感：細分類別＋小卡 */
+.filters{align-items:flex-start}
+.cat-chips{flex:1 1 520px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.chip-n{font-size:12px;font-weight:600;opacity:.7}
+.chip-sep{width:1.5px;height:24px;background:var(--line);margin:0 2px}
+.filter-side{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.size-toggle{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.size-toggle button{min-height:40px;padding:0 14px;border:0;background:none;color:var(--muted);font-size:14px;font-weight:700}
+.size-toggle button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink)}
+.places-count{margin:-8px 0 12px;font-size:13px}
+.places.compact{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.places.compact .place-card{border-top-width:5px;cursor:pointer}
+.places.compact .place-art{aspect-ratio:16/10}
+.places.compact .photo-credit{font-size:9px;padding:2px 6px}
+.places.compact .place-body{padding:10px 12px 12px}
+.places.compact .place-tags .pill{font-size:11px;padding:2px 8px;min-height:0}
+.places.compact .place-card h3{font-size:15px;line-height:1.35;margin:6px 0 2px}
+.place-open{all:unset;cursor:pointer}
+.place-open:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.places.compact .place-en{font-size:11px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.places.compact .place-card p.place-desc{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.places.compact .place-tip{display:none;font-size:12px;padding:8px 10px}
+.places.compact .place-card.open p.place-desc{display:block;-webkit-line-clamp:unset}
+.places.compact .place-card.open .place-tip{display:block}
+.places.compact .place-body>p{flex:none}
+.places.compact .place-body .map-link{margin-top:auto}
+.places.compact .place-tip{margin-bottom:8px}
+.places.compact .place-card p.place-desc{margin-bottom:8px}
+.places.compact .map-link{font-size:13px;min-height:34px;padding:0 12px}
+@media (max-width:640px){
+  .cat-chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -14px;padding:2px 14px 8px;scrollbar-width:none;flex-basis:100%}
+  .cat-chips::-webkit-scrollbar{display:none}
+  .chip{min-height:36px;padding:0 14px}
+  .filter-side{width:100%;justify-content:space-between}
+  .places.compact{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .places.compact .place-body{padding:8px 10px 10px}
+  .places.compact .place-card h3{font-size:14px}
+  .places.compact .place-tags .city{display:none}
+}
