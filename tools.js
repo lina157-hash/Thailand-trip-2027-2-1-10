@@ -124,7 +124,7 @@
       + PHRASES.map(g => `<h4>${esc(g.title)}</h4><ul class="phrase-list">${g.items.map(([zh, th, ro]) => `<li><span class="zh">${esc(zh)}</span><span class="th" lang="th">${esc(th)}</span><span class="ro">${esc(ro)}</span>${canSpeak ? `<button type="button" class="speak" data-say="${esc(th)}" aria-label="播放「${esc(zh)}」的泰語發音">${SPEAK}</button>` : ''}</li>`).join('')}</ul>`).join('');
     const install = `<p>加到主畫面後，點圖示就能像 App 一樣全螢幕打開，沒有網路時也能看最近看過的行程。</p><button type="button" class="primary" id="install-app"${installEvent ? '' : ' hidden'}>安裝到這台裝置</button><ol class="install-steps"><li><b>iPhone（Safari）</b>：按下方的分享按鈕 → 「加入主畫面」。</li><li><b>Android（Chrome）</b>：按右上角 ⋮ → 「安裝應用程式」或「加到主畫面」。</li></ol>`;
     const money = `<h4>退稅（VAT Refund）</h4><ul class="money-list">${VAT.map(t => `<li>${t}</li>`).join('')}</ul><h4>小費參考</h4><p class="note-lead">泰國沒有硬性規定，以下是常見行情，滿意再給。</p><ul class="sos-list">${TIPS.map(([k, v]) => `<li><span>${esc(k)}</span><span class="tip-v">${esc(v)}</span></li>`).join('')}</ul><p class="muted">退稅規定偶爾會調整，以機場現場公告為準。</p>`;
-    box.innerHTML = section(1, 'driver', '給司機看', driver, true) + section(2, 'sos', '緊急聯絡', sos, true) + section(3, 'money', '退稅與小費', money, false) + section(4, 'phrase', '泰語常用句', phrases, false) + section(5, 'install', '加到手機主畫面', install, false);
+    box.innerHTML = section(1, 'driver', '給司機看', driver, true) + section(2, 'sos', '緊急聯絡', sos, false) + section(3, 'money', '退稅與小費', money, false) + section(4, 'phrase', '泰語常用句', phrases, false) + section(5, 'install', '加到手機主畫面', install, false);
   }
   render();
 
