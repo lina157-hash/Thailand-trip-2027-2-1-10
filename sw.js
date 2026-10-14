@@ -1,6 +1,6 @@
 /* 離線備援：每次都先向網路要最新的檔案，成功就順手存一份；沒有網路時才拿存著的版本。
    只處理本站的檔案與 Google 字型；GitHub API、匯率資料等其他網站的請求完全不經過這裡。 */
-const CACHE = 'thai-days-v9';
+const CACHE = 'thai-days-v10';
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(
