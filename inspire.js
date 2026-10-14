@@ -65,7 +65,22 @@ window.INSPIRE = (() => {
   const ALIAS = { erawan: 'bigBuddha', watBenja: 'watArun', watSuthat: 'goldenMount', srinakarin: 'joddFairs', pratunam: 'chatuchak', maeklong: 'thepprasit', damnoen: 'floatingMarket', pattayaWalking: 'joddFairs',
     siamParagon: 'shop', terminal21: 'shop', mbk: 'shop', centralPattaya: 'shop', lumphini: 'park', viewpoint: 'jomtien', bangKrachao: 'park', massage: 'spa', rooftop: 'asiatique', muayThai: 'spa', cooking: 'somTam', riverBoat: 'boat', artParadise: 'jimThompson',
     fruitShake: 'fruit', jayFai: 'padThai', somboon: 'curryCrab', kruaApsorn: 'curryCrab', afterYou: 'thaiTea', glassHouse: 'jomtien', mumAroi: 'plaPao' };
-  const PHOTO_MORE = {};
+  const PHOTO_MORE = {
+    watBenja: { id: 'photo-1582468546235-9bf31e5bc4a1', page: 'https://unsplash.com/photos/wat-benchamabophit-temple-in-bangkok-S4ZkQykkeRs', by: "Joshua Rawson-Harris" },
+    watSuthat: { id: 'photo-1657641701183-e93f9a1ac0e7', page: 'https://unsplash.com/photos/a-large-red-tower-ZAW9OUSaBmE', by: "Phatsanphon Nakaranurak" },
+    maeklong: { id: 'photo-1761465063946-0862de650a3a', page: 'https://unsplash.com/photos/train-approaching-a-bustling-market-on-railway-tracks-Ci4RFGSv5QA', by: "Jean Carlo Emer" },
+    damnoen: { id: 'photo-1642391326189-46e163cad59f', page: 'https://unsplash.com/photos/a-group-of-people-sitting-on-boats-in-a-body-of-water-Wf6K4YvZYcc', by: "Norbert Braun" },
+    pattayaWalking: { id: 'photo-1538114618364-ae7f63d1ee7d', page: 'https://unsplash.com/photos/people-standing-between-store-buildings-at-nighttime--WjUABj8iP8', by: "Lin Kiu" },
+    lumphini: { id: 'photo-1655844824395-808c5a171810', page: 'https://unsplash.com/photos/a-body-of-water-with-trees-and-buildings-in-the-background-with-lumphini-park-in-the-background-JPopb3cKuVI', by: "Oleksandr Voloshchenko" },
+    viewpoint: { id: 'photo-1702546330003-5d4dec1563c3', page: 'https://unsplash.com/photos/a-view-of-a-city-at-night-from-a-hill-Pgt3iNj0HIg', by: "Benjamin" },
+    rooftop: { id: 'photo-1770021601385-af0bf0136762', page: 'https://unsplash.com/photos/cityscape-at-sunset-viewed-from-a-rooftop-bar-SMS90Kz2vrw', by: "Florian Peeters" },
+    muayThai: { id: 'photo-1525680996651-0222228be6f0', page: 'https://unsplash.com/photos/muay-thai-boxer-kick-opponent-h8sl-oNcat0', by: "Pablo Rebolledo" },
+    riverBoat: { id: 'photo-1698305322603-77f2ea62d1f2', page: 'https://unsplash.com/photos/a-boat-traveling-through-the-water-in-front-of-tall-buildings-JaEkeZIwruQ', by: "Kylle Pangan" },
+    greenCurry: { id: 'photo-1668665772043-bdd32e348998', page: 'https://unsplash.com/photos/a-bowl-of-food-qEzLiabQe8M', by: "Andrew Relf" },
+    khaoSoi: { id: 'photo-1646850148817-c3a5e8a35fd9', page: 'https://unsplash.com/photos/a-bowl-of-food-with-a-spoon-in-it-vxJZOosHvcU', by: "Kittitep Khotchalee" },
+    coconutIce: { id: 'photo-1620197544618-af5f5366abb3', page: 'https://unsplash.com/photos/ice-cream-on-stainless-steel-spoon-1VXJRjyUIjA', by: "Tamas Pap" },
+    fruitShake: { id: 'photo-1758184875542-2a30993210b4', page: 'https://unsplash.com/photos/fresh-fruit-smoothies-stand-with-colorful-drinks-menu-BRbXI2EYetY', by: "Aleksandr Galichkin" },
+  };
   const P = (type, city, name, en, art, desc, tip, map) => ({ type, cat: CAT[art] || (type === 'eat' ? 'dish' : 'temple'), city, name, en, art: ART[art] || ART[ALIAS[art]], photo: PHOTO[art] || PHOTO_MORE[art], desc, tip, map });
   return [
     // 景點 · 曼谷
