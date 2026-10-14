@@ -188,7 +188,11 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 .place-art{aspect-ratio:5/3;background:var(--aqua-soft)}
 .place-card.eat .place-art{background:var(--mango-soft)}
 .place-card:nth-child(3n+2).see .place-art{background:var(--pink-soft)}
+.place-art{position:relative;overflow:hidden}
 .place-art svg{display:block;width:100%;height:100%}
+.place-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-credit{position:absolute;right:8px;bottom:8px;max-width:calc(100% - 16px);padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.45);color:#fff;font-size:11px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.place-art.no-photo .photo-credit{display:none}
 .place-card p{flex:none}.place-body>p:not(.place-en):not(.place-tip){flex:1}
 .place-body .map-link{margin-top:14px}
 .place-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
