@@ -87,6 +87,23 @@
     ] },
   ];
 
+  /* ── 退稅與小費：規定與行情整理自泰國政府與旅遊網站的公開資訊，出發前再看一次機場公告 ── */
+  const VAT = [
+    '同一家店、同一天買滿 <b>2,000 泰銖</b>（含稅），結帳時出示護照，請店家開退稅單（P.P.10）。',
+    '整趟旅程的退稅單加起來要滿 <b>5,000 泰銖</b> 才能申請；商品要在購買後 60 天內帶出泰國。',
+    '回程在曼谷機場：<b>托運行李前</b>先到海關的「VAT Refund」檢查櫃台給海關看商品和單據（金額較高時一定要檢查），過海關後再到退稅櫃台領錢。',
+    '退現金只能領泰銖，會扣手續費；金額很大時只能退到信用卡。高價品（名牌包、手錶等）要放隨身行李，出關後還要再給退稅櫃台看一次。',
+    '2/10 回程很早（約 04:30 離開飯店），退稅要多排隊時間，單據前一晚先整理好。',
+  ];
+  const TIPS = [
+    ['泰式按摩', '每人 50–100 泰銖（1–2 小時），直接給按摩師'],
+    ['飯店行李員', '每件 20–50 泰銖'],
+    ['房間清潔', '每晚 20–50 泰銖，放在枕頭上'],
+    ['餐廳', '帳單已有 10% 服務費就不用再給；沒有的話留 20–50 泰銖或零錢'],
+    ['計程車、Grab', '不用給，可以把零頭湊整'],
+    ['包車司機', '全團一起給，例如每天 300–500 泰銖，由主辦人統一收'],
+    ['人妖秀合照', '跟演員合照通常要給約 100 泰銖'],
+  ];
   const box = document.querySelector('#tools-list');
   if (!box) return;
   const INS_KEY = 'thai-days-insurance-v1';
@@ -106,7 +123,8 @@
     const phrases = `<p class="note-lead">句尾加 <b lang="th">ค่ะ</b>（女生，kâ）或 <b lang="th">ครับ</b>（男生，khráp）比較有禮貌。${canSpeak ? '按喇叭可以聽發音（要看手機有沒有泰語語音）。' : ''}</p>`
       + PHRASES.map(g => `<h4>${esc(g.title)}</h4><ul class="phrase-list">${g.items.map(([zh, th, ro]) => `<li><span class="zh">${esc(zh)}</span><span class="th" lang="th">${esc(th)}</span><span class="ro">${esc(ro)}</span>${canSpeak ? `<button type="button" class="speak" data-say="${esc(th)}" aria-label="播放「${esc(zh)}」的泰語發音">${SPEAK}</button>` : ''}</li>`).join('')}</ul>`).join('');
     const install = `<p>加到主畫面後，點圖示就能像 App 一樣全螢幕打開，沒有網路時也能看最近看過的行程。</p><button type="button" class="primary" id="install-app"${installEvent ? '' : ' hidden'}>安裝到這台裝置</button><ol class="install-steps"><li><b>iPhone（Safari）</b>：按下方的分享按鈕 → 「加入主畫面」。</li><li><b>Android（Chrome）</b>：按右上角 ⋮ → 「安裝應用程式」或「加到主畫面」。</li></ol>`;
-    box.innerHTML = section(1, 'driver', '給司機看', driver, true) + section(2, 'sos', '緊急聯絡', sos, true) + section(3, 'phrase', '泰語常用句', phrases, false) + section(4, 'install', '加到手機主畫面', install, false);
+    const money = `<h4>退稅（VAT Refund）</h4><ul class="money-list">${VAT.map(t => `<li>${t}</li>`).join('')}</ul><h4>小費參考</h4><p class="note-lead">泰國沒有硬性規定，以下是常見行情，滿意再給。</p><ul class="sos-list">${TIPS.map(([k, v]) => `<li><span>${esc(k)}</span><span class="tip-v">${esc(v)}</span></li>`).join('')}</ul><p class="muted">退稅規定偶爾會調整，以機場現場公告為準。</p>`;
+    box.innerHTML = section(1, 'driver', '給司機看', driver, true) + section(2, 'sos', '緊急聯絡', sos, true) + section(3, 'money', '退稅與小費', money, false) + section(4, 'phrase', '泰語常用句', phrases, false) + section(5, 'install', '加到手機主畫面', install, false);
   }
   render();
 
