@@ -1,5 +1,5 @@
 {
-  "revision": 28,
+  "revision": 29,
   "data": {
     "events": [
       {
@@ -548,17 +548,7 @@
         "吳素娜",
         "羅宇卿"
       ],
-      "items": [
-        {
-          "id": "41b0e81e-8102-4437-baf2-22c4409195e7",
-          "title": "test",
-          "amount": 3000,
-          "currency": "TWD",
-          "day": 3,
-          "payer": "",
-          "among": []
-        }
-      ]
+      "items": []
     },
     "groups": [
       "長榮組",
@@ -640,5 +630,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-15T05:30:01.015Z"
+  "updatedAt": "2026-10-15T05:30:13.654Z"
 }
