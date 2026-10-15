@@ -1,5 +1,5 @@
 {
-  "revision": 29,
+  "revision": 30,
   "data": {
     "events": [
       {
@@ -421,8 +421,7 @@
         "city": "",
         "title": "茉莉之城",
         "place": "",
-        "note": "",
-        "optional": true
+        "note": ""
       }
     ],
     "titles": {
@@ -630,5 +629,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-15T05:30:13.654Z"
+  "updatedAt": "2026-10-15T05:30:49.846Z"
 }
