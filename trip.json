@@ -1,0 +1,638 @@
+{
+  "revision": 31,
+  "data": {
+    "events": [
+      {
+        "id": "d1e0",
+        "day": 1,
+        "time": "20:45",
+        "title": "桃園 T2 出發 · BR205",
+        "city": "桃園",
+        "place": "Taiwan Taoyuan International Airport Terminal 2",
+        "note": "長榮航空；此時間為台灣當地時間。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d1e1",
+        "day": 1,
+        "time": "23:40",
+        "title": "抵達曼谷 BKK",
+        "city": "移動中",
+        "place": "Suvarnabhumi Airport",
+        "note": "泰國當地時間。入境、領行李、18 人集合。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d1e2",
+        "day": 1,
+        "time": "",
+        "title": "包車直達芭達雅 → 入住休息",
+        "city": "芭達雅",
+        "place": "Mercure Pattaya Ocean Resort",
+        "note": "抵達飯店為 2/2 凌晨，當晚不另排行程。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d2e0",
+        "day": 2,
+        "time": "",
+        "title": "睡到自然醒 · 飯店泳池與休息",
+        "city": "芭達雅",
+        "place": "Mercure Pattaya Ocean Resort",
+        "note": "上午睡到自然醒，養好精神。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d2e1",
+        "day": 2,
+        "time": "",
+        "title": "飯店附近散步、吃飯、按摩、飯店內玩水",
+        "city": "芭達雅",
+        "place": "",
+        "note": "自由活動。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d2e2",
+        "day": 2,
+        "time": "",
+        "title": "晚餐 → Tiffany’s Show Pattaya",
+        "city": "芭達雅",
+        "place": "Tiffany's Show Pattaya",
+        "note": "晚上看秀，結束後回飯店。演出時間待確認。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d3e0",
+        "day": 3,
+        "time": "",
+        "title": "前往格蘭島 Koh Larn",
+        "city": "芭達雅",
+        "place": "Koh Larn",
+        "note": "海邊放鬆、玩水；水上活動自由參加。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d3e1",
+        "day": 3,
+        "time": "",
+        "title": "島上午餐",
+        "city": "芭達雅",
+        "place": "Koh Larn",
+        "note": "餐廳待安排。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d3e2",
+        "day": 3,
+        "time": "",
+        "title": "下午返回芭達雅",
+        "city": "芭達雅",
+        "place": "Mercure Pattaya Ocean Resort",
+        "note": "回飯店洗澡、休息；晚上自由活動。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d4e0",
+        "day": 4,
+        "time": "",
+        "title": "Mercure 退房 · 行李上車",
+        "city": "芭達雅",
+        "place": "Mercure Pattaya Ocean Resort",
+        "note": "確認 18 人及行李到齊。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d4e1",
+        "day": 4,
+        "time": "",
+        "title": "真理寺 The Sanctuary of Truth",
+        "city": "芭達雅",
+        "place": "The Sanctuary of Truth Pattaya",
+        "note": "參觀場次與票券待確認。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d4e2",
+        "day": 4,
+        "time": "",
+        "title": "Ang Sila 海鮮市場",
+        "city": "移動中",
+        "place": "Ang Sila Seafood Market",
+        "note": "簡單吃東西、逛市場。",
+        "group": "長榮組"
+      },
+      {
+        "id": "cx-d5-1",
+        "day": 5,
+        "time": "00:15",
+        "title": "國泰旅伴抵達曼谷 BKK",
+        "city": "曼谷",
+        "place": "Suvarnabhumi Airport",
+        "note": "CX617 抵達，泰國當地時間。入境後前往 ibis Styles Bangkok Ratchada，接機方式待確認。",
+        "group": "國泰組"
+      },
+      {
+        "id": "d5e0",
+        "day": 5,
+        "time": "",
+        "title": "飯店出發 → 大皇宮＋玉佛寺",
+        "city": "曼谷",
+        "place": "The Grand Palace Bangkok",
+        "note": "寺廟參觀注意服裝規定。"
+      },
+      {
+        "id": "d5e1",
+        "day": 5,
+        "time": "",
+        "title": "午餐",
+        "city": "曼谷",
+        "place": "",
+        "note": "餐廳待安排。"
+      },
+      {
+        "id": "d5e2",
+        "day": 5,
+        "time": "",
+        "title": "臥佛寺 Wat Pho",
+        "city": "曼谷",
+        "place": "Wat Pho Bangkok",
+        "note": "依當日開放與交通安排。"
+      },
+      {
+        "id": "d5e3",
+        "day": 5,
+        "time": "",
+        "title": "ICONSIAM 自由逛街",
+        "city": "曼谷",
+        "place": "ICONSIAM",
+        "note": "吃東西、休息。"
+      },
+      {
+        "id": "d5e4",
+        "day": 5,
+        "time": "",
+        "title": "Super Galaxy 晚餐遊船",
+        "city": "曼谷",
+        "place": "",
+        "note": "晚上搭乘；登船地點與時間請依船公司確認資訊。"
+      },
+      {
+        "id": "d5e5",
+        "day": 5,
+        "time": "",
+        "title": "遊船結束 → 返回飯店",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "安排 ICONSIAM → 飯店單程接送；集合點待確認。"
+      },
+      {
+        "id": "d6e0",
+        "day": 6,
+        "time": "",
+        "title": "洽圖洽週末市集",
+        "city": "曼谷",
+        "place": "Chatuchak Weekend Market",
+        "note": "自由逛市集。"
+      },
+      {
+        "id": "d6e1",
+        "day": 6,
+        "time": "",
+        "title": "CentralWorld",
+        "city": "曼谷",
+        "place": "CentralWorld Bangkok",
+        "note": "逛街、吃飯。"
+      },
+      {
+        "id": "d6e2",
+        "day": 6,
+        "time": "",
+        "title": "Big C Ratchadamri 採買",
+        "city": "曼谷",
+        "place": "Big C Supercenter Ratchadamri",
+        "note": "採買後回飯店。"
+      },
+      {
+        "id": "d7e0",
+        "day": 7,
+        "time": "",
+        "title": "飯店出發 → 北碧",
+        "city": "移動中",
+        "place": "Kanchanaburi",
+        "note": "出發時間待確認。"
+      },
+      {
+        "id": "d7e1",
+        "day": 7,
+        "time": "",
+        "title": "桂河大橋",
+        "city": "北碧",
+        "place": "River Kwai Bridge",
+        "note": "參觀與散步。"
+      },
+      {
+        "id": "d7e3",
+        "day": 7,
+        "time": "",
+        "title": "Keereetara Riverside 午餐",
+        "city": "北碧",
+        "place": "",
+        "note": "餐廳依動線安排。",
+        "dine": "todo"
+      },
+      {
+        "id": "d7e2",
+        "day": 7,
+        "time": "",
+        "title": "死亡鐵路精華段",
+        "city": "北碧",
+        "place": "",
+        "note": "搭乘區間及班次待確認。"
+      },
+      {
+        "id": "d7e4",
+        "day": 7,
+        "time": "",
+        "title": "返回曼谷",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "回飯店後自由活動，晚上不安排正式行程。"
+      },
+      {
+        "id": "d8e0",
+        "day": 8,
+        "time": "",
+        "title": "約 10:00～10:30 飯店出發",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "彈性出發時段，非固定 10:00。"
+      },
+      {
+        "id": "d8e1",
+        "day": 8,
+        "time": "",
+        "title": "崖差蒙空寺",
+        "city": "大城",
+        "place": "Wat Yai Chai Mongkhon",
+        "note": "輕鬆參觀。"
+      },
+      {
+        "id": "d8e2",
+        "day": 8,
+        "time": "",
+        "title": "The Summer House",
+        "city": "大城",
+        "place": "The Summer House Ayutthaya",
+        "note": "輕午餐／咖啡／甜點。18 人、Glass House 長桌與巴士停車資訊見今日備忘。"
+      },
+      {
+        "id": "d8e3",
+        "day": 8,
+        "time": "",
+        "title": "瑪哈泰寺",
+        "city": "大城",
+        "place": "Wat Mahathat Ayutthaya",
+        "note": "參觀寺廟。"
+      },
+      {
+        "id": "d8e4",
+        "day": 8,
+        "time": "",
+        "title": "Roti Sai Mai 糖絲捲餅外帶",
+        "city": "大城",
+        "place": "",
+        "note": "店家待確認。"
+      },
+      {
+        "id": "d8e5",
+        "day": 8,
+        "time": "",
+        "title": "大城中央市場 Ayutthaya Central Agricultural Market・大頭蝦自由用餐 🦐",
+        "city": "大城",
+        "place": "Kung Phuean Praew",
+        "note": "用餐。餐廳定位與訂位請出發前再次確認。\n大城著名的大頭蝦美食聚集地，市場內有多家大頭蝦與海鮮餐廳，可以現場挑選不同大小的活蝦，再請店家現烤料理。\n到現場後我們就直接自由活動～大家可以先逛一圈、看看蝦子大小、比一下價格，哪一家順眼就去哪一家吃，不用18個人全部綁在同一間 \n\n如果不知道怎麼選，可以先參考這兩家：\n⭐ Nittaya 98/17\n我妹妹之前實際吃過，她一直很推薦，大頭蝦好吃，而且環境、廁所也很乾淨，這點超加分 😂\n\n🔥 Kung Phuean Praew 98/8\n這家是中央市場裡網路人氣很高的大頭蝦店，評論數很多，也是很多人會特別去吃的一家。\n\n這一站大家可以吃到 7分飽左右 就好，因為晚上還要去 Save One Go 夜市 🌙\n記得留一點胃給夜市的小吃、甜點和飲料喔～🤣"
+      },
+      {
+        "id": "d8e6",
+        "day": 8,
+        "time": "",
+        "title": "Save One Go @ Yaek Kor Por Aor",
+        "city": "移動中",
+        "place": "Save One Go @ Yaek Kor Por Aor",
+        "note": "逛街＋甜點＋小吃補充站\n建議停留約 1～1.5 小時，再返回曼谷飯店。"
+      },
+      {
+        "id": "d9e0",
+        "day": 9,
+        "time": "",
+        "title": "各自的曼谷時光",
+        "city": "曼谷",
+        "place": "",
+        "note": "完全自由活動，依個人喜好自行安排或分組出遊。"
+      },
+      {
+        "id": "d9e1",
+        "day": 9,
+        "time": "",
+        "title": "早點回飯店 · 整理行李",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "隔日約 04:30～04:45 離開飯店。"
+      },
+      {
+        "id": "d10e0",
+        "day": 10,
+        "time": "",
+        "title": "退房 · 約 04:30～04:45 離開",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "18 人集合，包車前往 BKK。"
+      },
+      {
+        "id": "cx-d10-1",
+        "day": 10,
+        "time": "07:30",
+        "title": "國泰旅伴起飛 · CX752 曼谷 BKK → 香港",
+        "city": "曼谷",
+        "place": "Suvarnabhumi Airport",
+        "note": "國泰航空，經濟艙。11:15 抵達香港 T1。泰國當地時間。",
+        "group": "國泰組"
+      },
+      {
+        "id": "d10e1",
+        "day": 10,
+        "time": "08:25",
+        "title": "BR062 · 曼谷 BKK 起飛",
+        "city": "曼谷",
+        "place": "Suvarnabhumi Airport",
+        "note": "長榮航空；泰國當地時間。",
+        "group": "長榮組"
+      },
+      {
+        "id": "d10e2",
+        "day": 10,
+        "time": "13:05",
+        "title": "抵達桃園機場 T2",
+        "city": "桃園",
+        "place": "Taiwan Taoyuan International Airport Terminal 2",
+        "note": "台灣當地時間。旅程結束。",
+        "group": "長榮組"
+      },
+      {
+        "id": "cx-d10-2",
+        "day": 10,
+        "time": "14:35",
+        "title": "國泰旅伴抵達桃園 T1 · CX400",
+        "city": "桃園",
+        "place": "Taiwan Taoyuan International Airport Terminal 1",
+        "note": "12:45 從香港 T1 起飛。台灣當地時間。旅程結束。",
+        "group": "國泰組"
+      },
+      {
+        "id": "d4e3",
+        "day": 4,
+        "time": "",
+        "title": "包車前往曼谷 · 入住 ibis Styles",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "休息",
+        "group": "長榮組"
+      },
+      {
+        "id": "cx-d4-1",
+        "day": 4,
+        "time": "18:40",
+        "title": "國泰旅伴出發 · CX473 桃園 T1 → 香港",
+        "city": "桃園",
+        "place": "Taiwan Taoyuan International Airport Terminal 1",
+        "note": "國泰航空，經濟艙。20:45 抵達香港 T1。台灣當地時間。",
+        "group": "國泰組"
+      },
+      {
+        "id": "cx-d4-2",
+        "day": 4,
+        "time": "22:10",
+        "title": "國泰旅伴轉機 · CX617 香港 → 曼谷",
+        "city": "移動中",
+        "place": "Hong Kong International Airport Terminal 1",
+        "note": "香港 T1 轉機，2/5 凌晨 00:15 抵達曼谷 BKK。香港當地時間。",
+        "group": "國泰組"
+      },
+      {
+        "id": "03b52bdb-65dc-4b4f-b6c7-3d590b482546",
+        "day": 7,
+        "time": "",
+        "city": "",
+        "title": "茉莉之城",
+        "place": "",
+        "note": ""
+      }
+    ],
+    "titles": {
+      "1": "台北 → 曼谷 → 芭達雅",
+      "2": "芭達雅放鬆日＋Tiffany",
+      "3": "格蘭島一日遊",
+      "4": "真理寺 → Ang Sila → 曼谷",
+      "5": "大皇宮＋臥佛寺＋ICONSIAM",
+      "6": "洽圖洽＋CentralWorld＋Big C",
+      "7": "北碧一日遊",
+      "8": "大城輕鬆一日遊＋Save One GO",
+      "9": "曼谷自由活動日",
+      "10": "曼谷 → 台北"
+    },
+    "notes": {
+      "1": "移動與休息日。BKK 23:40 抵達後，入住芭達雅會跨至 2/2 凌晨；請通知飯店保留 2/1 房間及安排深夜入住。",
+      "2": "Recovery Day：不安排其他主要景點。Tiffany 場次與接送時間待確認。",
+      "3": "水上活動自由參加；船班、海況與碼頭接送依實際安排。",
+      "4": "退房後行李上車。晚間依抵達時間，在飯店附近吃飯、按摩或休息。\n\n國泰旅伴：2/4 晚上 18:40 從桃園出發，經香港轉機，2/5 凌晨 00:15 抵達曼谷，直接入住 ibis Styles；這一組不會參加 2/1–2/4 的芭達雅行程。",
+      "5": "Super Galaxy 晚餐遊船的報到時間、登船碼頭與票券待確認。\n\n國泰旅伴 00:15 抵達 BKK，入住時間較晚，請先通知飯店。",
+      "6": "曼谷購物日。市集與商場間保留交通時間。",
+      "7": "死亡鐵路搭乘區間、班次與票券待確認。",
+      "8": "約 10:00～10:30 飯店出發。可能接近或超過一般 10 小時包車時數，詢價時確認超時費。Save One GO 建議停留 1～1.5 小時。\n\nThe Summer House 已確認（依你提供資訊）：可接待 18 人；可安排 Glass House 長桌；24～30 人座巴士可停餐廳前；無最低消費；每人至少點一樣餐點／甜點／飲料。",
+      "9": "完全自由、非團體行動，不需要全團一起行動。可睡到自然醒、飯店休息、整理行李、按摩／SPA、Big C 補買、逛街、咖啡廳、分組吃飯或自行探訪景點。\n晚上建議早點回飯店休息並整理行李，隔日凌晨出發。",
+      "10": "約 04:30～04:45 離開飯店，需事先確認集合、退房及接送時間。航班時間皆為各機場當地時間。\n\n國泰旅伴搭 07:30 的 CX752，比長榮早約 1 小時起飛，請一起確認離開飯店的時間。"
+    },
+    "hotels": {
+      "1": "Mercure Pattaya Ocean Resort",
+      "2": "Mercure Pattaya Ocean Resort",
+      "3": "Mercure Pattaya Ocean Resort",
+      "4": "ibis Styles Bangkok Ratchada",
+      "5": "ibis Styles Bangkok Ratchada",
+      "6": "ibis Styles Bangkok Ratchada",
+      "7": "ibis Styles Bangkok Ratchada",
+      "8": "ibis Styles Bangkok Ratchada",
+      "9": "ibis Styles Bangkok Ratchada",
+      "10": "退房返台 · 無住宿"
+    },
+    "transport": {
+      "1": "BKK → 芭達雅：大型包車／約 30 座車＋18 人行李空間。",
+      "2": "短程交通／自由安排。",
+      "3": "格蘭島碼頭接送依實際安排。",
+      "4": "芭達雅 → 真理寺 → Ang Sila → 曼谷：整段包車。",
+      "5": "國泰旅伴凌晨 BKK → 飯店：接機方式待確認。\n白天包車：飯店 → 大皇宮 → 臥佛寺 → ICONSIAM。晚上另外安排 ICONSIAM → 飯店單程接送。",
+      "6": "可包車或視市區交通安排。",
+      "7": "北碧整日包車。",
+      "8": "大城＋Save One GO 整日包車，確認超時費、集合時間與回程安排。",
+      "9": "不包車，自由活動。",
+      "10": "飯店 → BKK：大型單程接送，預留 18 人及行李空間。"
+    },
+    "intro": {
+      "headline": "把日子，\n交給海風與曼谷。",
+      "description": "芭達雅的慢時光，曼谷的城市漫遊。\n18 人，十天九夜，把期待一站一站收藏。",
+      "flights": "長榮航空（主要團體）\n去程 BR205 · 2/1\n20:45 桃園 T2 → 23:40 曼谷 BKK\n\n回程 BR062 · 2/10\n08:25 曼谷 BKK → 13:05 桃園 T2\n\n國泰航空（部分旅伴，香港轉機）\n去程 2/4\nCX473 18:40 桃園 T1 → 20:45 香港 T1\nCX617 22:10 香港 T1 → 00:15（2/5）曼谷 BKK\n\n回程 2/10\nCX752 07:30 曼谷 BKK → 11:15 香港 T1\nCX400 12:45 香港 T1 → 14:35 桃園 T1\n\n以上皆為各機場當地時間；台灣、香港比泰國快 1 小時。請依航空公司最終通知確認。",
+      "stays": "2/1 入住 — 2/4 退房 · 芭達雅\nMercure Pattaya Ocean Resort\n\n2/4 入住 — 2/10 退房 · 曼谷\nibis Styles Bangkok Ratchada\n\n抵達芭達雅將跨至 2/2 凌晨，請通知飯店保留 2/1 房間及深夜入住。\n\n國泰旅伴 2/5 凌晨抵達，直接入住曼谷 ibis Styles。",
+      "group": "18 人，一起出發。\n機場接送建議約 30 座車＋足夠行李空間。每日交通建議已放入旅途小本本。\n\n2/5：白天包車＋夜間單程接送。\n2/8：大城＋市集，需確認包車超時費。\n2/9：完全自由活動，不包車。\n2/10：約 04:30～04:45 飯店出發。",
+      "bookings": "資料彙整中，主辦人整理好後補上。\n\n長榮組 · __ 人\n名單：待補\n去程 2/1 BR205／回程 2/10 BR062\n住宿：2/1–2/4 Mercure Pattaya Ocean Resort → 2/4–2/10 ibis Styles Bangkok Ratchada\n\n國泰組 · __ 人\n名單：待補\n去程 2/4 CX473＋CX617（2/5 凌晨抵達）／回程 2/10 CX752＋CX400\n住宿：2/5–2/10 ibis Styles Bangkok Ratchada\n\n房間分配\nMercure：待補（例：房 1 · 王小明、李小華）\nibis Styles：待補\n\n訂位代號、護照號碼、電話請不要寫在這裡，網站是拿到網址就能看。"
+    },
+    "checklist": [
+      {
+        "id": "p0",
+        "name": "護照與旅行證件"
+      },
+      {
+        "id": "p1",
+        "name": "確認入境規定與所需資料"
+      },
+      {
+        "id": "p2",
+        "name": "機票、住宿與接送確認"
+      },
+      {
+        "id": "p3",
+        "name": "旅遊保險"
+      },
+      {
+        "id": "p4",
+        "name": "泰銖現金與信用卡"
+      },
+      {
+        "id": "p5",
+        "name": "網路 eSIM／SIM 卡"
+      },
+      {
+        "id": "p6",
+        "name": "充電器、行動電源與轉接頭"
+      },
+      {
+        "id": "p7",
+        "name": "防曬、帽子與太陽眼鏡"
+      },
+      {
+        "id": "p8",
+        "name": "泳衣與輕便衣物"
+      },
+      {
+        "id": "p9",
+        "name": "寺廟穿著：遮肩、過膝衣物"
+      },
+      {
+        "id": "p10",
+        "name": "個人藥品與盥洗用品"
+      }
+    ],
+    "split": {
+      "people": [
+        "馬○蘭",
+        "林○安",
+        "林○宏",
+        "羅○容",
+        "邱○婷",
+        "沈○軒",
+        "曾○齊",
+        "陳○國",
+        "鄭○真",
+        "陳○安",
+        "余○惠",
+        "郭○良",
+        "郭○萭",
+        "羅○泰",
+        "施○珍",
+        "羅○蝶",
+        "吳○娜",
+        "羅○卿"
+      ],
+      "items": []
+    },
+    "groups": [
+      "長榮組",
+      "國泰組",
+      "上海組"
+    ],
+    "roster": [
+      {
+        "name": "馬○蘭",
+        "group": "長榮組"
+      },
+      {
+        "name": "林○安",
+        "group": "長榮組"
+      },
+      {
+        "name": "林○宏",
+        "group": "上海組"
+      },
+      {
+        "name": "羅○容",
+        "group": "長榮組"
+      },
+      {
+        "name": "邱○婷",
+        "group": "長榮組"
+      },
+      {
+        "name": "沈○軒",
+        "group": "長榮組"
+      },
+      {
+        "name": "曾○齊",
+        "group": "長榮組"
+      },
+      {
+        "name": "陳○國",
+        "group": "長榮組"
+      },
+      {
+        "name": "鄭○真",
+        "group": "長榮組"
+      },
+      {
+        "name": "陳○安",
+        "group": "長榮組"
+      },
+      {
+        "name": "羅○泰",
+        "group": "長榮組"
+      },
+      {
+        "name": "施○珍",
+        "group": "長榮組"
+      },
+      {
+        "name": "羅○蝶",
+        "group": "長榮組"
+      },
+      {
+        "name": "吳○娜",
+        "group": "長榮組"
+      },
+      {
+        "name": "羅○卿",
+        "group": "長榮組"
+      },
+      {
+        "name": "余○惠",
+        "group": "國泰組"
+      },
+      {
+        "name": "郭○良",
+        "group": "國泰組"
+      },
+      {
+        "name": "郭○萭",
+        "group": "國泰組"
+      }
+    ]
+  },
+  "updatedAt": "2026-10-15T09:27:34.000Z"
+}
