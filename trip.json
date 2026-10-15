@@ -1,5 +1,5 @@
 {
-  "revision": 25,
+  "revision": 26,
   "data": {
     "events": [
       {
@@ -413,6 +413,16 @@
         "place": "Hong Kong International Airport Terminal 1",
         "note": "香港 T1 轉機，2/5 凌晨 00:15 抵達曼谷 BKK。香港當地時間。",
         "group": "國泰組"
+      },
+      {
+        "id": "03b52bdb-65dc-4b4f-b6c7-3d590b482546",
+        "day": 7,
+        "time": "",
+        "city": "",
+        "title": "茉莉之城",
+        "place": "",
+        "note": "",
+        "optional": true
       }
     ],
     "titles": {
@@ -552,5 +562,5 @@
       "國泰組"
     ]
   },
-  "updatedAt": "2026-10-15T04:18:13.989Z"
+  "updatedAt": "2026-10-15T05:20:31.986Z"
 }
