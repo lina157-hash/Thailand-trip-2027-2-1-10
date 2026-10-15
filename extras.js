@@ -61,7 +61,7 @@ function buildIcs() {
       'SUMMARY:' + icsText(`泰國第 ${d} 天：${D.titles?.[d] || ''}`), 'DESCRIPTION:' + icsText(desc), 'TRANSP:TRANSPARENT', 'END:VEVENT');
     for (const e of ev) {
       if (!/^\d{1,2}:\d{2}$/.test(e.time || '')) continue;
-      const off = e.city === '桃園' ? 8 : 7, start = utc(d, e.time, off);
+      const off = tzOff(e), start = utc(d, e.time, off);
       const end = new Date(Date.parse(start.replace(/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z/, '$1-$2-$3T$4:$5:$6Z')) + 3600000).toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
       lines.push('BEGIN:VEVENT', 'UID:thai-days-' + String(e.id).replace(/[^\w-]/g, '') + '@thai-days', 'DTSTAMP:' + stamp, 'DTSTART:' + start, 'DTEND:' + end,
         'SUMMARY:' + icsText(e.title), ...(e.place ? ['LOCATION:' + icsText(e.place)] : []), 'DESCRIPTION:' + icsText(e.note), 'END:VEVENT');

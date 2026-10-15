@@ -34,8 +34,9 @@ function routeLinks(d, compact) {
 /* ── 我的備註：每天一段，存在個人資料（state.mynotes），會跟著「匯出個人備份」 ── */
 $('#my-note')?.addEventListener('input', e => {
   state.mynotes = state.mynotes || {};
-  const v = e.target.value.slice(0, 2000);
-  if (v.trim()) state.mynotes[day] = v; else delete state.mynotes[day];
+  // 存到這個輸入框目前顯示的那一天（換天時 iPhone 不一定會先離開輸入框）
+  const d = +e.target.dataset.day || day, v = e.target.value.slice(0, 2000);
+  if (v.trim()) state.mynotes[d] = v; else delete state.mynotes[d];
   save();
 });
 

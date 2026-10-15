@@ -4,7 +4,7 @@
    標題用粉圓（Huninn），但數字與英文改用系統字，避免粉圓的數字字形顯得忽大忽小。 */
 
 :root{
-  --bg-top:#EDF0EB;--bg:#F6F2EC;--surface:#FFFDF9;--surface-2:#EEEAE3;--ink:#4A4F53;--muted:#787C7D;--faint:#A7A6A1;--line:#E6E0D7;
+  --bg-top:#EDF0EB;--bg:#F6F2EC;--surface:#FFFDF9;--surface-2:#EEEAE3;--ink:#4A4F53;--muted:#62676A;--faint:#A7A6A1;--line:#E6E0D7;
   --brand:#B7CAC3;--brand-hover:#A6BDB5;--brand-ink:#33433F;--focus:#C9A66B;--danger:#A9605A;--over:#C98A85;
   --aqua:#A8C5C1;--mango:#DCC48F;--hibiscus:#D4A3A9;--coral:#DDB09C;--leaf:#8FAE95;--rose:#C99299;
   --mango-soft:#F3ECDC;--pink-soft:#F3E4E3;--aqua-soft:#E4EEEC;--coral-soft:#F4E6DF;
@@ -660,8 +660,8 @@ label.ed-check input{flex:none;width:22px;height:22px;min-height:0;margin:0;acce
   .dine-list{padding:0 18px 14px}
   .roll-grid{grid-template-columns:repeat(3,1fr)}
 }
-/* 大字：整頁放大，版面跟著重排 */
-html[data-size=large] body{zoom:1.15}
+/* 大字：整頁放大，版面跟著重排；彈出視窗不放大，免得在手機上超出螢幕、按不到關閉和儲存 */
+html[data-size=large] body>:not(dialog){zoom:1.15}
 .print-sheet{display:none}
 @media (max-width:640px){
   .prep-when{flex-basis:56px}
@@ -673,7 +673,7 @@ html[data-size=large] body{zoom:1.15}
 @media print{
   @page{size:A4;margin:9mm}
   html,body{background:#fff!important;color:#222!important}
-  html[data-size=large] body{zoom:1}
+  html[data-size=large] body>:not(dialog){zoom:1}
   body>*:not(.print-sheet){display:none!important}
   .print-sheet{display:block;font:8.4pt/1.42 var(--body);color:#222}
   .print-sheet header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6pt;padding-bottom:4pt;border-bottom:1.5pt solid #B7CAC3}

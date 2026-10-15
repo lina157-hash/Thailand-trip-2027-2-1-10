@@ -93,7 +93,9 @@ try { prepDone = JSON.parse(localStorage.getItem(PREP_KEY)) || {}; } catch {}
 const md = s => `${+s.slice(5, 7)}/${+s.slice(8, 10)}`;
 function prepItems() {
   const gs = tripGroups(), g = gs.includes(myGroup) ? myGroup : '';
-  return PREP.filter(p => !p.group || !g || p.group === g);
+  // 選的組別沒有自己的提醒（例如上海組）時，各組的提醒都顯示，免得漏掉 TDAC
+  const own = g && PREP.some(p => p.group === g);
+  return PREP.filter(p => !p.group || !own || p.group === g);
 }
 function prepState(p, t = bkkDate()) { return prepDone[p.id] ? 'done' : t > p.to ? 'late' : t >= p.from ? 'now' : 'soon'; }
 function renderPrep() {

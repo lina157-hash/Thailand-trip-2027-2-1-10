@@ -36,11 +36,10 @@ window.INSPIRE = (() => {
     muayThai: "Thai Boxing at Ratchadamnoen Boxing Stadium.jpg",
     rooftop: "Sky Bar at State Tower Bangkok.jpg",
     chatuchak: "Chatuchak Weekend Market 2.jpg",
-    joddFairs: "Jodd Fairs DanNeramit 2023-05-03.jpg",
     asiatique: "Asiatique The Riverfront Bangkok.jpg",
     pratunam: "Pratunam market day.jpg",
     maeklong: "Maeklong Railway Market - SRT NKF 1227 (20241012b) (54222672984).jpg",
-    damnoen: "Damnoen saduak floating market.jpg",
+    damnoen: "Damnoen Saduak floating market.jpg",
     floatingMarket: "Pattaya Floating Market (1).jpg",
     pattayaWalking: "Pattaya, Walking Street at night, Thailand.jpg",
     siamParagon: "Thailand Bangkok SiamParagon Night.jpg",
@@ -55,7 +54,7 @@ window.INSPIRE = (() => {
     chickenRice: "2013 Khao man kai CM.jpg",
     kraPao: "Kraphao mu khai dao.jpg",
     massaman: "Massaman curry, Bang Kapi, Bangkok.jpg",
-    greenCurry: "Thai green curry with chicken at restaurant Thai Street Food in Porvoo.jpg",
+    greenCurry: "Kaeng kiao wan luk chin pla.jpg",
     khaoSoi: "Khao soi Chiang Mai.jpg",
     khaoKhaMoo: "Khao kha moo thailand.jpg",
     plaPao: "Thai grilling fish with salt,Katori-city,Japan.JPG",
@@ -66,7 +65,6 @@ window.INSPIRE = (() => {
     coconutIce: "Coconut Ice Cream, Bangkok.jpg",
     khanomKrok: "Khanom krok - Thailand.jpg",
     jayFai: "Bangkok street food - Jay Fai - 51444505872.jpg",
-    somboon: "Pu Phat Phong Kari.jpg",
   };
   // Commons 沒有合適實景時用的 Unsplash 照片
   const UNSPLASH = {"boatNoodles": {"id": "photo-1555126634-323283e090fa", "page": "https://unsplash.com/photos/noddle-dish-on-white-ceramic-bowl-H5Hj8QV2Tx4", "by": "Mae Mu"}, "mooPing": {"id": "photo-1665111915476-b91b328a3c37", "page": "https://unsplash.com/photos/a-plate-of-food-l2RuDTo3igs", "by": "tommao wang"}, "fruitShake": {"id": "photo-1758184875542-2a30993210b4", "page": "https://unsplash.com/photos/fresh-fruit-smoothies-stand-with-colorful-drinks-menu-BRbXI2EYetY", "by": "Aleksandr Galichkin"}};
@@ -89,7 +87,7 @@ window.INSPIRE = (() => {
     P('see', '芭達雅', '東芭樂園', 'Nong Nooch Tropical Garden', 'nongNooch', '超大的熱帶花園，有造景庭園、恐龍谷和泰國文化表演。', '園區很大，園內有接駁車；表演場次請出發前確認。', 'Nong Nooch Tropical Garden'),
     P('see', '芭達雅', '四方水上市場', 'Pattaya Floating Market', 'floatingMarket', '水上木屋與小船組成的市場，可以邊逛邊吃泰式小點、買手工藝品。', '有些區域需要坐船遊覽，價格先問清楚再上船。', 'Pattaya Floating Market'),
     P('see', '芭達雅', '大佛山', 'Wat Phra Yai (Big Buddha)', 'bigBuddha', '小山丘上的金色大佛，旁邊可以眺望芭達雅市區與海灣。', '屬於寺廟範圍，請穿著遮肩、過膝的衣物。', 'Wat Phra Yai Pattaya'),
-    P('see', '芭達雅', '天府夜市', 'Thepprasit Night Market', 'thepprasit', '在地人也常去的夜市，小吃、衣服、雜貨都有，價格親民。', '每天約 17:00–22:30 營業（以現場公告為準）。', 'Thepprasit Night Market'),
+    P('see', '芭達雅', '天府夜市', 'Thepprasit Night Market', 'thepprasit', '在地人也常去的夜市，小吃、衣服、雜貨都有，價格親民。', '週五到週日最熱鬧，約 17:00–23:00；平日也有開，但攤位少很多（以現場為準）。', 'Thepprasit Night Market'),
     // 美食
     P('eat', '曼谷・芭達雅', '冬蔭功', 'Tom Yum Goong', 'tomYum', '酸辣湯配大蝦，香茅、檸檬葉、南薑的香氣很泰國。分清湯和加椰奶的濃湯兩種。', '怕辣可以說「mai phet」（不要辣）。', 'Tom Yum Goong'),
     P('eat', '曼谷・芭達雅', '泰式炒河粉', 'Pad Thai', 'padThai', '酸甜鹹香的經典炒河粉，加蝦或豬肉，擠一點檸檬、撒花生粉。', '曼谷老字號 Thipsamai 很有名，據報導 ICONSIAM 也有分店（2/5 行程會到），出發前請確認。', 'Pad Thai Bangkok'),
@@ -97,17 +95,17 @@ window.INSPIRE = (() => {
     P('eat', '曼谷・芭達雅', '芒果糯米飯', 'Mango Sticky Rice', 'mangoRice', '香甜的芒果配淋上椰奶的糯米，泰國人氣甜點第一名。', '甜點店、夜市都買得到，挑芒果熟透、顏色金黃的。', 'Mango Sticky Rice'),
     P('eat', '曼谷・芭達雅', '泰式海南雞飯', 'Khao Man Gai', 'chickenRice', '用雞湯煮的香米配嫩雞，再沾一點醬料，簡單又耐吃。', '路邊攤和商場美食街都吃得到，適合當早午餐。', 'Khao Man Gai'),
     P('eat', '曼谷', '船麵', 'Boat Noodles', 'boatNoodles', '一小碗一小碗的濃郁湯麵，以前在船上賣而得名，大家常一次疊好幾碗。', '曼谷勝利紀念碑附近有一整排船麵店。', 'Boat Noodles Victory Monument'),
-    P('eat', '曼谷・芭達雅', '打拋豬飯加荷包蛋', 'Pad Kra Pao', 'kraPao', '九層塔炒豬絞肉配白飯，再加一顆煎得酥脆的荷包蛋，泰國人的日常便當。', '加蛋說「khai dao」。', 'Pad Kra Pao'),
+    P('eat', '曼谷・芭達雅', '打拋豬飯加荷包蛋', 'Pad Kra Pao', 'kraPao', '打拋葉（聖羅勒）炒豬絞肉配白飯，再加一顆煎得酥脆的荷包蛋，泰國人的日常便當。', '加蛋說「khai dao」。', 'Pad Kra Pao'),
     P('eat', '曼谷・芭達雅', '烤豬肉串配糯米', 'Moo Ping', 'mooPing', '甜甜的烤豬肉串配一包糯米，泰國人最常見的早餐。', '早上在路邊攤最容易遇到。', 'Moo Ping'),
     P('eat', '曼谷・芭達雅', '泰式奶茶', 'Cha Yen', 'thaiTea', '橘色的濃郁奶茶，加冰最消暑。也有綠茶口味。', '甜度可以說「wan noi」（少糖）。', 'Thai Tea'),
     P('eat', '曼谷・芭達雅', '瑪莎曼咖哩', 'Massaman Curry', 'massaman', '溫和不太辣的咖哩，有馬鈴薯、花生和燉得軟嫩的肉，怕辣的人也能吃。', '配白飯或烤餅都好吃。', 'Massaman Curry'),
     // ── 第五輪新增 ──
     // 寺廟
-    P('see', '曼谷', '四面佛', 'Erawan Shrine', 'erawan', '路口旁香火鼎盛的四面梵天神壇，很多人來許願，常有傳統舞蹈還願。就在 CentralWorld 旁邊。', '2/6 去 CentralWorld 時可以順路。參拜的人多，拍照不要擋到別人。', 'Erawan Shrine Bangkok'),
+    P('see', '曼谷', '四面佛', 'Erawan Shrine', 'erawan', '路口旁香火鼎盛的四面梵天神壇，很多人來許願，常有傳統舞蹈還願。在 Ratchaprasong 路口的 Grand Hyatt Erawan 飯店轉角，CentralWorld 斜對面。', '2/6 去 CentralWorld 時可以順路。參拜的人多，拍照不要擋到別人。', 'Erawan Shrine Bangkok'),
     P('see', '曼谷', '大理石寺', 'Wat Benchamabophit', 'watBenja', '用義大利白色大理石蓋的寺廟，線條優雅，人比大皇宮少很多，適合慢慢拍。', '寺廟請穿著遮肩、過膝的衣物；需購票入場。', 'Wat Benchamabophit'),
     P('see', '曼谷', '蘇泰寺與大鞦韆', 'Wat Suthat & Giant Swing', 'watSuthat', '路中央高聳的紅色大鞦韆是曼谷老城地標，旁邊的蘇泰寺有很美的壁畫。', '離金山寺不遠，可以排在同一個下午。', 'Wat Suthat Bangkok'),
     // 市集
-    P('see', '曼谷', '席娜卡琳火車夜市', 'Train Night Market Srinakarin', 'srinakarin', '老車、古董雜貨和一整排小吃攤，比市區夜市更有在地感。', '主要在週末前後的晚上營業，營業日請出發前確認；離市區較遠，搭 Grab 較方便。', 'Train Night Market Srinakarin'),
+    P('see', '曼谷', '席娜卡琳火車夜市', 'Train Night Market Srinakarin', 'srinakarin', '老車、古董雜貨和一整排小吃攤，比市區夜市更有在地感。', '週四到週日晚上營業，約 17:00 開到午夜，在 Seacon Square 商場後面；離市區較遠，搭 Grab 較方便。', 'Train Night Market Srinakarin'),
     P('see', '曼谷', '水門市場', 'Pratunam Market', 'pratunam', '衣服、包包、飾品的批發區，價格便宜，買多件還能再便宜。旁邊就是 Platinum 服飾商場。', '很早就開、傍晚就收，想挖寶早點去；人多注意隨身物品。', 'Pratunam Market Bangkok'),
     P('see', '曼谷近郊', '美功鐵道市場', 'Maeklong Railway Market', 'maeklong', '火車從市場正中間開過去，攤販把遮雨棚一收、火車過後又擺回來，非常特別。', '離曼谷約 1.5 小時車程，適合 2/9 自由日包車半天；火車時刻請先查好。', 'Maeklong Railway Market'),
     P('see', '曼谷近郊', '丹嫩莎朵水上市場', 'Damnoen Saduak Floating Market', 'damnoen', '最有名的水上市場，小船載著水果、船麵在河道上叫賣。', '越早去越好；可以和美功鐵道市場排成同一趟。搭船前先談好價格。', 'Damnoen Saduak Floating Market'),
@@ -119,13 +117,13 @@ window.INSPIRE = (() => {
     // 自然
     P('see', '曼谷', '倫披尼公園', 'Lumphini Park', 'lumphini', '市中心的大公園，湖邊常看到大蜥蜴悠閒散步，早上有人打太極、跑步。', '早上或傍晚來比較涼；不要餵或靠近蜥蜴。MRT Lumphini／Silom 站。', 'Lumphini Park'),
     P('see', '芭達雅', '芭達雅觀景台', 'Pattaya View Point', 'viewpoint', '在 Pratumnak 山上，可以一次看到整個芭達雅灣和「PATTAYA CITY」大字。', '傍晚看夕陽最漂亮；搭 Grab 或雙條車上去。', 'Pattaya View Point Khao Phra Tamnak'),
-    P('see', '曼谷', '曼谷綠肺 Bang Krachao', 'Bang Krachao', 'bangKrachao', '昭披耶河彎道裡的一大片綠地，租腳踏車在高架小路穿過椰林，很難想像就在曼谷。', '從 Khlong Toei 一帶的碼頭搭小船過河；週末有小型水上市場。', 'Bang Krachao'),
+    P('see', '曼谷近郊', '曼谷綠肺 Bang Krachao', 'Bang Krachao', 'bangKrachao', '昭披耶河彎道裡的一大片綠地，租腳踏車在高架小路穿過椰林，很難想像就在曼谷。', '從 Khlong Toei 一帶的碼頭搭小船過河；週末有小型水上市場。', 'Bang Krachao'),
     // 體驗
     P('see', '曼谷・芭達雅', '泰式按摩', 'Thai Massage', 'massage', '逛完一天腳很痠，來一個小時的泰式按摩或腳底按摩最舒服。臥佛寺裡就有傳統按摩學校。', '力道太大可以說「bao bao」（輕一點）。小費參考在「旅途工具 → 退稅與小費」。', 'Thai massage'),
     P('see', '曼谷', '高空酒吧看夜景', 'Rooftop Bar', 'rooftop', '在高樓頂端喝一杯，看曼谷夜景和昭披耶河。最有名的是電影《醉後大丈夫 2》的 Sky Bar。', '多數有服裝規定（不能穿短褲、拖鞋）；飲料偏貴，可以只點一杯慢慢坐。', 'Sky Bar lebua Bangkok'),
     P('see', '曼谷', '看一場泰拳', 'Muay Thai', 'muayThai', '現場看泰拳比賽，音樂、吶喊和選手賽前的拜師舞都很有氣氛。', '拉差達慕恩拳擊場（Rajadamnern）歷史最久，比賽日與票價請出發前在官網確認。', 'Rajadamnern Stadium'),
     P('see', '曼谷', '泰菜烹飪課', 'Thai Cooking Class', 'cooking', '跟著老師逛市場、認識香料，再自己做冬蔭功、綠咖哩，吃自己煮的午餐。', '多半是半天課程，要先預約；適合 2/9 自由日分組參加。', 'Thai cooking class Bangkok'),
-    P('see', '曼谷', '搭橘旗船遊昭披耶河', 'Chao Phraya Express Boat', 'riverBoat', '當地人通勤的交通船，便宜又能沿河看鄭王廟、大皇宮和老城。', '橘色旗子的船每站都停，上船再買票；臥佛寺附近是 Tha Tien 碼頭。', 'Sathorn Pier Bangkok'),
+    P('see', '曼谷', '搭橘旗船遊昭披耶河', 'Chao Phraya Express Boat', 'riverBoat', '當地人通勤的交通船，便宜又能沿河看鄭王廟、大皇宮和老城。', '橘旗船只有平日（週一到週五）開、週末停駛，主要碼頭都會停；票價和買票方式以碼頭現場為準。臥佛寺附近是 Tha Tien 碼頭。', 'Sathorn Pier Bangkok'),
     P('see', '芭達雅', 'Art in Paradise 3D 美術館', 'Art in Paradise Pattaya', 'artParadise', '可以「走進畫裡」拍照的 3D 錯視美術館，大人小孩都玩得開心，也適合下雨天。', '手機電量要夠，一拍就停不下來。', 'Art in Paradise Pattaya'),
     P('see', '芭達雅', '芭達雅不夜城 Walking Street', 'Walking Street Pattaya', 'pattayaWalking', '晚上封街變成霓虹燈步行街，酒吧、海鮮餐廳、街頭表演一路熱鬧到深夜。', '比較成人取向，帶長輩或小孩可以只走前段看看；人多注意隨身物品。', 'Walking Street Pattaya'),
     // 經典泰菜
@@ -142,10 +140,10 @@ window.INSPIRE = (() => {
     // 名店餐廳
     P('eat', '曼谷', '痣姐 Jay Fai', 'Raan Jay Fai', 'jayFai', '米其林一星的路邊熱炒，招牌是大塊蟹肉蛋捲，戴著護目鏡掌鍋的阿嬤很有名。', '排隊很久、價格偏高，不一定能 18 人一起吃；出發前確認營業日與訂位方式。', 'Raan Jay Fai'),
     P('eat', '曼谷', '建興酒家', 'Somboon Seafood', 'somboon', '咖哩炒蟹的名店，海鮮新鮮、份量大，很適合一大群人一起點菜分著吃。', '有好幾家分店，大團體建議先訂位。', 'Somboon Seafood'),
-    P('eat', '曼谷', 'Krua Apsorn', 'Krua Apsorn', 'kruaApsorn', '家常的老字號泰菜館，蟹肉蛋捲和黃咖哩炒蟹很受歡迎，口味道地不浮誇。', '店不大，用餐時間人多；離民主紀念碑不遠。', 'Krua Apsorn Dinso'),
+    P('eat', '曼谷', 'Krua Apsorn', 'Krua Apsorn', 'kruaApsorn', '家常的老字號泰菜館，蟹肉蛋捲和黃辣椒炒蟹肉很受歡迎，口味道地不浮誇。', '週日公休，週一到週六約 10:30–19:30；店不大，用餐時間人多，離民主紀念碑不遠。', 'Krua Apsorn Dinso'),
     P('eat', '曼谷', 'After You 甜點', 'After You Dessert Café', 'afterYou', '泰國人氣甜點店，泰奶剉冰和蜂蜜吐司是招牌，逛街逛累了來坐一下。', 'Siam Paragon 等大商場都有分店。', 'After You Dessert Cafe Siam Paragon'),
-    P('eat', '芭達雅', 'The Glass House', 'The Glass House Pattaya', 'glassHouse', '在 Na Jomtien 海邊的白色玻璃屋餐廳，腳踩沙灘吃泰菜，傍晚看夕陽很浪漫。', '離市區有段距離，大團體建議先訂位並安排接送。', 'The Glass House Pattaya'),
-    P('eat', '芭達雅', 'Mum Aroi 海鮮', 'Mum Aroi Naklua', 'mumAroi', '芭達雅北邊 Naklua 的海邊海鮮餐廳，在地人常去，看著海吃烤魚、炒蟹。', '海鮮依重量計價，點之前先問價錢。', 'Mum Aroi Naklua'),
+    P('eat', '芭達雅', 'The Glass House', 'The Glass House Boho Na Jomtien', 'glassHouse', '在 Na Jomtien 海邊的白色玻璃屋餐廳，腳踩沙灘吃泰菜，傍晚看夕陽很浪漫。', '現在叫 Glass House Boho；北芭達雅另有同名分店，別跑錯。離市區有段距離，大團體建議先訂位並安排接送。', 'The Glass House Boho Na Jomtien'),
+    P('eat', '芭達雅', 'Moom Aroi 海鮮', 'Moom Aroi Naklua', 'mumAroi', '芭達雅北邊 Naklua 的海邊海鮮餐廳，在地人常去，看著海吃烤魚、炒蟹。', '海鮮依重量計價，點之前先問價錢。', 'Moom Aroi Naklua'),
   ];
 })();
 
