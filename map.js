@@ -61,7 +61,7 @@ async function openMap() {
     tripMap = L.map('trip-map', { zoomControl: true, attributionControl: true });
     const dark = getComputedStyle(document.documentElement).colorScheme === 'dark'; // style.css 依深淺色設定 color-scheme
     const esri = name => `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${dark ? 'Dark' : 'Light'}_Gray_${name}/MapServer/tile/{z}/{y}/{x}`;
-    L.tileLayer(esri('Base'), { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors' }).addTo(tripMap);
+    L.tileLayer(esri('Base'), { maxZoom: 16, attribution: '&copy; Esri, HERE, Garmin, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OSM</a>' }).addTo(tripMap);
     L.tileLayer(esri('Reference'), { maxZoom: 16 }).addTo(tripMap);
     mapLayer = L.layerGroup().addTo(tripMap);
   }
