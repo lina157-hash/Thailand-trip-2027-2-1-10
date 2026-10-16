@@ -195,7 +195,7 @@ document.addEventListener('input', e => {
 renderExchangeBox();
 document.querySelector('.tabs [data-tab="tools"]')?.addEventListener('click', () => fx.refresh().then(() => calcExchange()));
 
-/* ── 伴手禮／代購清單：要買什麼、幫誰買、在哪買，買到就打勾。只存在這台裝置（會跟著個人備份） ── */
+/* ── 伴手禮／代購清單（獨立一頁）：要買什麼、幫誰買、在哪買，買到就打勾。只存在這台裝置（會跟著個人備份） ── */
 let giftEditId = null;
 function renderGifts() {
   const box = $('#gifts'); if (!box) return;
@@ -203,8 +203,8 @@ function renderGifts() {
   const f = edit || { what: '', who: '', where: '', price: '' };
   const row = g => `<li class="gift${g.done ? ' done' : ''}${g.id === giftEditId ? ' editing' : ''}"><label class="gift-check"><input type="checkbox" data-gift-done="${esc(g.id)}"${g.done ? ' checked' : ''}><span><b>${esc(g.what)}</b><small>${[g.who && '幫 ' + esc(g.who) + ' 買', g.where && '在 ' + esc(g.where), g.price !== '' && '約 ฿' + money(g.price)].filter(Boolean).join('・')}</small></span></label><span class="gift-btns"><button type="button" class="text-btn" data-gift-edit="${esc(g.id)}">修改</button><button type="button" class="text-btn danger" data-gift-del="${esc(g.id)}" aria-label="刪除 ${esc(g.what)}">刪除</button></span></li>`;
   const todo = list.filter(g => !g.done), got = list.filter(g => g.done);
-  box.innerHTML = `<div class="section-top"><div><h3>伴手禮／代購清單</h3><p class="muted">${list.length ? `已買 ${done} / ${list.length} 樣` : '記下要買的東西，買到就打勾。只存在這台裝置。'}</p></div></div>`
-    + `<form id="gift-form" class="gift-form"><div class="inline"><label>要買什麼<input name="what" required maxlength="80" value="${esc(f.what)}" placeholder="例如：小老板海苔、五標青草膏"></label><label class="narrow">幫誰買<input name="who" maxlength="40" value="${esc(f.who)}" placeholder="選填"></label></div><div class="inline"><label>在哪買<input name="where" maxlength="60" value="${esc(f.where)}" placeholder="選填，例如 Big C、7-11"></label><label class="narrow">預算（泰銖）<input name="price" type="number" min="0" step="1" inputmode="numeric" value="${f.price === '' ? '' : esc(f.price)}" placeholder="選填"></label></div><div class="form-actions"><button class="primary">${edit ? '儲存修改' : '加入清單'}</button>${edit ? '<button type="button" class="quiet" data-gift-cancel>取消</button>' : ''}</div></form>`
+  const pr = $('#gift-progress'); if (pr) pr.textContent = list.length ? `已買 ${done} / ${list.length} 樣` : '記下要買的東西，買到就打勾。';
+  box.innerHTML = `<form id="gift-form" class="gift-form"><div class="inline"><label>要買什麼<input name="what" required maxlength="80" value="${esc(f.what)}" placeholder="例如：小老板海苔、五標青草膏"></label><label class="narrow">幫誰買<input name="who" maxlength="40" value="${esc(f.who)}" placeholder="選填"></label></div><div class="inline"><label>在哪買<input name="where" maxlength="60" value="${esc(f.where)}" placeholder="選填，例如 Big C、7-11"></label><label class="narrow">預算（泰銖）<input name="price" type="number" min="0" step="1" inputmode="numeric" value="${f.price === '' ? '' : esc(f.price)}" placeholder="選填"></label></div><div class="form-actions"><button class="primary">${edit ? '儲存修改' : '加入清單'}</button>${edit ? '<button type="button" class="quiet" data-gift-cancel>取消</button>' : ''}</div></form>`
     + (list.length ? `${todo.length ? `<ul class="gift-list">${todo.map(row).join('')}</ul>` : '<p class="muted">全部買齊了 🎉</p>'}${got.length ? `<p class="gift-sub">已買到</p><ul class="gift-list">${got.map(row).join('')}</ul>` : ''}` : '');
 }
 const giftBox = $('#gifts');
