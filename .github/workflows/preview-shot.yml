@@ -20,4 +20,4 @@ jobs:
           node .github/preview/shot.mjs
       - run: |
           git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
-          git add -A .preview && git commit -m "暫存地圖預覽圖 2" && git push
+          git add -A .preview && git commit -m "暫存地圖預覽圖 3" && git push

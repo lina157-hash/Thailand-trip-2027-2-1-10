@@ -1,4 +1,5 @@
-/* 全行程地圖：把共同行程裡每個活動的地點釘在同一張地圖上（OpenStreetMap＋內附的 Leaflet 1.9.4）。
+/* 全行程地圖：把共同行程裡每個活動的地點釘在同一張地圖上（Esri 淺灰底圖＋內附的 Leaflet 1.9.4）。
+   底圖用 Esri 的淺灰（深色模式用深灰）樣式，地名有英文，不會只有泰文；文字標籤是另一層，疊在底圖上。
    座標由 GitHub Actions 事先查好放在 geo.json（見 .github/scripts/geocode.py）；查不到座標的地點列在地圖下面，可以用 Google 地圖開。
    選某一天時，會依時間順序標上 1、2、3… 並用線連起來。台灣、香港的機場不畫在地圖上，避免地圖縮得太小。 */
 const mapDlg = $('#map-dialog');
@@ -58,7 +59,10 @@ async function openMap() {
   try { await Promise.all([loadLeaflet(), loadGeo()]); } catch { $('#map-note').innerHTML = '<p>地圖需要網路才能打開，請連上網路再試。</p>'; return; }
   if (!tripMap) {
     tripMap = L.map('trip-map', { zoomControl: true, attributionControl: true });
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>' }).addTo(tripMap);
+    const dark = getComputedStyle(document.documentElement).colorScheme === 'dark'; // style.css 依深淺色設定 color-scheme
+    const esri = name => `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${dark ? 'Dark' : 'Light'}_Gray_${name}/MapServer/tile/{z}/{y}/{x}`;
+    L.tileLayer(esri('Base'), { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors' }).addTo(tripMap);
+    L.tileLayer(esri('Reference'), { maxZoom: 16 }).addTo(tripMap);
     mapLayer = L.layerGroup().addTo(tripMap);
   }
   mapDay = mapDay || 0;
