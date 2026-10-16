@@ -13,9 +13,11 @@ function renderClock() {
 }
 renderClock(); setInterval(renderClock, 20000);
 
-/* ── 航班即時動態：活動標題裡有航班號（BR205、CX617…）就加一個 Flightradar24 連結 ── */
+/* ── 航班即時動態：活動標題裡有航班號（BR205、CX617…）就加一個 Google 航班狀態連結 ──
+   Google 搜尋航班號會在最上面顯示當天（或下一班）的中文狀態卡：準時／延誤、航廈、登機門。
+   （Flightradar24 的航班頁主要是歷史紀錄，旅伴不好看懂，所以不用。） */
 const FLIGHT_RE = /\b(BR|CX|CI|TG|JX)\s?(\d{2,4})\b/g;
-const flightUrl = code => `https://www.flightradar24.com/data/flights/${code.toLowerCase()}`;
+const flightUrl = code => `https://www.google.com/search?hl=zh-TW&q=${encodeURIComponent(code + ' 航班狀態')}`;
 function flightLink(e) {
   const codes = [...new Set([...String(e.title || '').matchAll(FLIGHT_RE)].map(m => m[1] + m[2]))];
   return codes.length ? `<p class="flight-links">${codes.map(c => `<a href="${flightUrl(c)}" target="_blank" rel="noopener noreferrer">✈ ${c} 即時動態</a>`).join('')}</p>` : '';
