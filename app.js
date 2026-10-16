@@ -1,6 +1,6 @@
 /* 網站更新後，瀏覽器可能還留著更新前的頁面（快取）。頁面與程式的版本不一致時自動重新載入一次，避免新舊混用。
    之後若同時改動 index.html 與 JS，請把這裡的 BUILD、index.html 的 data-build，以及各檔案網址後面的 ?v= 一起加一。 */
-const BUILD='18';
+const BUILD='19';
 if(document.documentElement.dataset.build!==BUILD){let again=true;try{again=sessionStorage.getItem('thai-days-reload')===BUILD;sessionStorage.setItem('thai-days-reload',BUILD)}catch{}if(!again)location.reload();else{const t=document.querySelector('#toast');if(t){t.textContent='網站剛更新，請重新整理頁面。';t.style.display='block'}}throw Error('頁面版本與程式不一致'+(again?'，請重新整理頁面':'，正在重新載入'))}
 try{sessionStorage.removeItem('thai-days-reload')}catch{}
 const $=s=>document.querySelector(s), key='thai-days-personal-v1';
