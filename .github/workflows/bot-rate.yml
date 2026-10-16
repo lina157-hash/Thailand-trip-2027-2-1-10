@@ -1,0 +1,28 @@
+# 平日每天三次（台灣時間約 9:10、12:10、15:10）抓臺灣銀行的泰銖牌告匯率，
+# 有變動才更新 bot-rate.json；網站部署後旅伴打開就會用到新匯率。
+name: 臺灣銀行匯率
+on:
+  schedule:
+    - cron: '10 1,4,7 * * 1-5'
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-73tzlq]
+    paths: [.github/workflows/bot-rate.yml, .github/scripts/bot_rate.py]
+permissions:
+  contents: write
+concurrency: bot-rate
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/scripts/bot_rate.py
+      - name: 有變動就存回儲存庫
+        run: |
+          git add bot-rate.json
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m '更新臺灣銀行泰銖匯率'
+          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 5; done
+          exit 1
