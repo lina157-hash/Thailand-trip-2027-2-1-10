@@ -1,0 +1,646 @@
+[
+ {
+  "key": "watTraimit",
+  "q": [
+   "Wat Traimit",
+   "Golden Buddha Wat Traimit",
+   "Phra Maha Mandop Wat Traimit"
+  ]
+ },
+ {
+  "key": "lohaPrasat",
+  "q": [
+   "Loha Prasat",
+   "Wat Ratchanatdaram",
+   "Loha Prasat Bangkok"
+  ]
+ },
+ {
+  "key": "watPaknam",
+  "q": [
+   "Wat Paknam Bhasicharoen",
+   "Phra Buddha Dhammakaya Thep Mongkol",
+   "Wat Paknam stupa"
+  ]
+ },
+ {
+  "key": "pakKhlongTalat",
+  "q": [
+   "Pak Khlong Talat",
+   "Pak Khlong Talat flower market",
+   "Bangkok flower market"
+  ]
+ },
+ {
+  "key": "huaiKhwangNightMarket",
+  "q": [
+   "Huai Khwang Night Market",
+   "Huai Khwang market Bangkok",
+   "Pracha Songkhro Road Huai Khwang"
+  ]
+ },
+ {
+  "key": "huaiKhwangGanesha",
+  "q": [
+   "Ganesha Shrine Huai Khwang",
+   "Huai Khwang Ganesha",
+   "Huai Khwang intersection shrine"
+  ]
+ },
+ {
+  "key": "orTorKor",
+  "q": [
+   "Or Tor Kor Market",
+   "Or Tor Kor",
+   "Or Tor Kor Market Bangkok"
+  ]
+ },
+ {
+  "key": "mahanakhonSkywalk",
+  "q": [
+   "King Power Mahanakhon",
+   "MahaNakhon Bangkok",
+   "Mahanakhon tower Bangkok"
+  ]
+ },
+ {
+  "key": "benchakittiPark",
+  "q": [
+   "Benchakitti Park",
+   "Benjakitti Forest Park",
+   "Benchakitti Forest Park skywalk"
+  ]
+ },
+ {
+  "key": "lhong1919",
+  "q": [
+   "Lhong 1919",
+   "Lhong 1919 Bangkok",
+   "Wanglee Lhong 1919 Mazu shrine"
+  ]
+ },
+ {
+  "key": "khlongLongtailTour",
+  "q": [
+   "Khlong Bangkok Noi",
+   "Thonburi khlong",
+   "Khlong Mon Bangkok"
+  ]
+ },
+ {
+  "key": "safariWorld",
+  "q": [
+   "Safari World Bangkok",
+   "Safari World",
+   "Safari World Marine Park"
+  ]
+ },
+ {
+  "key": "erawanMuseum",
+  "q": [
+   "Erawan Museum",
+   "Erawan Museum Samut Prakan",
+   "Chang Sam Sian"
+  ]
+ },
+ {
+  "key": "ancientCity",
+  "q": [
+   "Ancient Siam",
+   "Mueang Boran",
+   "Ancient City Samut Prakan"
+  ]
+ },
+ {
+  "key": "pinkGanesha",
+  "q": [
+   "Wat Saman Rattanaram",
+   "Pink Ganesha Chachoengsao",
+   "Wat Saman Rattanaram Ganesha"
+  ]
+ },
+ {
+  "key": "khaoChiChan",
+  "q": [
+   "Khao Chi Chan",
+   "Buddha Mountain Pattaya",
+   "Khao Chi Chan Buddha"
+  ]
+ },
+ {
+  "key": "watYan",
+  "q": [
+   "Wat Yansangwararam",
+   "Wat Yan Pattaya",
+   "Wat Yannasangwararam"
+  ]
+ },
+ {
+  "key": "viharnSien",
+  "q": [
+   "Viharn Sien",
+   "Anek Kusala Sala",
+   "Viharnra Sien Pattaya"
+  ]
+ },
+ {
+  "key": "terminal21Pattaya",
+  "q": [
+   "Terminal 21 Pattaya",
+   "Terminal 21 Pattaya mall",
+   "Terminal 21 North Pattaya"
+  ]
+ },
+ {
+  "key": "naKluaMarket",
+  "q": [
+   "Lan Pho Naklua Market",
+   "Naklua market Pattaya",
+   "Naklua seafood market"
+  ]
+ },
+ {
+  "key": "underwaterWorldPattaya",
+  "q": [
+   "Underwater World Pattaya",
+   "Underwater World Pattaya tunnel",
+   "Pattaya aquarium"
+  ]
+ },
+ {
+  "key": "khaoKheowZoo",
+  "q": [
+   "Khao Kheow Open Zoo",
+   "Moo Deng",
+   "Khao Kheow Open Zoo giraffe"
+  ]
+ },
+ {
+  "key": "bangSaray",
+  "q": [
+   "Bang Saray",
+   "Bang Saray pier",
+   "Bang Sare Chonburi"
+  ]
+ },
+ {
+  "key": "watChaiwatthanaram",
+  "q": [
+   "Wat Chaiwatthanaram",
+   "Wat Chaiwatthanaram sunset",
+   "Wat Chai Watthanaram Ayutthaya"
+  ]
+ },
+ {
+  "key": "watPhraSiSanphet",
+  "q": [
+   "Wat Phra Si Sanphet",
+   "Wat Phra Si Sanphet chedi",
+   "Ayutthaya three chedis"
+  ]
+ },
+ {
+  "key": "bangPaInPalace",
+  "q": [
+   "Bang Pa-In Royal Palace",
+   "Aisawan Thiphya-Art",
+   "Bang Pa-In Palace Ayutthaya"
+  ]
+ },
+ {
+  "key": "watLokayasutharam",
+  "q": [
+   "Wat Lokayasutharam",
+   "Reclining Buddha Wat Lokayasutharam",
+   "Wat Lokaya Sutha"
+  ]
+ },
+ {
+  "key": "watPhananChoeng",
+  "q": [
+   "Wat Phanan Choeng",
+   "Luang Pho Tho Wat Phanan Choeng",
+   "Wat Phanan Choeng Worawihan"
+  ]
+ },
+ {
+  "key": "erawanFalls",
+  "q": [
+   "Erawan Falls",
+   "Erawan National Park",
+   "Erawan waterfall Kanchanaburi"
+  ]
+ },
+ {
+  "key": "kanchanaburiWarCemetery",
+  "q": [
+   "Kanchanaburi War Cemetery",
+   "Thailand-Burma Railway Centre",
+   "Don Rak War Cemetery"
+  ]
+ },
+ {
+  "key": "watThamSuea",
+  "q": [
+   "Wat Tham Suea",
+   "Wat Tham Suea Kanchanaburi",
+   "Tiger Cave Temple Kanchanaburi"
+  ]
+ },
+ {
+  "key": "tomKhaGai",
+  "q": [
+   "Tom kha kai",
+   "Tom kha gai soup",
+   "ต้มข่าไก่"
+  ]
+ },
+ {
+  "key": "larb",
+  "q": [
+   "Larb",
+   "Laap Thai salad",
+   "ลาบหมู"
+  ]
+ },
+ {
+  "key": "namTokMoo",
+  "q": [
+   "Nam tok moo",
+   "Nam tok (food)",
+   "น้ำตกหมู"
+  ]
+ },
+ {
+  "key": "khaoPadPoo",
+  "q": [
+   "Khao phat",
+   "Thai crab fried rice",
+   "ข้าวผัดปู"
+  ]
+ },
+ {
+  "key": "kaiJeow",
+  "q": [
+   "Khai chiao",
+   "Thai omelette",
+   "ไข่เจียว"
+  ]
+ },
+ {
+  "key": "yamWoonSen",
+  "q": [
+   "Yam wun sen",
+   "Thai glass noodle salad",
+   "ยำวุ้นเส้น"
+  ]
+ },
+ {
+  "key": "plaKapongNuengManao",
+  "q": [
+   "Pla kapong neung manao",
+   "Thai steamed fish lime",
+   "ปลากะพงนึ่งมะนาว"
+  ]
+ },
+ {
+  "key": "gaiYang",
+  "q": [
+   "Kai yang",
+   "Gai yang Thai grilled chicken",
+   "ไก่ย่าง"
+  ]
+ },
+ {
+  "key": "panaengCurry",
+  "q": [
+   "Phanaeng",
+   "Panang curry",
+   "แพนง"
+  ]
+ },
+ {
+  "key": "phakBungFaiDaeng",
+  "q": [
+   "Phak bung fai daeng",
+   "Stir fried morning glory Thai",
+   "ผัดผักบุ้งไฟแดง"
+  ]
+ },
+ {
+  "key": "padSeeEw",
+  "q": [
+   "Pad see ew",
+   "Phat si-io",
+   "ผัดซีอิ๊ว"
+  ]
+ },
+ {
+  "key": "radNa",
+  "q": [
+   "Rat na",
+   "Rad na noodles",
+   "ราดหน้า"
+  ]
+ },
+ {
+  "key": "guayJub",
+  "q": [
+   "Kuay jab",
+   "Guay jub Bangkok",
+   "ก๋วยจั๊บ"
+  ]
+ },
+ {
+  "key": "jok",
+  "q": [
+   "Jok Thai congee",
+   "Chok (food)",
+   "โจ๊ก"
+  ]
+ },
+ {
+  "key": "khaoTom",
+  "q": [
+   "Khao tom",
+   "Thai rice soup",
+   "ข้าวต้มปลา"
+  ]
+ },
+ {
+  "key": "bameeMooDaeng",
+  "q": [
+   "Ba mi",
+   "Bamee moo daeng",
+   "บะหมี่หมูแดง"
+  ]
+ },
+ {
+  "key": "yenTaFo",
+  "q": [
+   "Yen ta fo",
+   "Pink noodle soup Thailand",
+   "เย็นตาโฟ"
+  ]
+ },
+ {
+  "key": "khaoKlukKapi",
+  "q": [
+   "Khao khluk kapi",
+   "Shrimp paste fried rice Thai",
+   "ข้าวคลุกกะปิ"
+  ]
+ },
+ {
+  "key": "khanomJeenNamYa",
+  "q": [
+   "Khanom chin",
+   "Khanom jeen nam ya",
+   "ขนมจีนน้ำยา"
+  ]
+ },
+ {
+  "key": "satay",
+  "q": [
+   "Satay Thailand",
+   "Moo satay",
+   "หมูสะเต๊ะ"
+  ]
+ },
+ {
+  "key": "saiKrokIsan",
+  "q": [
+   "Sai krok Isan",
+   "Isan sausage",
+   "ไส้กรอกอีสาน"
+  ]
+ },
+ {
+  "key": "lookChinPing",
+  "q": [
+   "Luk chin ping",
+   "Thai meatball skewers",
+   "ลูกชิ้นปิ้ง"
+  ]
+ },
+ {
+  "key": "khanomBuang",
+  "q": [
+   "Khanom bueang",
+   "Khanom buang Thai crepe",
+   "ขนมเบื้อง"
+  ]
+ },
+ {
+  "key": "kluayTod",
+  "q": [
+   "Kluai khaek",
+   "Thai fried banana",
+   "กล้วยแขก"
+  ]
+ },
+ {
+  "key": "hoyTod",
+  "q": [
+   "Hoi thot",
+   "Thai oyster omelette",
+   "หอยทอด"
+  ]
+ },
+ {
+  "key": "paThongKo",
+  "q": [
+   "Patongko",
+   "Pa thong ko",
+   "ปาท่องโก๋"
+  ]
+ },
+ {
+  "key": "buaLoy",
+  "q": [
+   "Bua loi",
+   "Bua loy Thai dessert",
+   "บัวลอย"
+  ]
+ },
+ {
+  "key": "tubTimKrob",
+  "q": [
+   "Thapthim krop",
+   "Tub tim krob",
+   "ทับทิมกรอบ"
+  ]
+ },
+ {
+  "key": "lodChong",
+  "q": [
+   "Lot chong",
+   "Lod chong Thai dessert",
+   "ลอดช่อง"
+  ]
+ },
+ {
+  "key": "khanomChan",
+  "q": [
+   "Khanom chan",
+   "Thai layer cake",
+   "ขนมชั้น"
+  ]
+ },
+ {
+  "key": "thongYip",
+  "q": [
+   "Thong yip",
+   "Foi thong",
+   "ทองหยิบ"
+  ]
+ },
+ {
+  "key": "chaManao",
+  "q": [
+   "Cha manao",
+   "Thai lemon iced tea",
+   "ชามะนาว"
+  ]
+ },
+ {
+  "key": "oliang",
+  "q": [
+   "Oliang",
+   "Thai iced coffee",
+   "โอเลี้ยง"
+  ]
+ },
+ {
+  "key": "namTaoHu",
+  "q": [
+   "Nam tao hu",
+   "Thai soy milk",
+   "น้ำเต้าหู้"
+  ]
+ },
+ {
+  "key": "namMaprao",
+  "q": [
+   "Nam hom coconut",
+   "Thai young coconut",
+   "มะพร้าวน้ำหอม"
+  ]
+ },
+ {
+  "key": "winterFruitFeb",
+  "q": [
+   "Syzygium samarangense Thailand",
+   "Ziziphus mauritiana fruit",
+   "Thai fruit stall"
+  ]
+ },
+ {
+  "key": "rotiSaiMai",
+  "q": [
+   "Roti sai mai",
+   "Roti saimai Ayutthaya",
+   "โรตีสายไหม"
+  ]
+ },
+ {
+  "key": "kungMaeNamPao",
+  "q": [
+   "Macrobrachium rosenbergii grilled",
+   "Grilled river prawn Thailand",
+   "กุ้งแม่น้ำเผา"
+  ]
+ },
+ {
+  "key": "ayutthayaBoatNoodles",
+  "q": [
+   "Boat noodles Ayutthaya",
+   "Kuai tiao ruea",
+   "ก๋วยเตี๋ยวเรืออยุธยา"
+  ]
+ },
+ {
+  "key": "khaoLamNongMon",
+  "q": [
+   "Khao lam",
+   "Sticky rice in bamboo",
+   "ข้าวหลาม หนองมน"
+  ]
+ },
+ {
+  "key": "angSilaSeafood",
+  "q": [
+   "Ang Sila market",
+   "Ang Sila Chonburi seafood",
+   "อ่างศิลา"
+  ]
+ },
+ {
+  "key": "horMok",
+  "q": [
+   "Ho mok",
+   "Hor mok pla",
+   "ห่อหมก"
+  ]
+ },
+ {
+  "key": "plaMuekYang",
+  "q": [
+   "Pla muek yang",
+   "Thai grilled squid",
+   "ปลาหมึกย่าง"
+  ]
+ },
+ {
+  "key": "plaKangKanchanaburi",
+  "q": [
+   "Choo chee pla",
+   "Hemibagrus wyckioides",
+   "Kanchanaburi floating restaurant"
+  ]
+ },
+ {
+  "key": "kaengPa",
+  "q": [
+   "Kaeng pa",
+   "Jungle curry",
+   "แกงป่า"
+  ]
+ },
+ {
+  "key": "kraphoPla",
+  "q": [
+   "Fish maw soup Thailand",
+   "Kra pho pla",
+   "กระเพาะปลา"
+  ]
+ },
+ {
+  "key": "joddFairs",
+  "q": [
+   "Jodd Fairs",
+   "Jodd Fairs night market"
+  ]
+ },
+ {
+  "key": "thepprasit",
+  "q": [
+   "Thepprasit night market",
+   "Thepprasit market Pattaya"
+  ]
+ },
+ {
+  "key": "srinakarin",
+  "q": [
+   "Train Night Market Srinakarin",
+   "Talad Rot Fai Srinakarin"
+  ]
+ },
+ {
+  "key": "artParadise",
+  "q": [
+   "Art in Paradise Pattaya",
+   "Art in Paradise"
+  ]
+ }
+]
