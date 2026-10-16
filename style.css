@@ -796,3 +796,62 @@ html[data-size=large] body>:not(dialog){zoom:1.15}
 .photo-search span{font-size:12px;color:var(--muted)}
 .photo-search b{display:inline-flex;align-items:center;min-height:32px;padding:0 14px;border-radius:999px;background:var(--surface);font-size:13px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .places.compact .photo-search b{min-height:28px;padding:0 10px;font-size:12px}
+
+/* ── 第五輪：雙時鐘、航班動態、我想去、分享、使用教學、空氣品質、傳位置、換匯、伴手禮 ── */
+.dual-clock{font-size:13px;color:var(--muted);white-space:nowrap}
+.dual-clock b{color:var(--ink);font-variant-numeric:tabular-nums}
+.flight-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0 0!important}
+.flight-links a{font-size:13px;font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-color:var(--aqua);text-underline-offset:3px}
+.flight-links a:hover{text-decoration:underline}
+.place-art{position:relative}
+.fav-btn{position:absolute;top:8px;right:8px;z-index:2;display:grid;place-items:center;width:38px;height:38px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:#B4545F;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.fav-btn.on{background:#fff;color:#D0384A}
+.places.compact .fav-btn{width:32px;height:32px;font-size:18px;top:6px;right:6px}
+.share-dialog{width:min(440px,96vw)}
+.qr-box{display:grid;place-items:center;margin:4px auto 10px;width:min(260px,70vw);aspect-ratio:1;background:#fff;border-radius:var(--r-sm);padding:8px}
+.qr-box svg{width:100%;height:100%}
+.qr-box p{text-align:center}
+.share-url{text-align:center;font-size:13px;color:var(--muted);overflow-wrap:anywhere;margin:0 0 12px}
+.share-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0}
+.guide-dialog{width:min(480px,96vw)}
+.guide-dialog h3{margin:6px 0 10px;font-size:20px}
+.guide-dialog p,.guide-ol{font-size:16px;line-height:1.6}
+.guide-ol{padding-left:22px}
+.guide-ol li{margin:4px 0}
+.guide-groups{margin:10px 0}
+.guide-dots{display:flex;gap:6px;margin:0}
+.guide-dots span{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.guide-dots span.on{background:var(--brand);width:22px;border-radius:4px}
+.guide-nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.ios-share{display:inline-block;padding:0 4px;border:1px solid var(--line);border-radius:4px}
+.tool-quick{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.loc-box{margin-bottom:14px}
+.loc-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:16px;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--coral-soft)}
+.loc-card h3{margin:0 0 2px;font-size:17px}
+.loc-card p{margin:0}
+#loc-result{flex-basis:100%}
+#loc-result:empty{display:none}
+.loc-msg{padding:10px 12px;border-radius:var(--r-sm);background:var(--surface);font-size:14px;overflow-wrap:anywhere}
+.loc-err{color:var(--danger);font-size:14px}
+.aqi-tip{padding:8px 12px;border-radius:var(--r-sm);background:var(--mango-soft);font-size:14px;color:var(--ink)}
+.exchange h4{margin:14px 0 4px;font-size:15px;color:var(--ink)}
+.exchange h4:first-child{margin-top:0}
+.exchange p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.exchange .inline{margin-top:8px}
+.ex-result{padding:10px 12px;border-radius:var(--r-sm);background:var(--aqua-soft);font-size:14px;color:var(--ink)}
+.ex-result:empty{display:none}
+.gifts-panel{margin-top:16px}
+.gifts-panel h3{margin:0}
+.gift-form{margin:10px 0 14px}
+.gift-list{list-style:none;margin:0;padding:0;border:1.5px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.gift{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface)}
+.gift+.gift{border-top:1px solid var(--line)}
+.gift.editing{background:var(--aqua-soft)}
+.gift-check{flex:1;display:flex;align-items:center;gap:10px;margin:0;font-size:15px;color:var(--ink);cursor:pointer}
+.gift-check input{width:22px;height:22px;min-height:0;margin:0;flex:none;accent-color:var(--leaf)}
+.gift-check small{display:block;font-size:12px;color:var(--muted)}
+.gift.done b{text-decoration:line-through;color:var(--muted)}
+.gift-btns{display:flex;flex:none}
+.gift-sub{margin:14px 0 6px;font-size:13px;font-weight:700;color:var(--muted)}
+@media (max-width:560px){.loc-card .primary{width:100%}}
+@media print{.fav-btn,.dual-clock{display:none}}
