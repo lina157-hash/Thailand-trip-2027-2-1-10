@@ -124,12 +124,13 @@ $('#prep-alert')?.addEventListener('click', e => {
 });
 $('#group-pick')?.addEventListener('click', () => setTimeout(renderPrep));
 
-/* ── 匯率換算（旅途工具）：用和「旅費記帳」一樣的匯率（有填自訂匯率就用自訂的） ── */
+/* ── 匯率換算（旅途工具）：用和「旅費記帳」匯率表一樣的匯率（有填「我的匯率」就用自己的） ── */
 function fxLine() {
-  const r = fxRate();
-  if (state.rate !== '') return `用你在「旅費記帳」填的匯率：1 泰銖 = ${esc(state.rate)} 台幣`;
+  const r = fxRate(), b = fx.bot;
+  if (state.rate !== '') return `用你在「旅費記帳」匯率表填的匯率：1 泰銖 = ${esc(state.rate)} 台幣`;
+  if (b) return `臺灣銀行 ${md(b.time.slice(0, 10))} ${b.time.slice(11)} ${RATE_KINDS[state.rateKind][0]}：1 泰銖 = ${r.toFixed(4)} 台幣。可以在「旅費記帳」的匯率表改用自己的匯率。`;
   if (fx.source === 'builtin') return `暫用內建參考匯率：1 泰銖 ≈ ${r.toFixed(3)} 台幣（連上網路後會自動更新）`;
-  return `${md(fx.date)} 的參考匯率：1 泰銖 ≈ ${r.toFixed(3)} 台幣。實際換匯、刷卡會略有不同。`;
+  return `${md(fx.date)} 的國際參考匯率：1 泰銖 ≈ ${r.toFixed(3)} 台幣（暫時讀不到臺灣銀行匯率）。`;
 }
 const fxRound = n => n >= 100 ? Math.round(n) : Math.round(n * 10) / 10;
 function renderFxBox() {
@@ -145,7 +146,6 @@ function renderFxBox() {
   const thb = $('#fx-thb'); if (thb.value !== '') thb.dispatchEvent(new Event('input'));
 }
 document.querySelector('.tabs [data-tab="tools"]')?.addEventListener('click', () => { renderFxBox(); fx.refresh().then(changed => { if (changed) renderFxBox(); }); });
-$('#rate')?.addEventListener('change', renderFxBox);
 
 /* ── 一頁列印版：整趟行程濃縮成一張 A4，可以印出來或存成 PDF。依「我的組別」篩選。 ── */
 function renderPrint() {

@@ -5,9 +5,6 @@ on:
   schedule:
     - cron: '10 1,4,7 * * 1-5'
   workflow_dispatch:
-  push:
-    branches: [claude/project-thread-73tzlq]
-    paths: [.github/workflows/bot-rate.yml, .github/scripts/bot_rate.py]
 permissions:
   contents: write
 concurrency: bot-rate
