@@ -55,8 +55,9 @@ if (shareDlg) {
   });
 }
 
-/* ── 第一次使用教學：3 步驟（選組別、看今天、加到主畫面）。看過就不再自動跳出，旅途工具裡可以再打開 ── */
-const GUIDE_KEY = 'thai-days-guide-v1';
+/* ── 第一次使用教學：4 步驟（選組別、看今天、Google 登入同步、加到主畫面）。看過就不再自動跳出，旅途工具裡可以再打開 ── */
+const GUIDE_KEY = 'thai-days-guide-v1', GUIDE_SYNC_KEY = 'thai-days-guide-sync-v1';
+let guideOnly = false; // 已經看過教學的人：只補看一次「Google 登入同步」這一步
 let guideStep = 0, installEvt = null;
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; });
 const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
@@ -65,7 +66,10 @@ function guideSteps() {
   const gs = tripGroups(), cur = gs.includes(myGroup) ? myGroup : '';
   return [
     { t: '選你的組別', b: gs.length ? `<p>大家搭的航班不一樣，選了自己的組別，每日行程就只會顯示你那組的安排。</p><div class="chips guide-groups">${['', ...gs].map(g => `<button type="button" class="chip${g === cur ? ' active' : ''}" data-guide-group="${esc(g)}" aria-pressed="${g === cur}">${g ? esc(g) : '看全部'}</button>`).join('')}</div><p class="muted">之後也可以在「每日行程」最上面改。</p>` : '<p>每日行程會列出每天的安排、集合時間和地圖。點地點就會打開 Google 地圖。</p>' },
-    { t: '看「今天」和下面的分頁', b: '<p>旅途中，最上面會出現「今天」卡片：現在要做什麼、下一個行程、集合時間。</p><p>畫面下方的按鈕可以切換：<b>每日行程</b>、<b>旅遊靈感</b>、<b>旅費記帳</b>、<b>出發清單</b>、<b>注意事項</b>、<b>旅途工具</b>（給司機看的地址、緊急電話、走散時傳位置）。</p>' },
+    { t: '看「今天」和下面的分頁', b: '<p>旅途中，最上面會出現「今天」卡片：現在要做什麼、下一個行程、集合時間。</p><p>畫面下方的按鈕可以切換：<b>每日行程</b>、<b>旅遊靈感</b>、<b>在地美食</b>、<b>旅費記帳</b>、<b>出發清單</b>、<b>伴手禮</b>、<b>注意事項</b>、<b>旅途工具</b>（給司機看的地址、緊急電話、走散時傳位置）。</p>' },
+    ...($('#sync-btn') ? [{ sync: true, t: '用 Google 登入，資料不怕不見', b: document.documentElement.classList.contains('synced')
+      ? '<p>你已經用 Google 帳號登入了 👍 記帳、勾選和清單都會自動同步。</p><p class="muted">在其他手機或電腦登入同一個帳號，就會看到一樣的資料。</p>'
+      : '<p>按右上角的 <b>☁️ 登入同步</b>，用自己的 Google 帳號登入，有這些好處：</p><ul class="guide-ol"><li><b>換手機、手機壞掉或清掉瀏覽器資料</b>，旅費記帳、出發清單勾選、伴手禮、我想去、我的備註都還在</li><li><b>手機和電腦一起用</b>：出發前在電腦整理清單，旅途中用手機看，自動同步</li><li><b>只有你自己看得到</b>，旅伴和主辦人都看不到</li></ul><p><button type="button" class="primary" data-guide-sync>現在就登入</button></p><p class="muted">不登入也可以照常使用，資料就只存在這台裝置。</p>' }] : []),
     { t: '加到手機主畫面', b: isStandalone() ? '<p>你已經把網站加到主畫面了 👍 之後從主畫面的圖示打開就好，沒網路時也看得到。</p>'
       : isIos() ? '<ol class="guide-ol"><li>用 <b>Safari</b> 打開這個網站</li><li>點下方（或上方）的 <b>分享</b> 按鈕 <span class="ios-share" aria-hidden="true">⬆︎</span></li><li>往下滑，點 <b>加入主畫面</b></li><li>右上角點 <b>新增</b></li></ol><p class="muted">之後從主畫面的圖示打開，就像 App 一樣，沒網路時也看得到。</p>'
       : `${installEvt ? '<p><button type="button" class="primary" data-guide-install>一鍵加到主畫面</button></p>' : ''}<ol class="guide-ol"><li>用 <b>Chrome</b> 打開這個網站</li><li>點右上角 <b>⋮</b></li><li>點 <b>加到主畫面</b>（或「安裝應用程式」）</li></ol><p class="muted">之後從主畫面的圖示打開，就像 App 一樣，沒網路時也看得到。</p>` },
@@ -73,24 +77,27 @@ function guideSteps() {
 }
 const guideDlg = $('#guide-dialog');
 function renderGuide() {
-  const steps = guideSteps(), s = steps[guideStep];
-  $('#guide-body').innerHTML = `<p class="guide-dots" aria-label="第 ${guideStep + 1} 步，共 ${steps.length} 步">${steps.map((_, i) => `<span class="${i === guideStep ? 'on' : ''}"></span>`).join('')}</p><h3>${guideStep + 1}. ${s.t}</h3>${s.b}<div class="guide-nav">${guideStep ? '<button type="button" class="quiet" data-guide-prev>上一步</button>' : '<button type="button" class="quiet" data-guide-done>之後再看</button>'}${guideStep < steps.length - 1 ? '<button type="button" class="primary" data-guide-next>下一步</button>' : '<button type="button" class="primary" data-guide-done>開始使用</button>'}</div>`;
+  const all = guideSteps(), steps = guideOnly ? all.filter(x => x.sync) : all, s = steps[guideStep];
+  const sub = $('#guide-sub'); if (sub) sub.textContent = guideOnly ? '新功能：換手機資料也不會不見' : `${all.length} 個步驟，很快就會用`;
+  $('#guide-body').innerHTML = `<p class="guide-dots" aria-label="第 ${guideStep + 1} 步，共 ${steps.length} 步">${steps.map((_, i) => `<span class="${i === guideStep ? 'on' : ''}"></span>`).join('')}</p><h3>${guideOnly ? '' : `${guideStep + 1}. `}${s.t}</h3>${s.b}<div class="guide-nav">${guideStep ? '<button type="button" class="quiet" data-guide-prev>上一步</button>' : '<button type="button" class="quiet" data-guide-done>之後再看</button>'}${guideStep < steps.length - 1 ? '<button type="button" class="primary" data-guide-next>下一步</button>' : `<button type="button" class="primary" data-guide-done>${guideOnly ? '知道了' : '開始使用'}</button>`}</div>`;
 }
-function openGuide() { guideStep = 0; renderGuide(); guideDlg.showModal(); }
+function openGuide(only = false) { guideStep = 0; guideOnly = only; renderGuide(); guideDlg.showModal(); }
 if (guideDlg) {
-  guideDlg.addEventListener('close', () => { try { localStorage.setItem(GUIDE_KEY, '1'); } catch {} });
+  guideDlg.addEventListener('close', () => { try { localStorage.setItem(GUIDE_KEY, '1'); localStorage.setItem(GUIDE_SYNC_KEY, '1'); } catch {} });
   guideDlg.addEventListener('click', e => {
     if (e.target.closest('[data-guide-next]')) { guideStep++; return renderGuide(); }
     if (e.target.closest('[data-guide-prev]')) { guideStep--; return renderGuide(); }
     if (e.target.closest('[data-guide-done]')) return guideDlg.close();
+    if (e.target.closest('[data-guide-sync]')) { guideDlg.close(); return $('#sync-btn')?.click(); }
     const g = e.target.closest('[data-guide-group]');
     if (g) { $(`#group-pick [data-group="${CSS.escape(g.dataset.guideGroup)}"]`)?.click(); return renderGuide(); }
     if (e.target.closest('[data-guide-install]') && installEvt) { installEvt.prompt(); installEvt.userChoice.finally(() => { installEvt = null; renderGuide(); }); }
   });
   document.addEventListener('click', e => { if (e.target.closest('[data-guide-open]')) openGuide(); });
+  let seenSync = false; try { seenSync = !!localStorage.getItem(GUIDE_SYNC_KEY); } catch {}
   let seen = false; try { seen = !!localStorage.getItem(GUIDE_KEY); } catch {}
   // 自動化測試（navigator.webdriver）和列印時不自動跳出
-  if (!seen && !navigator.webdriver) setTimeout(() => { if (!document.querySelector('dialog[open]')) openGuide(); }, 800);
+  if (!navigator.webdriver && (!seen || !seenSync && $('#sync-btn'))) setTimeout(() => { if (!document.querySelector('dialog[open]') && !(seen && document.documentElement.classList.contains('synced'))) openGuide(seen); }, seen ? 2500 : 800);
 }
 
 /* ── 空氣品質：Open-Meteo 的 PM2.5 與美國 AQI（免費、不需帳號），每小時更新。
