@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: sudo apt-get update -q && sudo apt-get install -y -q fonts-noto-cjk
       - run: npm i --no-save playwright@1.48.2
         env: { PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1' }
       - run: |
-          mkdir -p .preview
+          rm -rf .preview; mkdir -p .preview
           (python3 -m http.server 8765 >/dev/null 2>&1 &)
           sleep 2
           node .github/preview/shot.mjs
       - run: |
           git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
-          git add .preview && git commit -m "暫存地圖預覽圖" && git push
+          git add -A .preview && git commit -m "暫存地圖預覽圖" && git push
