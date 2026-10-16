@@ -840,9 +840,7 @@ html[data-size=large] body>:not(dialog){zoom:1.15}
 .exchange .inline{margin-top:8px}
 .ex-result{padding:10px 12px;border-radius:var(--r-sm);background:var(--aqua-soft);font-size:14px;color:var(--ink)}
 .ex-result:empty{display:none}
-.gifts-panel{margin-top:16px}
-.gifts-panel h3{margin:0}
-.gift-form{margin:10px 0 14px}
+.gift-form{margin:0 0 14px}
 .gift-list{list-style:none;margin:0;padding:0;border:1.5px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
 .gift{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface)}
 .gift+.gift{border-top:1px solid var(--line)}
