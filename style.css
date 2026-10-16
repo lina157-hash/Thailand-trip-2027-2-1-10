@@ -874,3 +874,12 @@ html[data-size=large] body>:not(dialog){zoom:1.15}
 .map-pop time{font-variant-numeric:tabular-nums;color:#666}
 .map-pop a{display:inline-block;margin-top:6px}
 .leaflet-container{font-family:var(--body)}
+
+/* 跨裝置同步（gsync.js）：登入 Google 後 html 加上 .synced，提示文字跟著換 */
+.sync-on{display:none}
+html.synced .sync-on{display:inline}
+html.synced .sync-off{display:none}
+.sync-dialog p{margin:0 0 12px;line-height:1.6}
+.sync-dialog .form-actions{display:flex;gap:8px;flex-wrap:wrap}
+.sync-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:10px;padding:8px 10px 8px 16px;border-radius:999px;background:var(--surface);color:var(--ink);box-shadow:var(--shadow);font-size:14px;white-space:nowrap}
+.sync-bar[hidden]{display:none}
