@@ -2,9 +2,16 @@
    同步的內容：旅費記帳、出發清單與注意事項的勾選、伴手禮清單、我想去、我的備註、自選活動、準備提醒、保險資料、我的組別、分帳的「我」。
    每個人只能讀寫自己的資料（Firestore 規則：users/{uid} 只限本人），旅伴與主辦人都看不到。
    主辦人的 GitHub 金鑰、收款紀錄、顯示設定等不在同步範圍。
-   FIREBASE_CONFIG 是 Firebase 專案的公開設定（不是密碼）；沒填時整個功能不出現，網站照舊只存在這台裝置。
+   FIREBASE_CONFIG 是主辦人 Firebase 專案 thai-trip-2027 的公開設定（不是密碼，安全靠 Firestore 規則）；改成 null 就會關掉整個功能。
    這支檔案要最先載入，才能在其他程式寫入資料時記下修改時間。 */
-const FIREBASE_CONFIG = null;
+const FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyBEDL20GZq3T8zvykWBwPoLR-_Cia4ltzw',
+  authDomain: 'thai-trip-2027.firebaseapp.com',
+  projectId: 'thai-trip-2027',
+  storageBucket: 'thai-trip-2027.firebasestorage.app',
+  messagingSenderId: '706749420739',
+  appId: '1:706749420739:web:7926c2caab28d0e14f7e76',
+};
 
 (() => {
   const SYNC_KEYS = ['thai-days-personal-v1', 'thai-days-name-v1', 'thai-days-joins-v1', 'thai-days-prep-v1', 'thai-days-notes-v1', 'thai-days-insurance-v1', 'thai-days-group-v1', 'thai-days-split-me-v1'];
