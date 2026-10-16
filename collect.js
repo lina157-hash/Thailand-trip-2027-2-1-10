@@ -1,6 +1,8 @@
 /* 收款紀錄（主辦人登入後右上角出現「收款」）：記下出發前向每位旅伴收了多少旅費、哪天收的、怎麼付的。
- * 只存在主辦人這台裝置的瀏覽器裡，不會上傳到網站或 GitHub（網站資料是公開的，金錢紀錄不放那裡），旅伴完全看不到。
- * 換手機或清除瀏覽器資料前，用「下載備份」存一份，新裝置再「還原備份」；「匯出 Excel」可以留檔或列印。 */
+ * 資料存在主辦人這台裝置的瀏覽器裡，旅伴完全看不到。
+ * 「加密同步」（選用）：主辦人設一組同步密碼，紀錄用這組密碼加密（PBKDF2＋AES-GCM）後才存進儲存庫的 collect.enc.json，
+ * 網站資料雖然公開，但沒有密碼的人只看得到亂碼；主辦人在別台裝置登入、輸入同一組密碼就能看到同一份紀錄。
+ * 密碼只留在主辦人自己的裝置，不會上傳。也可以用「下載備份」「還原備份」「匯出 Excel」留檔。 */
 const COLLECT_KEY = 'thai-days-collect-v1';
 const PAY_METHODS = ['轉帳', '現金', 'LINE Pay', '其他'];
 let collectEditId = null;
@@ -10,9 +12,17 @@ const validCollect = c => !!c && typeof c === 'object' && c.version === 1
   && Object.entries(c.due).every(([k, v]) => typeof k === 'string' && k.length <= 40 && Number.isFinite(v) && v >= 0 && v <= 1e8)
   && Array.isArray(c.records) && c.records.every(r => r && typeof r.id === 'string' && typeof r.name === 'string' && r.name.trim() && r.name.length <= 40
     && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && Number.isFinite(r.amount) && r.amount > 0 && r.amount <= 1e8
-    && typeof r.method === 'string' && r.method.length <= 20 && typeof r.note === 'string' && r.note.length <= 200);
+    && typeof r.method === 'string' && r.method.length <= 20 && typeof r.note === 'string' && r.note.length <= 200)
+  && (c.updatedAt === undefined || Number.isFinite(c.updatedAt))
+  && (c.deleted === undefined || Array.isArray(c.deleted) && c.deleted.length <= 5000 && c.deleted.every(x => typeof x === 'string' && x.length <= 60));
 function readCollect() { try { const c = JSON.parse(localStorage.getItem(COLLECT_KEY)); if (validCollect(c)) return c; } catch {} return { version: 1, due: {}, records: [] }; }
-function writeCollect(c) { try { localStorage.setItem(COLLECT_KEY, JSON.stringify(c)); return true; } catch { toast('儲存失敗，請先下載備份'); return false; } }
+/* 每次修改都記下時間，並在幾秒後自動加密同步（有開同步的話）；keepTime＝同步合併回來的資料，不算新的修改 */
+function writeCollect(c, keepTime) {
+  if (!keepTime) c.updatedAt = Date.now();
+  try { localStorage.setItem(COLLECT_KEY, JSON.stringify(c)); } catch { toast('儲存失敗，請先下載備份'); return false; }
+  if (!keepTime && typeof scheduleCollectSync === 'function') scheduleCollectSync();
+  return true;
+}
 
 const twDate = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const ntd = n => 'NT$ ' + Math.round(n).toLocaleString('zh-TW');
@@ -59,7 +69,7 @@ function renderCollect() {
     + `<h3 class="col-h">收款明細（${recs.length} 筆）</h3>`
     + (recs.length ? `<div class="col-recs">${recs.map(r => `<div class="col-rec${r.id === collectEditId ? ' editing' : ''}"><span class="col-date">${mdOf(r.date)}${r.date.slice(0, 4) !== twDate().slice(0, 4) ? `<small>${r.date.slice(0, 4)}</small>` : ''}</span><span class="col-who"><b>${esc(r.name)}</b><small>${esc(r.method)}${r.note ? '・' + esc(r.note) : ''}</small></span><strong class="col-num">${ntd(r.amount)}</strong><span class="col-btns"><button type="button" class="text-btn" data-col-edit="${esc(r.id)}">修改</button><button type="button" class="text-btn danger" data-col-del="${esc(r.id)}" aria-label="刪除 ${esc(r.name)} ${mdOf(r.date)} 的收款">刪除</button></span></div>`).join('')}</div>` : '<p class="muted">還沒有收款紀錄。</p>')
     + `<div class="col-tools"><button type="button" class="quiet" data-col-csv${c.records.length || rows.length ? '' : ' disabled'}>匯出 Excel</button><button type="button" class="quiet" data-col-backup>下載備份</button><label class="quiet col-restore">還原備份<input type="file" accept=".json,application/json" data-col-restore hidden></label></div>`
-    + `<p class="muted col-privacy">🔒 這份紀錄只存在這台裝置，不會上傳到網站，旅伴看不到。換手機或清除瀏覽器資料前，請先「下載備份」。</p>`;
+    + (typeof syncPanel === 'function' ? syncPanel() : '');
 }
 
 function downloadFile(name, text, type) {
@@ -76,7 +86,8 @@ function collectCsv(c) {
 
 const collectDlg = $('#collect-dialog');
 if (collectDlg) {
-  $('#collect-btn')?.addEventListener('click', () => { collectEditId = null; renderCollect(); collectDlg.showModal(); });
+  $('#collect-btn')?.addEventListener('click', () => { collectEditId = null; renderCollect(); collectDlg.showModal(); if (typeof openCollectSync === 'function') openCollectSync(); });
+  collectDlg.addEventListener('close', () => { if (typeof flushCollectSync === 'function') flushCollectSync(); });
   collectDlg.addEventListener('submit', e => {
     if (e.target.id !== 'collect-form') return;
     e.preventDefault();
@@ -102,7 +113,8 @@ if (collectDlg) {
         let c; try { c = JSON.parse(t); } catch {}
         if (!validCollect(c)) return toast('這不是收款紀錄的備份檔');
         if (!confirm(`用備份檔取代目前的收款紀錄？（備份裡有 ${c.records.length} 筆）`)) return;
-        if (writeCollect(c)) { toast('已還原收款紀錄'); collectEditId = null; renderCollect(); }
+        c.deleted = [...new Set([...(c.deleted || []), ...readCollect().records.map(r => r.id).filter(id => !c.records.some(r => r.id === id))])];
+        if (writeCollect(c)) { collectReplaceNext = true; toast('已還原收款紀錄'); collectEditId = null; renderCollect(); }
       }).finally(() => { e.target.value = ''; });
     }
   });
@@ -114,7 +126,7 @@ if (collectDlg) {
     const del = e.target.closest('[data-col-del]');
     if (del) {
       const c = readCollect(), r = c.records.find(x => x.id === del.dataset.colDel);
-      if (r && confirm(`刪除 ${r.name} ${mdOf(r.date)} 的 ${ntd(r.amount)}？`)) { c.records = c.records.filter(x => x !== r); if (collectEditId === r.id) collectEditId = null; writeCollect(c); renderCollect(); }
+      if (r && confirm(`刪除 ${r.name} ${mdOf(r.date)} 的 ${ntd(r.amount)}？`)) { c.records = c.records.filter(x => x !== r); c.deleted = [...(c.deleted || []), r.id]; if (collectEditId === r.id) collectEditId = null; writeCollect(c); renderCollect(); }
       return;
     }
     if (e.target.closest('[data-col-due-all]')) {
@@ -127,4 +139,141 @@ if (collectDlg) {
     if (e.target.closest('[data-col-csv]')) return downloadFile(`收款紀錄-${twDate()}.csv`, collectCsv(readCollect()), 'text/csv;charset=utf-8');
     if (e.target.closest('[data-col-backup]')) return downloadFile(`收款紀錄備份-${twDate()}.json`, JSON.stringify(readCollect(), null, 1), 'application/json');
   });
+}
+
+/* ── 加密同步 ──
+   雲端檔案 collect.enc.json：{ v, kdf, iter, salt, iv, data }，data 是整份收款紀錄加密後的內容。
+   金鑰由同步密碼＋salt 用 PBKDF2-SHA256 算出（31 萬次），只存在這台裝置。
+   兩台裝置都改過時會合併：收款明細以每筆的代號合併，刪除過的會記住不再出現；應收金額用比較新的那份。 */
+const SYNC_FILE = 'collect.enc.json', SYNC_KEY = 'thai-days-collect-key-v1', SYNC_ITER = 310000;
+let syncKey = null, syncSalt = '', syncState = 'idle', syncMsg = '', syncAt = 0, syncTimer = 0, colSyncBusy = false, cloudExists = null, collectReplaceNext = false;
+const b64 = u8 => btoa(String.fromCharCode(...u8)), unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function deriveSyncKey(pw, salt) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt: unb64(salt), iterations: SYNC_ITER }, base, { name: 'AES-GCM', length: 256 }, true, ['encrypt', 'decrypt']);
+}
+async function encryptCollect(c) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, syncKey, new TextEncoder().encode(JSON.stringify(c)));
+  return { v: 1, kdf: 'PBKDF2-SHA256', iter: SYNC_ITER, salt: syncSalt, iv: b64(iv), data: b64(new Uint8Array(ct)) };
+}
+async function decryptCollect(f, key) {
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(f.iv) }, key, unb64(f.data));
+  const c = JSON.parse(new TextDecoder().decode(pt));
+  if (!validCollect(c)) throw Error('format');
+  return c;
+}
+(async () => { try { const k = JSON.parse(localStorage.getItem(SYNC_KEY)); if (k && k.salt && k.key) { syncKey = await crypto.subtle.importKey('raw', unb64(k.key), 'AES-GCM', true, ['encrypt', 'decrypt']); syncSalt = k.salt; syncAt = k.at || 0; } } catch {} })();
+async function rememberSyncKey() { try { localStorage.setItem(SYNC_KEY, JSON.stringify({ salt: syncSalt, key: b64(new Uint8Array(await crypto.subtle.exportKey('raw', syncKey))), at: syncAt })); } catch {} }
+const syncReady = () => typeof hostToken === 'string' && !!hostToken && !!GH.owner && !!GH.repo;
+const syncPath = () => '/contents/' + SYNC_FILE + (GH.branch ? '?ref=' + encodeURIComponent(GH.branch) : '');
+async function readCloudCollect() {
+  const r = await github(syncPath(), hostToken);
+  if (r.status === 404) return null;
+  if (!r.ok) throw Error('GitHub ' + r.status);
+  const j = await r.json();
+  return { file: JSON.parse(fromBase64(j.content)), sha: j.sha };
+}
+async function writeCloudCollect(c, sha) {
+  const body = { message: '更新收款紀錄（加密）', content: toBase64(JSON.stringify(await encryptCollect(c))) };
+  if (sha) body.sha = sha; if (GH.branch) body.branch = GH.branch;
+  return github('/contents/' + SYNC_FILE, hostToken, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+}
+function mergeCollect(a, b) {
+  const deleted = [...new Set([...(a.deleted || []), ...(b.deleted || [])])], newer = (b.updatedAt || 0) > (a.updatedAt || 0) ? b : a, older = newer === a ? b : a;
+  const byId = new Map(); for (const r of [...older.records, ...newer.records]) byId.set(r.id, r);
+  const order = [...a.records, ...b.records].map(r => r.id).filter((id, i, arr) => arr.indexOf(id) === i);
+  return { version: 1, due: { ...newer.due }, records: order.filter(id => !deleted.includes(id)).map(id => byId.get(id)), deleted, updatedAt: Math.max(a.updatedAt || 0, b.updatedAt || 0) };
+}
+const sameCollect = (a, b) => JSON.stringify({ d: a.due, r: a.records, x: [...(a.deleted || [])].sort() }) === JSON.stringify({ d: b.due, r: b.records, x: [...(b.deleted || [])].sort() });
+function syncStatus(state, msg) { syncState = state; syncMsg = msg || ''; const el = $('#col-sync-status'); if (el) el.innerHTML = syncStatusText(); }
+function syncStatusText() {
+  const t = syncAt ? new Date(syncAt).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : '';
+  return syncState === 'busy' ? '同步中…' : syncState === 'error' ? `<span class="col-sync-err">${esc(syncMsg)}</span>` : t ? `最後同步：${t}（台灣時間）` : '';
+}
+async function syncCollect(opts = {}) {
+  if (!syncKey || !syncReady()) return;
+  if (colSyncBusy) { scheduleCollectSync(); return; }
+  colSyncBusy = true; clearTimeout(syncTimer); syncStatus('busy');
+  try {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const local = readCollect(), cloud = await readCloudCollect();
+      cloudExists = !!cloud;
+      const replace = opts.replace || collectReplaceNext;
+      let remote = null;
+      if (cloud && !replace) {
+        try { remote = await decryptCollect(cloud.file, syncKey); } catch {
+          // 別台裝置換了同步密碼：這台的舊金鑰作廢，改顯示輸入密碼的欄位（這台的紀錄保留，輸入新密碼後會合併）
+          syncKey = null; syncSalt = ''; try { localStorage.removeItem(SYNC_KEY); } catch {}
+          cloudExists = true; syncStatus('error', '同步密碼在別台裝置換過了，請輸入新的同步密碼。'); refreshSyncPanel();
+          return;
+        }
+      }
+      const merged = remote && !replace ? mergeCollect(local, remote) : local;
+      if (!sameCollect(merged, local)) { writeCollect(merged, true); const typing = collectDlg.contains(document.activeElement) && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName); if (collectDlg.open && !typing && !collectEditId) renderCollect(); }
+      if (!remote || !sameCollect(merged, remote)) {
+        const w = await writeCloudCollect(merged, cloud?.sha);
+        if (w.status === 409 || w.status === 422) continue; // 別台裝置剛好也在存，重新合併一次
+        if (!w.ok) throw Error(w.status === 401 || w.status === 403 ? '主辦人權杖沒有寫入權限，請重新登入。' : `同步失敗（GitHub ${w.status}），稍後會再試。`);
+      }
+      collectReplaceNext = false; syncAt = Date.now(); await rememberSyncKey(); syncStatus('ok');
+      return;
+    }
+    throw Error('同步失敗，稍後會再試。');
+  } catch (e) {
+    syncStatus('error', e.message || '同步失敗，請檢查網路。');
+  } finally { colSyncBusy = false; }
+}
+function scheduleCollectSync() { if (!syncKey) return; clearTimeout(syncTimer); syncTimer = setTimeout(syncCollect, 5000); }
+function flushCollectSync() { if (syncKey && syncTimer) { clearTimeout(syncTimer); syncTimer = 0; syncCollect(); } }
+async function openCollectSync() {
+  if (!syncReady()) return;
+  if (syncKey) return syncCollect();
+  try { cloudExists = !!(await readCloudCollect()); } catch { cloudExists = null; }
+  if (collectDlg.open) refreshSyncPanel();
+}
+function refreshSyncPanel() { const el = $('#col-sync'); if (el) el.outerHTML = syncPanel(); }
+function syncPanel() {
+  const head = '<h3 class="col-h">雲端同步（加密）</h3>';
+  if (!syncReady()) return `<div id="col-sync" class="col-sync">${head}<p class="muted">需要用主辦人登入才能同步。目前紀錄只存在這台裝置，換手機前請先「下載備份」。</p></div>`;
+  if (syncKey) return `<div id="col-sync" class="col-sync on">${head}<p>🔒 已開啟。這台裝置的修改會自動加密後同步；在別台裝置用主辦人登入、輸入同一組同步密碼，就能看到同一份紀錄。</p><p class="muted" id="col-sync-status">${syncStatusText()}</p><div class="col-tools"><button type="button" class="quiet" data-sync-now>立即同步</button><button type="button" class="quiet" data-sync-change>換同步密碼</button><button type="button" class="quiet" data-sync-off>這台停止同步</button></div><form id="col-sync-form" class="col-sync-form" data-mode="change" hidden><label>新的同步密碼（至少 8 個字）<input name="pw" type="password" minlength="8" maxlength="200" autocomplete="new-password" required></label><label>再輸入一次<input name="pw2" type="password" minlength="8" maxlength="200" autocomplete="new-password" required></label><button class="primary">改用新密碼</button><p class="muted">別台裝置之後要輸入新密碼。</p></form></div>`;
+  const unlock = cloudExists === true;
+  return `<div id="col-sync" class="col-sync">${head}<p>${unlock ? '雲端已經有加密的收款紀錄。輸入同步密碼，就會和這台裝置的紀錄合併。' : '設一組同步密碼，紀錄會加密後存到網站的儲存庫。網站雖然是公開的，但沒有密碼的人只看得到亂碼。之後在別台裝置用主辦人登入、輸入同一組密碼就能看到。'}</p><form id="col-sync-form" class="col-sync-form" data-mode="${unlock ? 'unlock' : 'setup'}"><label>同步密碼${unlock ? '' : '（至少 8 個字，請記好，忘記就打不開雲端的紀錄）'}<input name="pw" type="password" minlength="8" maxlength="200" autocomplete="${unlock ? 'current-password' : 'new-password'}" required></label>${unlock ? '' : '<label>再輸入一次<input name="pw2" type="password" minlength="8" maxlength="200" autocomplete="new-password" required></label>'}<button class="primary">${unlock ? '解鎖並同步' : '開始加密同步'}</button></form><p class="muted" id="col-sync-status">${syncStatusText()}</p></div>`;
+}
+if (collectDlg) {
+  collectDlg.addEventListener('submit', async e => {
+    if (e.target.id !== 'col-sync-form') return;
+    e.preventDefault();
+    const f = e.target, mode = f.dataset.mode, pw = f.elements.pw.value, btn = f.querySelector('button');
+    if (pw.length < 8) return toast('同步密碼至少 8 個字');
+    if (f.elements.pw2 && pw !== f.elements.pw2.value) return toast('兩次輸入的密碼不一樣');
+    btn.disabled = true; syncStatus('busy');
+    try {
+      const cloud = await readCloudCollect();
+      if (mode === 'unlock' && cloud) {
+        const key = await deriveSyncKey(pw, cloud.file.salt);
+        try { await decryptCollect(cloud.file, key); } catch { btn.disabled = false; return syncStatus('error', '密碼不對，請再試一次。'); }
+        syncKey = key; syncSalt = cloud.file.salt;
+      } else {
+        if (mode === 'setup' && cloud) { cloudExists = true; btn.disabled = false; syncStatus('idle'); refreshSyncPanel(); return toast('雲端已經有加密紀錄了，請輸入原本的同步密碼'); }
+        // 新設定或換密碼：先用舊金鑰把雲端的合併進來，再換新的 salt 和金鑰重新加密
+        if (mode === 'change' && cloud && syncKey) { try { writeCollect(mergeCollect(readCollect(), await decryptCollect(cloud.file, syncKey)), true); } catch {} }
+        syncSalt = b64(crypto.getRandomValues(new Uint8Array(16)));
+        syncKey = await deriveSyncKey(pw, syncSalt);
+        collectReplaceNext = true;
+      }
+      await rememberSyncKey();
+      await syncCollect();
+      toast(syncState === 'ok' ? (mode === 'unlock' ? '已解鎖，紀錄已合併' : '已加密同步') : '同步沒有成功，稍後會再試');
+      renderCollect();
+    } catch (err) { btn.disabled = false; syncStatus('error', '連不到 GitHub，請檢查網路後再試。'); }
+  });
+  collectDlg.addEventListener('click', e => {
+    if (e.target.closest('[data-sync-now]')) return syncCollect();
+    if (e.target.closest('[data-sync-change]')) { const f = $('#col-sync-form'); f.hidden = !f.hidden; if (!f.hidden) f.elements.pw.focus(); return; }
+    if (e.target.closest('[data-sync-off]') && confirm('這台裝置停止同步？（這台和雲端的紀錄都會保留，之後輸入密碼可以再開）')) {
+      syncKey = null; syncSalt = ''; syncAt = 0; clearTimeout(syncTimer); try { localStorage.removeItem(SYNC_KEY); } catch {} cloudExists = true; renderCollect();
+    }
+  });
+  window.addEventListener('pagehide', flushCollectSync);
 }

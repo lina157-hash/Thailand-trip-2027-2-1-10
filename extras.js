@@ -90,7 +90,8 @@ function weatherFor(d) {
   const key = cityOfDay(d), day = wxData?.data?.[key]?.['2027-02-' + String(d).padStart(2, '0')];
   if (!day) return '';
   const [icon, label] = WX_CODE(day.code);
-  return `${icon} ${WX_CITY[key].name} ${label} ${Math.round(day.max)}° / ${Math.round(day.min)}°${day.rain != null ? `・降雨 ${day.rain}%` : ''}`;
+  const date = '2027-02-' + String(d).padStart(2, '0'), aq = typeof aqiFor === 'function' ? aqiFor(key, date) : '';
+  return `${icon} ${WX_CITY[key].name} ${label} ${Math.round(day.max)}° / ${Math.round(day.min)}°${day.rain != null ? `・降雨 ${day.rain}%` : ''}${aq}`;
 }
 async function refreshWeather() {
   const today = bkkDate(), fresh = wxData && Date.now() - wxData.at < 3 * 3600000;

@@ -66,10 +66,12 @@ window.INSPIRE = (() => {
     khanomKrok: "Khanom krok - Thailand.jpg",
     jayFai: "Bangkok street food - Jay Fai - 51444505872.jpg",
   };
+  // 每個檔名的 MD5 前兩碼：用來直接組出 upload.wikimedia.org 的縮圖網址（少一次轉址）。新增照片沒填也沒關係，會改用 Special:FilePath。
+  const WMH = {erawan: 'bc', watArun: 'bd', goldenMount: '11', watBenja: '75', watSuthat: 'd2', sanctuary: '36', bigBuddha: '3e', talatNoi: 'af', yaowarat: '64', jimThompson: '29', lumphini: '0a', bangKrachao: 'fd', viewpoint: 'ec', kohLarn: 'd3', jomtien: 'd7', nongNooch: '7f', riverBoat: '42', muayThai: '21', rooftop: '77', chatuchak: 'dd', asiatique: 'ee', pratunam: 'ba', maeklong: '65', damnoen: '1a', floatingMarket: '5d', pattayaWalking: 'b6', siamParagon: '8d', terminal21: '96', mbk: '67', centralPattaya: '2f', massage: '18', cooking: 'c5', tomYum: 'b4', padThai: '37', somTam: '6c', chickenRice: 'a2', kraPao: 'a4', massaman: '4f', greenCurry: 'fe', khaoSoi: '6c', khaoKhaMoo: 'b2', plaPao: '87', curryCrab: '43', mangoRice: '87', thaiTea: 'ba', roti: 'dc', coconutIce: '48', khanomKrok: 'fd', jayFai: 'ab'};
   // Commons 沒有合適實景時用的 Unsplash 照片
   const UNSPLASH = {"boatNoodles": {"id": "photo-1555126634-323283e090fa", "page": "https://unsplash.com/photos/noddle-dish-on-white-ceramic-bowl-H5Hj8QV2Tx4", "by": "Mae Mu"}, "mooPing": {"id": "photo-1665111915476-b91b328a3c37", "page": "https://unsplash.com/photos/a-plate-of-food-l2RuDTo3igs", "by": "tommao wang"}, "fruitShake": {"id": "photo-1758184875542-2a30993210b4", "page": "https://unsplash.com/photos/fresh-fruit-smoothies-stand-with-colorful-drinks-menu-BRbXI2EYetY", "by": "Aleksandr Galichkin"}};
 
-  const P = (type, city, name, en, key, desc, tip, map) => ({ type, cat: CAT[key] || (type === 'eat' ? 'dish' : 'temple'), city, name, en, photo: WM[key] ? { wm: WM[key] } : UNSPLASH[key] || null, desc, tip, map });
+  const P = (type, city, name, en, key, desc, tip, map) => ({ key, type, cat: CAT[key] || (type === 'eat' ? 'dish' : 'temple'), city, name, en, photo: WM[key] ? { wm: WM[key], h: WMH[key] } : UNSPLASH[key] || null, desc, tip, map });
   return [
     // 景點 · 曼谷
     P('see', '曼谷', '鄭王廟', 'Wat Arun', 'watArun', '沿著昭披耶河，收藏寺廟的細緻紋理與河岸風景。傍晚從對岸看最漂亮。', '寺廟請穿著遮肩、過膝的衣物。從臥佛寺附近的碼頭搭渡船過河只要幾分鐘。', 'Wat Arun'),

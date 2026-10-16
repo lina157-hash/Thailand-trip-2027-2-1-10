@@ -1,0 +1,117 @@
+{
+ "Ang Sila Seafood Market": {
+  "lat": 13.338235,
+  "lon": 100.924194,
+  "src": "osm"
+ },
+ "Big C Supercenter Ratchadamri": {
+  "lat": 13.7476,
+  "lon": 100.5409,
+  "src": "manual"
+ },
+ "CentralWorld Bangkok": {
+  "lat": 13.746577,
+  "lon": 100.539041,
+  "src": "osm"
+ },
+ "Chatuchak Weekend Market": {
+  "lat": 13.800265,
+  "lon": 100.551123,
+  "src": "osm"
+ },
+ "Hong Kong International Airport Terminal 1": {
+  "lat": 22.315863,
+  "lon": 113.935918,
+  "src": "photon"
+ },
+ "ICONSIAM": {
+  "lat": 13.726823,
+  "lon": 100.510294,
+  "src": "osm"
+ },
+ "Kanchanaburi": {
+  "lat": 14.0228,
+  "lon": 99.5328,
+  "src": "manual"
+ },
+ "Koh Larn": {
+  "lat": 12.92742,
+  "lon": 100.774965,
+  "src": "osm"
+ },
+ "Kung Phuean Praew": {
+  "lat": null,
+  "lon": null,
+  "src": "manual"
+ },
+ "Mercure Pattaya Ocean Resort": {
+  "lat": 12.94721,
+  "lon": 100.887436,
+  "src": "manual"
+ },
+ "River Kwai Bridge": {
+  "lat": 14.041797,
+  "lon": 99.504047,
+  "src": "osm"
+ },
+ "Save One Go @ Yaek Kor Por Aor": {
+  "lat": null,
+  "lon": null,
+  "tried": "2026-10-16"
+ },
+ "Suvarnabhumi Airport": {
+  "lat": 13.681877,
+  "lon": 100.74858,
+  "src": "osm"
+ },
+ "Taiwan Taoyuan International Airport Terminal 1": {
+  "lat": 25.082083,
+  "lon": 121.237757,
+  "src": "osm"
+ },
+ "Taiwan Taoyuan International Airport Terminal 2": {
+  "lat": 25.077828,
+  "lon": 121.231275,
+  "src": "osm"
+ },
+ "The Grand Palace Bangkok": {
+  "lat": 13.749351,
+  "lon": 100.491864,
+  "src": "osm"
+ },
+ "The Sanctuary of Truth Pattaya": {
+  "lat": 12.972777,
+  "lon": 100.88915,
+  "src": "photon"
+ },
+ "The Summer House Ayutthaya": {
+  "lat": 14.32495,
+  "lon": 100.574762,
+  "src": "osm"
+ },
+ "Tiffany's Show Pattaya": {
+  "lat": 12.94905,
+  "lon": 100.887562,
+  "src": "osm"
+ },
+ "Wat Mahathat Ayutthaya": {
+  "lat": 14.356351,
+  "lon": 100.568527,
+  "src": "osm"
+ },
+ "Wat Pho Bangkok": {
+  "lat": 13.746346,
+  "lon": 100.492738,
+  "src": "osm"
+ },
+ "Wat Yai Chai Mongkhon": {
+  "lat": 14.344269,
+  "lon": 100.593986,
+  "src": "osm"
+ },
+ "ibis Styles Bangkok Ratchada": {
+  "lat": 13.777247,
+  "lon": 100.574316,
+  "src": "photon"
+ }
+}

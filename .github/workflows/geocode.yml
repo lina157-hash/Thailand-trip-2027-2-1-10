@@ -1,0 +1,25 @@
+# 共同行程（trip.json）有新地點時，幫它們找座標存進 geo.json，給「全行程地圖」用。
+name: 地點座標
+on:
+  push:
+    branches: [main, claude/project-thread-73tzlq]
+    paths: [trip.json, .github/scripts/geocode.py, .github/workflows/geocode.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: geocode
+jobs:
+  geocode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/scripts/geocode.py
+      - name: 有變動就存回儲存庫
+        run: |
+          git add geo.json
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m '更新地點座標'
+          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 5; done
+          exit 1
