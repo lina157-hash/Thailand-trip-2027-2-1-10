@@ -3,7 +3,7 @@
 const CACHE = 'thai-days-v20';
 
 /* 安裝時先把整個網站存好，第一次沒打開過的分頁離線也能看 */
-const ASSETS = ['./', 'index.html', 'style.css', 'trip-data.js', 'fx.js', 'inspire.js', 'app.js', 'cloud.js', 'notes.js', 'tools.js', 'split.js', 'extras.js', 'more.js', 'more2.js', 'collect.js', 'more3.js', 'lib/qrcode.js', 'trip.json', 'bot-rate.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const ASSETS = ['./', 'index.html', 'style.css', 'trip-data.js', 'fx.js', 'inspire.js', 'app.js', 'cloud.js', 'notes.js', 'tools.js', 'split.js', 'extras.js', 'more.js', 'more2.js', 'collect.js', 'more3.js', 'map.js', 'lib/qrcode.js', 'lib/leaflet/leaflet.js', 'lib/leaflet/leaflet.css', 'geo.json', 'trip.json', 'bot-rate.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => e.waitUntil(
   caches.open(CACHE).then(c => Promise.all(ASSETS.map(a => {
     const u = new URL(a, self.registration.scope);

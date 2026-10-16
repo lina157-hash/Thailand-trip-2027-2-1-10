@@ -5,9 +5,9 @@
   "src": "osm"
  },
  "Big C Supercenter Ratchadamri": {
-  "lat": 6.861749,
-  "lon": 101.231385,
-  "src": "photon"
+  "lat": 13.7476,
+  "lon": 100.5409,
+  "src": "manual"
  },
  "CentralWorld Bangkok": {
   "lat": 13.746577,
@@ -30,9 +30,9 @@
   "src": "osm"
  },
  "Kanchanaburi": {
-  "lat": 14.44019,
-  "lon": 99.267673,
-  "src": "osm"
+  "lat": 14.0228,
+  "lon": 99.5328,
+  "src": "manual"
  },
  "Koh Larn": {
   "lat": 12.92742,
@@ -40,14 +40,14 @@
   "src": "osm"
  },
  "Kung Phuean Praew": {
-  "lat": 13.686011,
-  "lon": 100.64098,
-  "src": "photon"
+  "lat": null,
+  "lon": null,
+  "src": "manual"
  },
  "Mercure Pattaya Ocean Resort": {
-  "lat": 12.947533,
-  "lon": 100.886993,
-  "src": "osm"
+  "lat": 12.94721,
+  "lon": 100.887436,
+  "src": "manual"
  },
  "River Kwai Bridge": {
   "lat": 14.041797,

@@ -3,7 +3,8 @@
 讀 trip.json（共同行程）每個活動的 place，已經有座標的就跳過；新的地點先問 OpenStreetMap 的 Nominatim，
 找不到再問 Photon。兩個都是免費服務，依它們的使用規則每秒最多查一次。
 找不到的地點記成 null，7 天後再試一次；地圖上會把它們列在下面，可以用 Google 地圖開。
-座標也可以手動改：直接編輯 geo.json 裡那個地點的 lat、lon，並把 src 改成 "manual"，之後就不會被覆蓋。"""
+座標也可以手動改：直接編輯 geo.json 裡那個地點的 lat、lon，並把 src 改成 "manual"，之後就不會被覆蓋
+（lat、lon 是 null 又標 manual，代表確定不畫在地圖上，只列在下面）。"""
 import json, time, urllib.parse, urllib.request
 from datetime import date, timedelta
 
@@ -48,7 +49,7 @@ retry_before = (date.today() - timedelta(days=7)).isoformat()
 changed = False
 for p, cc in places.items():
     g = geo.get(p)
-    if g and (g.get('lat') is not None or g.get('tried', '') > retry_before): continue
+    if g and (g.get('src') == 'manual' or g.get('lat') is not None or g.get('tried', '') > retry_before): continue
     hit, src = None, None
     for fn, name in ((nominatim, 'osm'), (photon, 'photon')):
         try:
