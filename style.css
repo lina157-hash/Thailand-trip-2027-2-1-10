@@ -919,3 +919,15 @@ html.synced .sync-off{display:none}
 .receipt-tip{margin:8px 0 12px!important;font-size:12.5px}
 .receipt-dialog .form-actions{display:flex;gap:8px;flex-wrap:wrap}
 .receipt-dialog .btn-link[hidden]{display:none}
+.member-admin{margin:0 0 18px;padding:14px 16px;border:1.5px dashed var(--line);border-radius:14px}
+.member-admin h4{margin:0 0 6px;font-size:16px}
+.member-admin h4 small{margin-left:8px;color:var(--muted);font-size:12px;font-weight:600}
+.member-admin .muted{margin:0 0 8px;font-size:13px}
+.member-new{margin:0 0 4px;color:var(--danger);font-size:14px;font-weight:700}
+.member-row{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;padding:10px 0;border-bottom:1px dashed var(--line)}
+.member-who{display:flex;flex-direction:column;min-width:0}
+.member-who small{color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.member-acts{display:flex;align-items:center;gap:10px}
+.member-acts .primary{min-height:38px;padding:0 16px}
+.member-list{margin-top:10px}
+.member-list summary{cursor:pointer;font-size:14px;font-weight:700;padding:6px 0}
