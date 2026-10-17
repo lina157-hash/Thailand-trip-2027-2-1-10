@@ -883,3 +883,39 @@ html.synced .sync-off{display:none}
 .sync-dialog .form-actions{display:flex;gap:8px;flex-wrap:wrap}
 .sync-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:10px;padding:8px 10px 8px 16px;border-radius:999px;background:var(--surface);color:var(--ink);box-shadow:var(--shadow);font-size:14px;white-space:nowrap}
 .sync-bar[hidden]{display:none}
+
+/* 收據／發票照片（receipts.js） */
+.receipt-field[hidden],.receipts-panel[hidden]{display:none}
+.receipt-field{margin:4px 0 14px}
+.receipt-label{display:block;margin-bottom:8px;font-size:14px;font-weight:700}
+.receipt-label small{margin-left:6px;color:var(--muted);font-weight:600}
+#receipt-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+#receipt-pick>small{flex:1 1 12em;font-size:12.5px;line-height:1.5}
+#receipt-pick>p{margin:0}
+.receipt-picked{display:flex;align-items:center;gap:14px}
+.receipt-picked img,.receipt-noimg{width:72px;height:72px;flex:none;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.receipt-noimg{display:grid;place-items:center;font-size:28px}
+.receipt-share{display:flex;align-items:center;gap:8px;margin:0 0 4px;font-size:14px;font-weight:600}
+.receipt-share input{width:20px;height:20px;margin:0;accent-color:var(--brand)}
+.receipt-acts{display:flex;gap:4px 14px;flex-wrap:wrap}
+.receipt-chip{margin-left:6px;padding:2px 6px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;line-height:1.3;vertical-align:1px;cursor:pointer}
+.receipt-filter{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 6px}
+.receipt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.receipt-grid .receipt-day{grid-column:1/-1}
+.receipt-card{display:flex;flex-direction:column;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);text-align:left;cursor:pointer}
+.receipt-card:hover{border-color:var(--aqua)}
+.receipt-card img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;background:var(--line);display:block}
+.receipt-meta{display:flex;flex-direction:column;gap:2px;padding:8px 10px 10px;min-width:0}
+.receipt-meta b{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.receipt-meta span{font-size:14px;font-weight:700}
+.receipt-meta small{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.receipt-dialog{width:min(720px,96vw)}
+.receipt-dialog h2{margin:0;font-size:20px;overflow-wrap:anywhere}
+.receipt-dialog .muted{margin-bottom:10px}
+.receipt-big{max-height:62vh;overflow:auto;border-radius:12px;background:var(--surface);text-align:center;-webkit-overflow-scrolling:touch}
+.receipt-big img{max-width:100%;max-height:62vh;display:inline-block;cursor:zoom-in;transition:filter .2s}
+.receipt-big img.loading{filter:blur(6px) grayscale(.3)}
+.receipt-big.zoom img{max-width:none;max-height:none;width:200%;cursor:zoom-out}
+.receipt-tip{margin:8px 0 12px!important;font-size:12.5px}
+.receipt-dialog .form-actions{display:flex;gap:8px;flex-wrap:wrap}
+.receipt-dialog .btn-link[hidden]{display:none}

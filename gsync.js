@@ -25,7 +25,8 @@ const FIREBASE_CONFIG = {
   try { const m = JSON.parse(get(META_KEY)); if (m && typeof m === 'object') meta = { uid: m.uid || '', t: m.t || {}, dirty: Array.isArray(m.dirty) ? m.dirty : [] }; } catch {}
   const saveMeta = () => { try { setRaw.call(localStorage, META_KEY, JSON.stringify(meta)); } catch {} };
 
-  let fb = null, user = null, ref = null, pushTimer = null, unsub = null, linking = false, lastSync = 0;
+  let fb = null, user = null, ref = null, pushTimer = null, unsub = null, linking = false, lastSync = 0, authKnown = false;
+  const userCbs = [];
 
   // 其他程式寫入同步項目時，記下修改時間，登入中就排程上傳
   const touched = k => { meta.t[k] = Date.now(); if (!meta.dirty.includes(k)) meta.dirty.push(k); saveMeta(); schedulePush(); };
@@ -110,7 +111,7 @@ const FIREBASE_CONFIG = {
 
   async function onUser(u) {
     if (unsub) { unsub(); unsub = null; }
-    user = u; setClass();
+    user = u; authKnown = true; setClass(); userCbs.forEach(cb => { try { cb(u); } catch (e) { console.warn(e); } });
     if (!u) return;
     const { F, db } = await fb;
     ref = F.doc(db, 'users', u.uid);
@@ -167,6 +168,9 @@ const FIREBASE_CONFIG = {
       await push(); const { auth, A } = await fb; await A.signOut(auth); meta.uid = ''; saveMeta(); dlg.close(); note('已登出');
     }
   });
+
+  // 給收據照片（receipts.js）共用同一個登入與資料庫
+  window.gsync = { sdk: loadSdk, user: () => user, onUser: cb => { userCbs.push(cb); if (authKnown) cb(user); }, open: () => btn.click() };
 
   renderBtn();
   loadSdk().then(({ auth, A }) => { sdkReady = true; renderDialog(); A.onAuthStateChanged(auth, onUser); })
