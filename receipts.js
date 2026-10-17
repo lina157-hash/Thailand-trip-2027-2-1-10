@@ -5,7 +5,10 @@
    團員審核：用 Google 登入只代表「有帳號」，還要主辦人同意才算團員。
      requests/{uid} = { name, email, at }  旅伴按「申請加入」時寫入，只有自己和主辦人讀得到
      members/{uid}  = { name, email, at }  主辦人按「同意」後建立，只有主辦人能新增或移除
-   主辦人與管理者是 Firestore 規則裡列出的 Gmail（不放在網站程式裡）；網站用「讀不讀得到申請名單」判斷，畫面上統稱主辦人。
+     accounts/{uid} = { email, gname, first, last }  每次登入時記下，只有主辦人與管理者讀得到，用來列出「所有登入過的帳號」
+     admins/{email} = { at }  管理者名單，只有主辦人能新增或移除
+   主辦人的 Gmail 只寫在 Firestore 規則裡（不放在網站程式裡）。網站用「讀不讀得到申請名單」判斷是不是主辦人或管理者，
+   用「讀不讀得到 owner/check」判斷是不是主辦人本人（這份文件不存在也沒關係，只看有沒有權限）。
    Firestore 規則：團員能讀 shared 的收據或自己的收據，只能新增、修改自己的；主辦人可以刪除任何一張。
    花費本身仍是個人資料，只在 state.expenses 裡記下 rid，團員看到的是收據上附的項目、金額、日期與上傳者名字。
    沒有設定 Firebase 時整個功能會隱藏。 */
@@ -14,7 +17,8 @@ let receiptDraft = null; // 表單裡的照片：null＝沒有；{ mode: 'keep' 
 const receiptMap = new Map(); // 從雲端讀到的收據（rid → 資料），自己的和旅伴分享的
 let receiptUser = null, receiptMineOnly = false, receiptPending = 0, receiptErr = '';
 // 身分：'' 確認中、guest 還沒申請、pending 等主辦人同意、member 團員、admin 主辦人
-let receiptRole = '', receiptMe = null, receiptReq = null, receiptRequests = [], receiptMembers = [];
+let receiptRole = '', receiptMe = null, receiptReq = null, receiptRequests = [], receiptMembers = [], receiptAccounts = [], receiptAdmins = [], receiptOwner = false;
+const receiptOpen = {}; // 審核區摺疊清單的開合，重畫時保留
 const receiptOk = () => receiptRole === 'member' || receiptRole === 'admin';
 
 (() => {
@@ -44,19 +48,26 @@ const receiptOk = () => receiptRole === 'member' || receiptRole === 'admin';
   }
   g.onUser(async u => {
     unsubs.forEach(f => f()); unsubs = []; stopReceipts();
-    receiptUser = u; receiptErr = ''; receiptRole = ''; receiptMe = receiptReq = null; receiptRequests = []; receiptMembers = [];
+    receiptUser = u; receiptErr = ''; receiptRole = ''; receiptMe = receiptReq = null; receiptRequests = []; receiptMembers = []; receiptAccounts = []; receiptAdmins = []; receiptOwner = false;
     renderReceiptPick(); renderReceipts();
     if (!u) return;
     const { db, F } = await g.sdk();
     if (receiptUser !== u) return;
-    // 主辦人才讀得到整份申請名單
+    // 記下這個帳號登入過，主辦人才看得到有誰登入
+    const accRef = F.doc(db, 'accounts', u.uid);
+    F.getDoc(accRef).then(a => F.setDoc(accRef, { email: u.email || '', gname: u.displayName || '', last: F.serverTimestamp(), ...(a.exists() ? {} : { first: F.serverTimestamp() }) }, { merge: true })).catch(e => console.warn('account', e));
+    // 主辦人與管理者才讀得到整份申請名單
     let admin = false;
     try { await F.getDocs(F.query(F.collection(db, 'requests'), F.limit(1))); admin = true; } catch {}
     if (receiptUser !== u) return;
     if (admin) {
       receiptRole = 'admin'; startReceipts(F, db, u);
+      try { await F.getDoc(F.doc(db, 'owner', 'check')); receiptOwner = true; } catch {}
+      // 讓管理者在帳號名單上認得主辦人（規則只允許主辦人本人寫 role: 'owner'）
+      if (receiptOwner) F.setDoc(accRef, { role: 'owner' }, { merge: true }).catch(e => console.warn('owner tag', e));
       const list = (c, set) => F.onSnapshot(F.collection(db, c), snap => { set(snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => String(a.name).localeCompare(String(b.name), 'zh-Hant'))); renderReceipts(); }, fail(c));
-      unsubs.push(list('requests', v => { receiptRequests = v; }), list('members', v => { receiptMembers = v; receiptMe = v.find(m => m.id === u.uid) || null; }));
+      unsubs.push(list('requests', v => { receiptRequests = v; }), list('members', v => { receiptMembers = v; receiptMe = v.find(m => m.id === u.uid) || null; }),
+        list('accounts', v => { receiptAccounts = v; }), list('admins', v => { receiptAdmins = v; }));
       renderReceipts(); renderReceiptPick();
       return;
     }
@@ -94,6 +105,21 @@ async function receiptMembership(kind, id) {
     } else if (kind === 'reject') {
       const r = receiptRequests.find(x => x.id === id); if (!confirm(`拒絕 ${r?.name || '這個人'} 的申請？`)) return;
       await F.deleteDoc(F.doc(db, 'requests', id)); toast('已拒絕');
+    } else if (kind === 'make') {
+      const a = receiptAccounts.find(x => x.id === id), r = receiptRequests.find(x => x.id === id); if (!a && !r) return;
+      const name = (prompt('團員名字（旅伴看收據時會看到）', r?.name || a?.gname || (a?.email || '').split('@')[0]) || '').trim().slice(0, 30); if (!name) return;
+      const b = F.writeBatch(db);
+      b.set(F.doc(db, 'members', id), { name, email: a?.email || r?.email || '', at: F.serverTimestamp() });
+      if (r) b.delete(F.doc(db, 'requests', id));
+      await b.commit(); toast(`已把 ${name} 設為團員`);
+    } else if (kind === 'addAdmin') {
+      const mail = (prompt('新管理者的 Gmail（對方用這個帳號登入後，就能審核團員）') || '').trim().toLowerCase();
+      if (!mail) return;
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) return toast('Gmail 格式不對，請再輸入一次');
+      await F.setDoc(F.doc(db, 'admins', mail), { at: F.serverTimestamp() }); toast(`已新增管理者 ${mail}，對方重新整理網頁後生效`);
+    } else if (kind === 'delAdmin') {
+      if (!confirm(`取消 ${id} 的管理者身分？`)) return;
+      await F.deleteDoc(F.doc(db, 'admins', id)); toast('已取消管理者');
     } else if (kind === 'remove') {
       const m = receiptMembers.find(x => x.id === id); if (!confirm(`把 ${m?.name || '這個人'} 移出團員？移除後對方就看不到收據。`)) return;
       await F.deleteDoc(F.doc(db, 'members', id)); toast('已移出團員');
@@ -241,11 +267,30 @@ function renderReceipts() {
 
 // 主辦人才看得到：待審核的申請、已同意的團員
 function renderReceiptAdmin() {
-  const who = x => `<span class="member-who"><b>${esc(x.name || '旅伴')}</b><small>${esc(x.email || '')}</small></span>`;
-  const reqs = receiptRequests.length ? receiptRequests.map(r => `<div class="member-row">${who(r)}<span class="member-acts"><button type="button" class="primary" data-member="approve" data-id="${esc(r.id)}">同意</button><button type="button" class="text-btn danger" data-member="reject" data-id="${esc(r.id)}">拒絕</button></span></div>`).join('') : '<p class="muted">目前沒有新的申請。</p>';
-  const mems = receiptMembers.map(m => `<div class="member-row">${who(m)}<span class="member-acts"><button type="button" class="text-btn danger" data-member="remove" data-id="${esc(m.id)}">移除</button></span></div>`).join('');
-  return `<div class="member-admin"><h4>團員審核<small>只有主辦人和管理者看得到</small></h4><p class="muted">旅伴用 Google 登入後按「申請加入」，會出現在這裡。確認是團員再按「同意」。</p>${receiptRequests.length ? `<p class="member-new">有 ${receiptRequests.length} 個新申請</p>` : ''}${reqs}<details class="member-list"><summary>已同意的團員（${receiptMembers.length} 人）</summary>${mems || '<p class="muted">還沒有同意任何人。</p>'}</details></div>`;
+  const who = (name, mail) => `<span class="member-who"><b>${esc(name || '旅伴')}</b><small>${esc(mail || '')}</small></span>`;
+  const btn = (kind, id, text, cls = 'text-btn') => `<button type="button" class="${cls}" data-member="${kind}" data-id="${esc(id)}">${text}</button>`;
+  const day = t => t?.seconds ? new Date(t.seconds * 1000) : typeof t === 'number' ? new Date(t) : null;
+  const md = d => d ? `${d.getMonth() + 1}/${d.getDate()}` : '';
+  const reqs = receiptRequests.length ? receiptRequests.map(r => `<div class="member-row">${who(r.name, r.email)}<span class="member-acts">${btn('approve', r.id, '同意', 'primary')}${btn('reject', r.id, '拒絕', 'text-btn danger')}</span></div>`).join('') : '<p class="muted">目前沒有新的申請。</p>';
+  // 帳號名單：登入過的帳號＋已是團員的人（早期同意、還沒再登入的團員也列出來）
+  const ids = [...new Set([...receiptAccounts.map(a => a.id), ...receiptMembers.map(m => m.id)])];
+  const adminMails = new Set(receiptAdmins.map(a => a.id)), me = receiptUser?.uid;
+  const rows = ids.map(id => {
+    const a = receiptAccounts.find(x => x.id === id) || {}, m = receiptMembers.find(x => x.id === id), r = receiptRequests.find(x => x.id === id);
+    const mail = a.email || m?.email || '', isMe = id === me, owner = a.role === 'owner', admin = isMe || owner || adminMails.has(mail.toLowerCase());
+    const tag = isMe ? (receiptOwner ? '主辦人（你）' : '管理者（你）') : owner ? '主辦人' : admin ? '管理者' : m ? '團員' : r ? '申請中' : '未申請';
+    return { id, name: m?.name || r?.name || a.gname || mail.split('@')[0], mail, tag, m, isMe, admin, last: day(a.last) };
+  }).sort((x, y) => (y.isMe - x.isMe) || (y.admin - x.admin) || ((y.last?.getTime() || 0) - (x.last?.getTime() || 0)));
+  const accRows = rows.map(x => `<div class="member-row">${who(x.name, x.mail)}<span class="member-acts"><span class="member-tag${x.m || x.admin ? ' on' : ''}">${x.tag}</span>${x.last ? `<small class="muted">${md(x.last)} 登入</small>` : ''}${x.admin && !x.m ? '' : x.isMe ? '' : x.m ? btn('remove', x.id, '移出團員', 'text-btn danger') : btn('make', x.id, '設為團員', 'quiet')}</span></div>`).join('');
+  const memberCount = rows.filter(x => x.m).length;
+  const admins = receiptAdmins.map(a => `<div class="member-row">${who(a.id.split('@')[0], a.id)}<span class="member-acts">${receiptOwner ? btn('delAdmin', a.id, '取消管理者', 'text-btn danger') : ''}</span></div>`).join('');
+  const det = (k, title, body) => `<details class="member-list" data-k="${k}"${receiptOpen[k] ? ' open' : ''}><summary>${title}</summary>${body}</details>`;
+  return `<div class="member-admin"><h4>團員審核<small>只有主辦人和管理者看得到</small></h4><p class="muted">旅伴用 Google 登入後按「申請加入」，會出現在這裡。確認是團員再按「同意」。</p>${receiptRequests.length ? `<p class="member-new">有 ${receiptRequests.length} 個新申請</p>` : ''}${reqs}`
+    + det('acc', `帳號名單（${rows.length} 個帳號，${memberCount} 位團員）`, `<p class="muted">登入過這個網站的 Google 帳號。不用等對方申請，也可以直接「設為團員」。</p>${accRows || '<p class="muted">還沒有人登入。</p>'}`)
+    + det('adm', `管理者（${receiptAdmins.length} 位）`, `<p class="muted">${receiptOwner ? '管理者和你一樣可以審核團員、刪除收據，但不能新增或取消管理者。' : '管理者名單由主辦人設定。'}</p>${admins || '<p class="muted">還沒有其他管理者。</p>'}${receiptOwner ? '<p><button type="button" class="quiet" data-member="addAdmin">＋ 新增管理者</button></p>' : ''}`)
+    + '</div>';
 }
+document.addEventListener('toggle', e => { const k = e.target.dataset?.k; if (k && e.target.closest('.member-admin')) receiptOpen[k] = e.target.open; }, true);
 
 // ── 點開看大圖 ──
 const receiptDlg = document.createElement('dialog');

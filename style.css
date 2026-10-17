@@ -931,3 +931,7 @@ html.synced .sync-off{display:none}
 .member-acts .primary{min-height:38px;padding:0 16px}
 .member-list{margin-top:10px}
 .member-list summary{cursor:pointer;font-size:14px;font-weight:700;padding:6px 0}
+.member-tag{padding:2px 8px;border-radius:999px;background:var(--line);color:var(--muted);font-size:12px;font-weight:700;white-space:nowrap}
+.member-tag.on{background:var(--brand);color:var(--brand-ink)}
+.member-acts small{font-size:12px}
+.member-acts .quiet{min-height:36px;padding:0 14px}
