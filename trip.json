@@ -1,5 +1,5 @@
 {
-  "revision": 31,
+  "revision": 32,
   "data": {
     "events": [
       {
@@ -217,10 +217,20 @@
         "id": "d7e0",
         "day": 7,
         "time": "",
-        "title": "飯店出發 → 北碧",
+        "title": "約 09:00～飯店出發",
         "city": "移動中",
-        "place": "Kanchanaburi",
+        "place": "",
         "note": "出發時間待確認。"
+      },
+      {
+        "id": "ad1f41b0-7cdc-4223-af98-2fbcd48f3969",
+        "day": 7,
+        "time": "",
+        "city": "北碧",
+        "title": "Meena Café 田野咖啡",
+        "place": "Meena Café",
+        "note": "可喝咖啡、吃東西、拍照、休息\n 不需要18人全部坐一起，可分散座位",
+        "dine": "walkin"
       },
       {
         "id": "d7e1",
@@ -235,29 +245,20 @@
         "id": "d7e3",
         "day": 7,
         "time": "",
-        "title": "Keereetara Riverside 午餐",
+        "title": "茉莉之城 Mallika City",
         "city": "北碧",
-        "place": "",
-        "note": "餐廳依動線安排。",
+        "place": "茉莉之城",
+        "note": "逛園區、看復古泰國生活場景、拍照",
         "dine": "todo"
       },
       {
         "id": "d7e2",
         "day": 7,
         "time": "",
-        "title": "死亡鐵路精華段",
+        "title": "Tham Krasae 死亡鐵路木棧橋(死亡鐵路精華段)",
         "city": "北碧",
-        "place": "",
-        "note": "搭乘區間及班次待確認。"
-      },
-      {
-        "id": "d7e4",
-        "day": 7,
-        "time": "",
-        "title": "返回曼谷",
-        "city": "曼谷",
-        "place": "ibis Styles Bangkok Ratchada",
-        "note": "回飯店後自由活動，晚上不安排正式行程。"
+        "place": "Tham Krasae Death Railway Bridge",
+        "note": "走木棧橋、欣賞桂河峽谷景色、拍照"
       },
       {
         "id": "d8e0",
@@ -424,9 +425,18 @@
         "day": 7,
         "time": "",
         "city": "",
-        "title": "茉莉之城",
-        "place": "",
-        "note": ""
+        "title": "北碧在地夜市／市場晚餐 JJ Night Market",
+        "place": "JJ Night Market Kanchanaburi",
+        "note": "吃晚餐、上廁所、稍微休息\n"
+      },
+      {
+        "id": "d7e4",
+        "day": 7,
+        "time": "",
+        "title": "返回曼谷",
+        "city": "曼谷",
+        "place": "ibis Styles Bangkok Ratchada",
+        "note": "休息"
       }
     ],
     "titles": {
@@ -634,5 +644,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-15T09:27:34.000Z"
+  "updatedAt": "2026-10-20T04:40:39.343Z"
 }
