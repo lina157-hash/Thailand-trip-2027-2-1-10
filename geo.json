@@ -29,6 +29,11 @@
   "lon": 100.510294,
   "src": "osm"
  },
+ "JJ Night Market Kanchanaburi": {
+  "lat": 14.033793,
+  "lon": 99.524512,
+  "src": "osm"
+ },
  "Kanchanaburi": {
   "lat": 14.0228,
   "lon": 99.5328,
@@ -43,6 +48,11 @@
   "lat": null,
   "lon": null,
   "src": "manual"
+ },
+ "Meena Café": {
+  "lat": 13.949242,
+  "lon": 99.600317,
+  "src": "osm"
  },
  "Mercure Pattaya Ocean Resort": {
   "lat": 12.94721,
@@ -73,6 +83,11 @@
   "lat": 25.077828,
   "lon": 121.231275,
   "src": "osm"
+ },
+ "Tham Krasae Death Railway Bridge": {
+  "lat": 14.100122,
+  "lon": 99.169534,
+  "src": "photon"
  },
  "The Grand Palace Bangkok": {
   "lat": 13.749351,
@@ -113,5 +128,10 @@
   "lat": 13.777247,
   "lon": 100.574316,
   "src": "photon"
+ },
+ "茉莉之城": {
+  "lat": null,
+  "lon": null,
+  "tried": "2026-10-20"
  }
 }
