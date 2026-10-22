@@ -1,5 +1,5 @@
 {
-  "revision": 33,
+  "revision": 34,
   "data": {
     "events": [
       {
@@ -53,14 +53,13 @@
         "group": "長榮組"
       },
       {
-        "id": "d2e2",
+        "id": "8c37645e-e0e1-4526-9d16-b6552a2e3344",
         "day": 2,
         "time": "",
-        "title": "晚餐 → Tiffany’s Show Pattaya",
-        "city": "芭達雅",
-        "place": "Tiffany's Show Pattaya",
-        "note": "晚上看秀，結束後回飯店。演出時間待確認。",
-        "group": "長榮組"
+        "city": "",
+        "title": "中午～下午｜Terminal 21 Pattaya 自由活動",
+        "place": "21 航站樓 芭提雅",
+        "note": "下午｜可自行走去Terminal 21 Pattaya 自由活動\n可以直接在 商場餐廳解決午餐，再自由逛街、咖啡、拍照。\n不用全員同時出發，離飯店超近。"
       },
       {
         "id": "d3e0",
@@ -436,6 +435,25 @@
         "city": "曼谷",
         "place": "ibis Styles Bangkok Ratchada",
         "note": "休息"
+      },
+      {
+        "id": "d2e2",
+        "day": 2,
+        "time": "",
+        "title": " Tiffany’s Show Pattaya",
+        "city": "芭達雅",
+        "place": "Tiffany's Show Pattaya",
+        "note": "晚上看秀，結束後回飯店。演出時間待確認。",
+        "group": "長榮組"
+      },
+      {
+        "id": "23a69579-b204-4662-8092-9f1761f95052",
+        "day": 2,
+        "time": "",
+        "city": "",
+        "title": "Jomtien Night Market ／自由參加",
+        "place": "Jomtien Night Market",
+        "note": "想去的人：\n→ 一起前往 Jomtien Night Market\n→ 夜市晚餐＋小吃＋飲料＋海邊散步\n→ 約 21:30 左右回飯店\n\n不想去的人：\n→ Tiffany 看完直接回 Mercure\n→ 飯店附近吃晚餐、按摩或休息"
       }
     ],
     "titles": {
@@ -643,5 +661,5 @@
       }
     ]
   },
-  "updatedAt": "2026-10-20T05:46:30.325Z"
+  "updatedAt": "2026-10-22T03:04:21.583Z"
 }
