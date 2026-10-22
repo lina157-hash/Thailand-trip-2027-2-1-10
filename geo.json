@@ -1,4 +1,9 @@
 {
+ "21 航站樓 芭提雅": {
+  "lat": null,
+  "lon": null,
+  "tried": "2026-10-22"
+ },
  "Ang Sila Seafood Market": {
   "lat": 13.338235,
   "lon": 100.924194,
@@ -32,6 +37,11 @@
  "JJ Night Market Kanchanaburi": {
   "lat": 14.033793,
   "lon": 99.524512,
+  "src": "osm"
+ },
+ "Jomtien Night Market": {
+  "lat": 12.891753,
+  "lon": 100.874605,
   "src": "osm"
  },
  "Kanchanaburi": {
