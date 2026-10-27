@@ -1,5 +1,5 @@
 /* 跨裝置同步：用自己的 Google 帳號登入後，個人資料會存到 Firebase，換手機或用電腦登入同一個帳號就會回來。
-   同步的內容：旅費記帳、出發清單與注意事項的勾選、伴手禮清單、我想去、我的備註、自選活動、準備提醒、保險資料、我的組別、分帳的「我」。
+   同步的內容：旅費記帳、注意事項的勾選、伴手禮清單、我想去、我的備註、自選活動、準備提醒、保險資料、我的組別、分帳的「我」。
    每個人只能讀寫自己的資料（Firestore 規則：users/{uid} 只限本人），旅伴與主辦人都看不到。
    主辦人的 GitHub 金鑰、收款紀錄、顯示設定等不在同步範圍。
    FIREBASE_CONFIG 是主辦人 Firebase 專案 thai-trip-2027 的公開設定（不是密碼，安全靠 Firestore 規則）；改成 null 就會關掉整個功能。
@@ -150,7 +150,7 @@ const FIREBASE_CONFIG = {
     dlg.innerHTML = `<div class="section-top"><h2>跨裝置同步</h2><button type="button" class="quiet" data-sync-close>關閉</button></div>`
       + (user
         ? `<p>已用 Google 帳號 <b>${escHtml(user.email || user.displayName || '')}</b> 登入。在其他手機或電腦用同一個帳號登入，就會看到同樣的資料。</p><p class="muted">${t ? `最後同步：${t}` : '同步中…'}${meta.dirty.length ? '（有修改還沒上傳，連上網路後會自動上傳）' : ''}</p><div class="form-actions"><button type="button" class="quiet" data-sync-now>立即同步</button><button type="button" class="quiet danger" data-sync-out>登出</button></div>`
-        : `<p>用自己的 Google 帳號登入，旅費記帳、出發清單勾選、伴手禮、我想去、我的備註等就會存到雲端。換手機或用電腦登入同一個帳號，資料就會回來。</p><p class="muted">只有你自己看得到，旅伴和主辦人都看不到。</p><div class="form-actions"><button type="button" class="primary" data-sync-in${sdkReady ? '' : ' disabled'}>${sdkReady ? '用 Google 登入' : sdkErr ? '目前無法連線' : '準備中…'}</button></div>${sdkErr ? `<p class="muted">${escHtml(sdkErr)}</p>` : ''}`);
+        : `<p>用自己的 Google 帳號登入，旅費記帳、注意事項勾選、伴手禮、我想去、我的備註等就會存到雲端。換手機或用電腦登入同一個帳號，資料就會回來。</p><p class="muted">只有你自己看得到，旅伴和主辦人都看不到。</p><div class="form-actions"><button type="button" class="primary" data-sync-in${sdkReady ? '' : ' disabled'}>${sdkReady ? '用 Google 登入' : sdkErr ? '目前無法連線' : '準備中…'}</button></div>${sdkErr ? `<p class="muted">${escHtml(sdkErr)}</p>` : ''}`);
   }
   const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   btn.onclick = () => { dlg.showModal(); renderDialog(); };
