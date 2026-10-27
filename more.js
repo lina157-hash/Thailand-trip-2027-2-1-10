@@ -80,7 +80,7 @@ const PREP = [
   { id: 'cash', from: '2027-01-11', to: '2027-01-31', title: '換泰銖、準備現金', text: '海關可能抽查：每人備等值 2 萬泰銖（每個家庭 4 萬）。市集、島上、小吃多半只收現金。' },
   { id: 'esim', from: '2027-01-11', to: '2027-01-31', title: '買 eSIM 或網卡', text: '先確認手機支援 eSIM。一落地就要用 Grab、地圖和 LINE。' },
   { id: 'card', from: '2027-01-18', to: '2027-01-31', title: '信用卡開通海外刷卡', text: '確認額度、海外交易與預借現金密碼，記下信用卡掛失電話。' },
-  { id: 'pack', from: '2027-01-25', to: '2027-01-31', title: '開始收行李', text: '行動電源只能放隨身行李、不能托運；電子煙不要帶。寺廟要遮肩過膝的衣服。可以對照「出發清單」。' },
+  { id: 'pack', from: '2027-01-25', to: '2027-01-31', title: '開始收行李', text: '行動電源只能放隨身行李、不能托運；電子煙不要帶。寺廟要遮肩過膝的衣服。可以對照下面的行李項目。' },
   { id: 'tdac-br', group: '長榮組', from: '2027-01-29', to: '2027-02-01', title: '填 TDAC 電子入境卡', text: '2/1 抵達泰國，在 1/29～2/1 之間到官方網站填寫，免費。不要用會收費的代辦網站。', link: TDAC_LINK },
   { id: 'checkin-br', group: '長榮組', from: '2027-01-30', to: '2027-02-01', title: '線上報到、選位', text: '長榮航空開放線上報到後就可以辦，順便確認行李額度。' },
   { id: 'go-br', group: '長榮組', from: '2027-02-01', to: '2027-02-01', title: '17:45 前到桃園機場 T2', text: 'BR205 20:45 起飛，建議提早 3 小時到。護照、手機、充電線、行動電源放隨身包。' },
@@ -119,7 +119,7 @@ $('#prep-list')?.addEventListener('change', e => {
   renderPrep();
 });
 $('#prep-alert')?.addEventListener('click', e => {
-  if (e.target.closest('[data-prep-open]')) { showTab('packing'); $('#prep-list').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); }
+  if (e.target.closest('[data-prep-open]')) { showTab('notes'); $('#prep-list').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); }
   if (e.target.closest('[data-prep-hide]')) { try { localStorage.setItem(PREP_HIDE_KEY, bkkDate()); } catch {} renderPrep(); }
 });
 $('#group-pick')?.addEventListener('click', () => setTimeout(renderPrep));
